@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Rocket, Telescope, Plane, Star } from "lucide-react";
+import { Telescope, Plane, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logoImg from "@assets/axsx_white_water_mark_1767699971826.png";
 
 export default function Navbar() {
   const [isHovering, setIsHovering] = useState(false);
@@ -39,13 +40,13 @@ export default function Navbar() {
         {/* Logo Container */}
         <div 
           className={cn(
-            "relative z-50 flex items-center justify-center gap-2 px-6 py-3 rounded-full cursor-pointer transition-all duration-300 backdrop-blur-md border",
+            "relative z-50 flex items-center justify-center gap-3 px-6 py-2 rounded-full cursor-pointer transition-all duration-300 backdrop-blur-md border",
             isHovering 
               ? "bg-black/80 border-primary/50 shadow-[0_0_20px_rgba(124,58,237,0.3)]" 
               : "bg-background/50 border-white/10"
           )}
         >
-          <Rocket className={cn("w-6 h-6 transition-colors", isHovering ? "text-primary" : "text-white")} />
+          <img src={logoImg} alt="Stargazer Logo" className="h-8 w-auto object-contain" />
           <span className="font-display font-bold text-xl tracking-wider text-white">
             STARGAZER
           </span>
