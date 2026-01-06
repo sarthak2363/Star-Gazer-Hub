@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind } from "lucide-react";
+import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind, ArrowRight, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoImg from "@assets/axsx_white_water_mark_1767699971826.png";
 
@@ -17,7 +17,16 @@ export default function Navbar() {
       href: "/stargazing",
       icon: <Star className="w-5 h-5 text-yellow-400" />,
       subItems: [
-        { title: "Public Stargazing", href: "/stargazing/public", icon: <Users className="w-4 h-4" /> },
+        { 
+          title: "Public Stargazing", 
+          href: "/stargazing/public", 
+          icon: <Users className="w-4 h-4" />,
+          nested: [
+            { title: "10th Jan 2026", href: "/stargazing/public/jan-10" },
+            { title: "24th Jan 2026", href: "/stargazing/public/jan-24" },
+            { title: "25th Jan 2026", href: "/stargazing/public/jan-25" },
+          ]
+        },
         { title: "Corporate Events", href: "/stargazing/corporate", icon: <Building className="w-4 h-4" /> },
         { title: "School Programs", href: "/stargazing/school", icon: <School className="w-4 h-4" /> },
       ]
@@ -28,9 +37,9 @@ export default function Navbar() {
       href: "/astrotour",
       icon: <Telescope className="w-5 h-5 text-cyan-400" />,
       subItems: [
-        { title: "Desert Expeditions", href: "/astrotour/desert", icon: <Tent className="w-4 h-4" /> },
-        { title: "Mountain Retreats", href: "/astrotour/mountain", icon: <Compass className="w-4 h-4" /> },
-        { title: "Dark Sky Maps", href: "/astrotour/maps", icon: <Map className="w-4 h-4" /> },
+        { title: "Pench Astro-Wildlife", href: "/astrotour/pench", icon: <Tent className="w-4 h-4" /> },
+        { title: "Tadoba Astro-Wildlife", href: "/astrotour/tadoba", icon: <Compass className="w-4 h-4" /> },
+        { title: "Ladakh & Hanle", href: "/astrotour/ladakh", icon: <Map className="w-4 h-4" /> },
       ]
     },
     {
@@ -39,9 +48,17 @@ export default function Navbar() {
       href: "/aeromodelling",
       icon: <Plane className="w-5 h-5 text-purple-400" />,
       subItems: [
+        { 
+          title: "Events", 
+          href: "/aeromodelling/events", 
+          icon: <Calendar className="w-4 h-4" />,
+          nested: [
+            { title: "14th Jan 2026", href: "/aeromodelling/events/jan-14" },
+            { title: "17th Jan 2026", href: "/aeromodelling/events/jan-17" },
+          ]
+        },
         { title: "RC Workshops", href: "/aeromodelling/workshops", icon: <Wrench className="w-4 h-4" /> },
         { title: "Flight School", href: "/aeromodelling/school", icon: <Rocket className="w-4 h-4" /> },
-        { title: "Wind Tunnel", href: "/aeromodelling/wind", icon: <Wind className="w-4 h-4" /> },
       ]
     },
   ];
@@ -100,19 +117,39 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full left-0 mt-3 w-56 bg-black/95 border border-white/10 rounded-2xl overflow-hidden shadow-2xl p-2"
+                        className="absolute top-full left-0 mt-3 w-64 bg-black/95 border border-white/10 rounded-2xl overflow-visible shadow-2xl p-2"
                       >
                         {item.subItems.map((sub) => (
-                          <Link key={sub.title} href={sub.href}>
-                            <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group">
-                              <div className="text-muted-foreground group-hover:text-primary transition-colors">
-                                {sub.icon}
+                          <div key={sub.title} className="relative group/sub">
+                            <Link href={sub.href}>
+                              <div className="flex items-center justify-between p-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group/item">
+                                <div className="flex items-center gap-3">
+                                  <div className="text-muted-foreground group-hover/item:text-primary transition-colors">
+                                    {sub.icon}
+                                  </div>
+                                  <span className="text-xs font-medium text-muted-foreground group-hover/item:text-white transition-colors">
+                                    {sub.title}
+                                  </span>
+                                </div>
+                                {sub.nested && (
+                                  <ArrowRight className="w-3 h-3 text-muted-foreground/50 group-hover/item:text-white" />
+                                )}
                               </div>
-                              <span className="text-xs font-medium text-muted-foreground group-hover:text-white transition-colors">
-                                {sub.title}
-                              </span>
-                            </div>
-                          </Link>
+                            </Link>
+
+                            {/* Level 3 Submenu */}
+                            {sub.nested && (
+                              <div className="absolute left-full top-0 ml-2 hidden group-hover/sub:block w-48 bg-black/95 border border-white/10 rounded-xl p-2 shadow-2xl">
+                                {sub.nested.map((nest) => (
+                                  <Link key={nest.title} href={nest.href}>
+                                    <div className="p-2 rounded-lg hover:bg-white/10 transition-colors cursor-pointer text-[10px] text-muted-foreground hover:text-white font-medium">
+                                      {nest.title}
+                                    </div>
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                         ))}
                       </motion.div>
                     )}
