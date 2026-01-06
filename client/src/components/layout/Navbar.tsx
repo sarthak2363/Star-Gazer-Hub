@@ -1,41 +1,60 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Telescope, Plane, Star } from "lucide-react";
+import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoImg from "@assets/axsx_white_water_mark_1767699971826.png";
 
 export default function Navbar() {
   const [isHovering, setIsHovering] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [location] = useLocation();
 
   const menuItems = [
     {
+      id: "stargazing",
       title: "Stargazing",
       href: "/stargazing",
       icon: <Star className="w-5 h-5 text-yellow-400" />,
-      description: "Witness the cosmos",
+      subItems: [
+        { title: "Public Stargazing", href: "/stargazing/public", icon: <Users className="w-4 h-4" /> },
+        { title: "Corporate Events", href: "/stargazing/corporate", icon: <Building className="w-4 h-4" /> },
+        { title: "School Programs", href: "/stargazing/school", icon: <School className="w-4 h-4" /> },
+      ]
     },
     {
+      id: "astrotour",
       title: "Astrotour",
       href: "/astrotour",
       icon: <Telescope className="w-5 h-5 text-cyan-400" />,
-      description: "Guided space journeys",
+      subItems: [
+        { title: "Desert Expeditions", href: "/astrotour/desert", icon: <Tent className="w-4 h-4" /> },
+        { title: "Mountain Retreats", href: "/astrotour/mountain", icon: <Compass className="w-4 h-4" /> },
+        { title: "Dark Sky Maps", href: "/astrotour/maps", icon: <Map className="w-4 h-4" /> },
+      ]
     },
     {
+      id: "aeromodelling",
       title: "Aeromodelling",
       href: "/aeromodelling",
       icon: <Plane className="w-5 h-5 text-purple-400" />,
-      description: "Build and fly",
+      subItems: [
+        { title: "RC Workshops", href: "/aeromodelling/workshops", icon: <Wrench className="w-4 h-4" /> },
+        { title: "Flight School", href: "/aeromodelling/school", icon: <Rocket className="w-4 h-4" /> },
+        { title: "Wind Tunnel", href: "/aeromodelling/wind", icon: <Wind className="w-4 h-4" /> },
+      ]
     },
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4">
       <div 
-        className="relative"
+        className="relative flex flex-col items-center"
         onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
+        onMouseLeave={() => {
+          setIsHovering(false);
+          setActiveMenu(null);
+        }}
       >
         {/* Logo Container */}
         <div 
@@ -49,38 +68,57 @@ export default function Navbar() {
           <img src={logoImg} alt="Stargazer Logo" className="h-10 w-auto object-contain" />
         </div>
 
-        {/* Dropdown Menu */}
+        {/* Main Horizontal Menu */}
         <AnimatePresence>
           {isHovering && (
             <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="mt-4 flex gap-2 p-2 bg-black/90 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl"
             >
-              <div className="p-2 flex flex-col gap-1">
-                {menuItems.map((item) => (
-                  <Link key={item.title} href={item.href}>
+              {menuItems.map((item) => (
+                <div 
+                  key={item.id}
+                  className="relative group"
+                  onMouseEnter={() => setActiveMenu(item.id)}
+                >
+                  <Link href={item.href}>
                     <div className={cn(
-                      "flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors cursor-pointer group",
-                      location === item.href && "bg-primary/20"
+                      "flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer transition-all whitespace-nowrap",
+                      (location === item.href || activeMenu === item.id) ? "bg-white/15 text-white" : "text-muted-foreground hover:text-white"
                     )}>
-                      <div className="p-2 rounded-md bg-white/5 group-hover:bg-white/10 transition-colors">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <div className="font-display font-bold text-sm text-white group-hover:text-primary transition-colors">
-                          {item.title}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          {item.description}
-                        </div>
-                      </div>
+                      {item.icon}
+                      <span className="font-display font-medium text-sm">{item.title}</span>
                     </div>
                   </Link>
-                ))}
-              </div>
+
+                  {/* Vertical Submenu */}
+                  <AnimatePresence>
+                    {activeMenu === item.id && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-0 mt-3 w-56 bg-black/95 border border-white/10 rounded-2xl overflow-hidden shadow-2xl p-2"
+                      >
+                        {item.subItems.map((sub) => (
+                          <Link key={sub.title} href={sub.href}>
+                            <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group">
+                              <div className="text-muted-foreground group-hover:text-primary transition-colors">
+                                {sub.icon}
+                              </div>
+                              <span className="text-xs font-medium text-muted-foreground group-hover:text-white transition-colors">
+                                {sub.title}
+                              </span>
+                            </div>
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
             </motion.div>
           )}
         </AnimatePresence>
