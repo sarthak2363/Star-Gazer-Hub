@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind, ArrowRight, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoImg from "@assets/AXC_logo_6_1767777655343.png";
+import logoImg from "@assets/A-camps_1767788433537.png";
 
 export default function Navbar() {
   const [isHovering, setIsHovering] = useState(false);
