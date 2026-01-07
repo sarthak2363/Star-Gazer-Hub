@@ -10,13 +10,13 @@ export default function Stargazing() {
       <Navbar />
       
       {/* Hero */}
-      <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <div className="relative h-[40vh] flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgImage})` }}
         />
         <div className="absolute inset-0 bg-black/70" />
-        <div className="relative z-10 text-center px-4">
+        <div className="relative z-10 text-center px-4 pt-20">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -24,17 +24,20 @@ export default function Stargazing() {
           >
             Stargazing
           </motion.h1>
-          <p className="text-xl text-yellow-200/80 font-light mb-8"> reconnect with the night sky </p>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-white/20 shadow-2xl"
-          >
-            <img src={eventImg} alt="Stargazing Event" className="w-full h-auto object-cover" />
-          </motion.div>
+          <p className="text-xl text-yellow-200/80 font-light"> reconnect with the night sky </p>
         </div>
+      </div>
+
+      {/* Event Image Section */}
+      <div className="container mx-auto px-4 -mt-20 relative z-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-white/20 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+        >
+          <img src={eventImg} alt="Stargazing Event" className="w-full h-auto object-cover" />
+        </motion.div>
       </div>
 
       <div className="container mx-auto max-w-5xl py-20 px-4">
