@@ -86,7 +86,7 @@ export default function Navbar() {
             src={logoImg} 
             alt="Stargazer Logo" 
             className={cn(
-              "h-10 w-auto object-contain transition-all duration-300",
+              "h-8 w-auto object-contain transition-all duration-300",
               isHovering && "drop-shadow-[0_0_8px_rgba(147,165,255,0.8)]"
             )} 
           />
