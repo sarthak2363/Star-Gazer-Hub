@@ -90,7 +90,9 @@ export default function Home() {
         bgImage={hero3}
       />
 
-      <Footer />
+      <div className="snap-start min-h-fit">
+        <Footer />
+      </div>
     </div>
   );
 }
