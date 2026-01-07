@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import { motion } from "framer-motion";
 import { Star, Moon, Sun } from "lucide-react";
 import bgImage from "@assets/generated_images/deep_space_starry_background.png";
+import eventImg from "@assets/13th_event_1767776866680.jpeg";
 
 export default function Stargazing() {
   return (
@@ -23,7 +24,16 @@ export default function Stargazing() {
           >
             Stargazing
           </motion.h1>
-          <p className="text-xl text-yellow-200/80 font-light"> reconnect with the night sky </p>
+          <p className="text-xl text-yellow-200/80 font-light mb-8"> reconnect with the night sky </p>
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-white/20 shadow-2xl"
+          >
+            <img src={eventImg} alt="Stargazing Event" className="w-full h-auto object-cover" />
+          </motion.div>
         </div>
       </div>
 
