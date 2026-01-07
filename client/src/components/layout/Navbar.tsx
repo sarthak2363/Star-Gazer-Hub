@@ -78,11 +78,18 @@ export default function Navbar() {
           className={cn(
             "relative z-50 flex items-center justify-center px-4 py-2 rounded-full cursor-pointer transition-all duration-300 backdrop-blur-md border",
             isHovering 
-              ? "bg-black/80 border-primary/50 shadow-[0_0_20px_rgba(124,58,237,0.3)]" 
+              ? "bg-black/80 border-[#93a5ff]/50 shadow-[0_0_30px_rgba(147,165,255,0.6)] scale-105" 
               : "bg-background/50 border-white/10"
           )}
         >
-          <img src={logoImg} alt="Stargazer Logo" className="h-10 w-auto object-contain" />
+          <img 
+            src={logoImg} 
+            alt="Stargazer Logo" 
+            className={cn(
+              "h-10 w-auto object-contain transition-all duration-300",
+              isHovering && "drop-shadow-[0_0_8px_rgba(147,165,255,0.8)]"
+            )} 
+          />
         </div>
 
         {/* Main Horizontal Menu */}
