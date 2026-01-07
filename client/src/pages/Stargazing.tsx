@@ -1,4 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import { motion } from "framer-motion";
 import { Star, Moon, Sun } from "lucide-react";
 import bgImage from "@assets/generated_images/deep_space_starry_background.png";
@@ -66,6 +67,7 @@ export default function Stargazing() {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

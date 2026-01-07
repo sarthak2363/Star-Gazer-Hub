@@ -1,7 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import { motion } from "framer-motion";
-import { Plane, Wrench, Wind } from "lucide-react";
-import bgImage from "@assets/generated_images/deep_space_starry_background.png";
+import { Plane, Wrench, Wind, Rocket, Calendar } from "lucide-react";
 
 export default function Aeromodelling() {
   return (
@@ -9,10 +9,6 @@ export default function Aeromodelling() {
       <Navbar />
       
       <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgImage})`, filter: 'hue-rotate(240deg)' }}
-        />
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative z-10 text-center px-4">
           <motion.h1 
@@ -28,7 +24,7 @@ export default function Aeromodelling() {
 
       <div className="container mx-auto max-w-5xl py-20 px-4">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
+          <div className="space-y-8 text-left">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -70,7 +66,7 @@ export default function Aeromodelling() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <Plane className="w-48 h-48 text-white/20 group-hover:text-white/40 transition-colors transform group-hover:-rotate-12 duration-500" />
-            <div className="absolute bottom-8 left-8 right-8">
+            <div className="absolute bottom-8 left-8 right-8 text-left">
               <h4 className="text-2xl font-bold mb-2">Join the Club</h4>
               <button className="w-full py-3 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors">
                 Register Interest
@@ -79,6 +75,7 @@ export default function Aeromodelling() {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
