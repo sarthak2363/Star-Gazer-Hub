@@ -10,13 +10,8 @@ export default function Stargazing() {
       <Navbar />
       
       {/* Hero */}
-      <div className="relative h-[40vh] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        />
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative z-10 text-center px-4 pt-20">
+      <div className="relative pt-32 pb-16 flex items-center justify-center overflow-hidden">
+        <div className="relative z-10 text-center px-4">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -29,12 +24,12 @@ export default function Stargazing() {
       </div>
 
       {/* Event Image Section */}
-      <div className="container mx-auto px-4 -mt-20 relative z-20">
+      <div className="container mx-auto px-4 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-white/20 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+          className="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
         >
           <img src={eventImg} alt="Stargazing Event" className="w-full h-auto object-cover" />
         </motion.div>
