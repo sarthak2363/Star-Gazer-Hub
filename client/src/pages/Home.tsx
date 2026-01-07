@@ -1,10 +1,11 @@
 import Navbar from "@/components/layout/Navbar";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "wouter";
 import hero1 from "@assets/generated_images/deep_space_starry_background.png";
 import hero2 from "@assets/generated_images/astrotour_hero_background.png";
 import hero3 from "@assets/generated_images/aeromodelling_hero_background.png";
+import logoImg from "@assets/A-camps_1767778433537.png";
 
 const FullPageSection = ({ 
   title, 
@@ -61,7 +62,7 @@ const FullPageSection = ({
 
 export default function Home() {
   return (
-    <div className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-black no-scrollbar">
+    <div className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-black no-scrollbar text-white">
       <Navbar />
 
       <FullPageSection 
@@ -89,12 +90,34 @@ export default function Home() {
         bgImage={hero3}
       />
 
-      {/* SpaceX Style Footer */}
-      <footer className="bg-black py-12 px-6 flex flex-col md:flex-row items-center justify-center gap-8 text-[10px] font-bold tracking-widest uppercase text-white/60">
-        <span>Stargazer Ventures &copy; 2026</span>
-        <div className="flex gap-6">
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors">Suppliers</a>
+      <footer className="bg-black/90 border-t border-white/10 py-8 px-6 md:px-12 relative z-10 snap-start">
+        <div className="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          {/* Left: Logo */}
+          <div className="flex justify-center md:justify-start">
+            <img src={logoImg} alt="A-CAMPS Logo" className="h-6 w-auto object-contain opacity-80" />
+          </div>
+
+          {/* Center: Contact */}
+          <div className="flex flex-col items-center gap-2 text-[10px] tracking-widest uppercase text-white/60">
+            <div className="flex items-center gap-2 hover:text-white transition-colors">
+              <Mail className="w-3 h-3" />
+              <span>info@axsx.in</span>
+            </div>
+            <div className="flex items-center gap-2 hover:text-white transition-colors">
+              <Phone className="w-3 h-3" />
+              <span>+91-9028174363 / +91-7666519425</span>
+            </div>
+          </div>
+
+          {/* Right: Address */}
+          <div className="flex items-start justify-center md:justify-end gap-2 text-[10px] tracking-widest uppercase text-white/60 text-center md:text-right max-w-xs mx-auto md:ml-auto md:mr-0">
+            <MapPin className="w-3 h-3 mt-0.5 flex-shrink-0" />
+            <span>Office no 408, Shree Siddhivinayak Angan, Near Navle Bridge, Narhe, pune – 41.</span>
+          </div>
+        </div>
+        
+        <div className="mt-8 text-center text-[8px] tracking-[0.3em] uppercase text-white/30">
+          Stargazer Ventures &copy; 2026
         </div>
       </footer>
     </div>
