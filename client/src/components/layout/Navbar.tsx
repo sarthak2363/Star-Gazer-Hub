@@ -5,6 +5,7 @@ import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Ro
 import { cn } from "@/lib/utils";
 import logoImg from "@assets/A-camps_1767778433537.png";
 import astroPartyLogo from "@assets/Astroparty_logo1_1767855578619.png";
+import astroToursLogo from "@assets/Astrotours_1767855727508.png";
 
 export default function Navbar() {
   const [isHovering, setIsHovering] = useState(false);
@@ -119,6 +120,15 @@ export default function Navbar() {
                         <img 
                           src={astroPartyLogo} 
                           alt="AstroParty" 
+                          className={cn(
+                            "h-5 w-auto object-contain transition-all duration-300",
+                            (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+                          )}
+                        />
+                      ) : item.id === "astrotour" ? (
+                        <img 
+                          src={astroToursLogo} 
+                          alt="AstroTours" 
                           className={cn(
                             "h-5 w-auto object-contain transition-all duration-300",
                             (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
