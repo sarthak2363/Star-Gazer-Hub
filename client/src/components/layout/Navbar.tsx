@@ -122,7 +122,7 @@ export default function Navbar() {
                           src={astroPartyLogo} 
                           alt="AstroParty" 
                           className={cn(
-                            "h-4 w-auto object-contain transition-all duration-300",
+                            "h-5 w-auto object-contain transition-all duration-300",
                             (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
                           )}
                         />
@@ -131,7 +131,7 @@ export default function Navbar() {
                           src={astroToursLogo} 
                           alt="AstroTours" 
                           className={cn(
-                            "h-4 w-auto object-contain transition-all duration-300",
+                            "h-5 w-auto object-contain transition-all duration-300",
                             (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
                           )}
                         />
@@ -140,7 +140,7 @@ export default function Navbar() {
                           src={astroEventsLogo} 
                           alt="AstroEvents" 
                           className={cn(
-                            "h-4 w-auto object-contain transition-all duration-300",
+                            "h-5 w-auto object-contain transition-all duration-300",
                             (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
                           )}
                         />
