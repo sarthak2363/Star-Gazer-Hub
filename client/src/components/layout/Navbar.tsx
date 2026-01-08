@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind, ArrowRight, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoImg from "@assets/A-camps_1767778433537.png";
+import astroPartyLogo from "@assets/Astroparty_logo1_1767855578619.png";
 
 export default function Navbar() {
   const [isHovering, setIsHovering] = useState(false);
@@ -114,8 +115,21 @@ export default function Navbar() {
                       "flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer transition-all whitespace-nowrap",
                       (location === item.href || activeMenu === item.id) ? "bg-white/15 text-white" : "text-muted-foreground hover:text-white"
                     )}>
-                      {item.icon}
-                      <span className="font-display font-medium text-sm">{item.title}</span>
+                      {item.id === "stargazing" ? (
+                        <img 
+                          src={astroPartyLogo} 
+                          alt="AstroParty" 
+                          className={cn(
+                            "h-5 w-auto object-contain transition-all duration-300",
+                            (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+                          )}
+                        />
+                      ) : (
+                        <>
+                          {item.icon}
+                          <span className="font-display font-medium text-sm">{item.title}</span>
+                        </>
+                      )}
                     </div>
                   </Link>
 
