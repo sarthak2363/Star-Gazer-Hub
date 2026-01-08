@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind, ArrowRight, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoImg from "@assets/A-camps_1767778433537.png";
-import astroPartyLogo from "@assets/Astroparty_logo1_1767855578619.png";
+import starGazingLogo from "@assets/StarGazing_white_1767861107932.png";
 import astroToursLogo from "@assets/Astrotours_1767855727508.png";
 import astroEventsLogo from "@assets/astroevents_1767855802920.png";
 
@@ -119,8 +119,8 @@ export default function Navbar() {
                     )}>
                       {item.id === "stargazing" ? (
                         <img 
-                          src={astroPartyLogo} 
-                          alt="AstroParty" 
+                          src={starGazingLogo} 
+                          alt="StarGazing" 
                           className={cn(
                             "h-5 w-auto object-contain transition-all duration-300",
                             (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
