@@ -1,7 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { motion } from "framer-motion";
-import { Star, Moon, Sun, MapPin, Calendar, Clock, Users, Coffee, Utensils, Tent, Camera, BookOpen, Music } from "lucide-react";
+import { Star, Moon, Sun, MapPin, Calendar, Clock, Users, Utensils, Tent, Music, Telescope, Camera, Eye } from "lucide-react";
 import eventImg from "@assets/13th_event_1767776866680.jpeg";
 
 export default function Stargazing() {
@@ -9,6 +9,31 @@ export default function Stargazing() {
     { icon: <Music className="w-6 h-6 text-orange-400" />, title: "Jamming with Bonfire", desc: "Cozy musical evening under the stars." },
     { icon: <Tent className="w-6 h-6 text-cyan-400" />, title: "Experience Tent Camping", desc: "Stay overnight in the lap of nature." },
     { icon: <Utensils className="w-6 h-6 text-green-400" />, title: "Delicious Dinner", desc: "Full package including meals." },
+  ];
+
+  const timeline = [
+    { time: "5:00 PM – 6:30 PM", event: "Check in at location" },
+    { time: "5:00 PM – 6:00 PM", event: "Snacks and tea" },
+    { time: "6:30 PM – 8:45 PM", event: "Session 1 – West region sky observation" },
+    { time: "9:00 PM – 9:30 PM", event: "PPT Presentation" },
+    { time: "9:30 PM – 10:30 PM", event: "Dinner" },
+    { time: "10:45 PM – 1:00 AM", event: "Session 2: Constellation & Deep Sky Observation" },
+    { time: "1:00 AM – 5:00 AM", event: "Break for Sleep" },
+    { time: "5:00 AM – 6:00 AM", event: "Session 3: Morning Object Watching – Witness New Constellation and celestial objects" },
+    { time: "6:00 AM – 7:30 AM", event: "Break and refreshment" },
+    { time: "7:30 AM – 8:30 AM", event: "Solar spot observation" },
+    { time: "8:30 AM – 9:30 AM", event: "Breakfast" },
+    { time: "9:30 AM onwards", event: "Departure process starts" },
+  ];
+
+  const equipment = [
+    "A 12-Inch Telescope With An Advanced Eyepiece",
+    "A 8-Inch Telescope With An Advanced Eyepiece",
+    "A 6-Inch Telescope With An Advanced Eyepiece",
+    "Solar Filter To Watch Sunspots",
+    "Projector To Show Visual Demo Of Facts",
+    "Camera Attachment To Take Pictures Of Objects",
+    "Binoculars",
   ];
 
   const takeaways = [
@@ -108,6 +133,76 @@ export default function Stargazing() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Timeline Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white/5 border border-white/10 rounded-3xl p-8"
+            >
+              <h3 className="text-2xl font-display font-bold mb-6 flex items-center gap-3">
+                <Clock className="w-6 h-6 text-cyan-400" /> Astro – Party Event Timeline
+              </h3>
+              <div className="space-y-4">
+                {timeline.map((item, i) => (
+                  <div key={i} className="flex gap-4 items-start group">
+                    <div className="w-2 h-2 rounded-full bg-cyan-500 mt-2 flex-shrink-0 group-hover:scale-150 transition-transform" />
+                    <div className="flex-1 pb-4 border-b border-white/5 last:border-0">
+                      <span className="text-cyan-400 font-mono text-sm block mb-1">{item.time}</span>
+                      <span className="text-white/80 text-left block">{item.event}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Check-in Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-white/10 rounded-3xl p-8"
+            >
+              <h3 className="text-2xl font-display font-bold mb-6 flex items-center gap-3">
+                <Calendar className="w-6 h-6 text-purple-400" /> Check In Date & Time
+              </h3>
+              <p className="text-white/70 mb-6 text-left">
+                Every month, Overnight Sky Watching Session is held on a Saturday close to the New Moon, just 35 kilometres from Pune.
+              </p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                  <span className="text-xs text-white/40 uppercase tracking-wider block mb-2">Check In</span>
+                  <span className="text-xl font-bold text-white">10 January 2026</span>
+                  <span className="text-cyan-400 block">5:00 PM</span>
+                </div>
+                <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                  <span className="text-xs text-white/40 uppercase tracking-wider block mb-2">Departure</span>
+                  <span className="text-xl font-bold text-white">11 January 2026</span>
+                  <span className="text-cyan-400 block">9:30 AM</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Equipment Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white/5 border border-white/10 rounded-3xl p-8"
+            >
+              <h3 className="text-2xl font-display font-bold mb-6 flex items-center gap-3">
+                <Telescope className="w-6 h-6 text-yellow-400" /> Stargazing Astro Party Equipment
+              </h3>
+              <ul className="grid md:grid-cols-2 gap-4">
+                {equipment.map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-white/70 text-left">
+                    <Eye className="w-4 h-4 text-cyan-500 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
 
           {/* Right Column: Booking Card */}
