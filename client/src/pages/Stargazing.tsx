@@ -167,14 +167,9 @@ export default function Stargazing() {
               <p className="text-lg text-white/70 leading-relaxed text-left">
                 Our experts explain the night sky with interesting facts and theories. <strong>Aeronautics and Space Exploration (AXSX)</strong> and <strong>Astronomy & Aerospace Research Organization (AARO)</strong> have been working in the field since 2010, bringing 12+ years of expertise to your experience.
               </p>
-              <div className="bg-white/5 border-l-4 border-cyan-500 p-6 my-8 rounded-r-xl">
-                <p className="italic text-white/80 m-0 text-left">
-                  "Experience many new and fascinating things like our place in the universe, our solar family, Indian ancient astronomy, and mid-night discussions on the future of astronomy and humanity."
-                </p>
-              </div>
             </motion.div>
 
-            {/* Image Carousel */}
+            {/* Image Carousel - Right after welcome */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -185,6 +180,12 @@ export default function Stargazing() {
                 Swipe or click arrows to view more
               </p>
             </motion.div>
+
+            <div className="bg-white/5 border-l-4 border-cyan-500 p-6 rounded-r-xl">
+              <p className="italic text-white/80 m-0 text-left">
+                "Experience many new and fascinating things like our place in the universe, our solar family, Indian ancient astronomy, and mid-night discussions on the future of astronomy and humanity."
+              </p>
+            </div>
 
             {/* Highlights Grid */}
             <div className="grid md:grid-cols-3 gap-6">
