@@ -1,8 +1,70 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { motion } from "framer-motion";
-import { Star, Moon, Sun, MapPin, Calendar, Clock, Users, Utensils, Tent, Music, Telescope, Camera, Eye } from "lucide-react";
+import { Star, Moon, Sun, MapPin, Calendar, Clock, Users, Utensils, Tent, Music, Telescope, Camera, Eye, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import eventImg from "@assets/13th_event_1767776866680.jpeg";
+import heroBgImage from "@assets/generated_images/people_stargazing_under_milky_way.png";
+
+const GALLERY_IMAGES = [
+  { src: eventImg, alt: "Stargazing Event 1" },
+  { src: eventImg, alt: "Stargazing Event 2" },
+  { src: eventImg, alt: "Stargazing Event 3" },
+];
+
+function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  return (
+    <div className="relative w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-cyan-500/5">
+      <div 
+        className="flex transition-transform duration-500 ease-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {images.map((image, i) => (
+          <div key={i} className="min-w-full">
+            <img src={image.src} alt={image.alt} className="w-full h-auto object-cover" />
+          </div>
+        ))}
+      </div>
+      
+      {images.length > 1 && (
+        <>
+          <button 
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group"
+          >
+            <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+          </button>
+          <button 
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group"
+          >
+            <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+          </button>
+          
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`w-2 h-2 rounded-full transition-all ${i === currentIndex ? 'bg-cyan-400 w-6' : 'bg-white/30 hover:bg-white/50'}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export default function Stargazing() {
   const highlights = [
@@ -53,27 +115,33 @@ export default function Stargazing() {
     <div className="min-h-screen bg-[#020617] text-white selection:bg-cyan-500/30">
       <Navbar />
       
-      {/* Hero Section */}
-      <div className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.05)_0,transparent_70%)] pointer-events-none" />
+      {/* Hero Section with Background Image */}
+      <div className="relative pt-32 pb-24 overflow-hidden min-h-[70vh] flex items-center justify-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBgImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#020617]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08)_0,transparent_70%)] pointer-events-none" />
+        
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-7xl font-display font-bold mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-7xl font-display font-bold mb-4 tracking-tight drop-shadow-2xl">
               Stargazing Astro Party <span className="text-cyan-400">2026</span>
             </h1>
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <span className="px-4 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium flex items-center gap-2">
+              <span className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium flex items-center gap-2">
                 <Calendar className="w-4 h-4" /> 10 January 2026
               </span>
-              <span className="px-4 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-400 text-sm font-medium flex items-center gap-2 text-left">
+              <span className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium flex items-center gap-2 text-left">
                 <MapPin className="w-4 h-4" /> Panshet (45 Km From Pune)
               </span>
             </div>
-            <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl mx-auto italic">
+            <p className="text-xl md:text-2xl text-white/80 font-light max-w-3xl mx-auto italic drop-shadow-lg">
               "Astro – Party is a once in a lifetime experience for those who attend it."
             </p>
           </motion.div>
@@ -106,14 +174,16 @@ export default function Stargazing() {
               </div>
             </motion.div>
 
-            {/* Event Image */}
+            {/* Image Carousel */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-cyan-500/5"
             >
-              <img src={eventImg} alt="Stargazing Event Details" className="w-full h-auto" />
+              <ImageCarousel images={GALLERY_IMAGES} />
+              <p className="text-center text-xs text-white/30 mt-4 uppercase tracking-widest">
+                Swipe or click arrows to view more
+              </p>
             </motion.div>
 
             {/* Highlights Grid */}
