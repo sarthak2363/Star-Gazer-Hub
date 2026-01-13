@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "wouter";
-import hero1 from "@assets/home_page_stargazing_image_1768287084462.png";
+import hero1 from "@assets/home_page_stargazing_image_1768287805053.webp";
 import hero2 from "@assets/generated_images/astrotour_hero_background.png";
 import hero3 from "@assets/generated_images/aeromodelling_hero_background.png";
 
