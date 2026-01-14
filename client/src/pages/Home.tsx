@@ -5,30 +5,30 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "wouter";
 import hero1 from "@assets/home_page_stargazing_image_1768287805053.webp";
 import hero2 from "@assets/home_page_Astro_tour_image_1768288024510.webp";
-import hero3 from "@assets/generated_images/aeromodelling_hero_background.png";
+import hero3 from "@assets/home_page_Astro_tour_image_1768288024510.webp";
 
-const FullPageSection = ({ 
-  title, 
-  subtitle, 
-  buttonText, 
-  buttonHref, 
-  bgImage, 
-  isFirst = false 
-}: { 
-  title: string; 
-  subtitle: string; 
-  buttonText: string; 
-  buttonHref: string; 
+const FullPageSection = ({
+  title,
+  subtitle,
+  buttonText,
+  buttonHref,
+  bgImage,
+  isFirst = false,
+}: {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  buttonHref: string;
   bgImage: string;
   isFirst?: boolean;
 }) => (
   <section className="relative h-screen w-full flex items-end pb-24 px-6 md:px-12 overflow-hidden bg-black snap-start">
-    <div 
+    <div
       className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hover:scale-105"
       style={{ backgroundImage: `url(${bgImage})` }}
     />
     <div className="absolute inset-0 bg-black/20" />
-    
+
     <div className="container relative z-10 mx-auto max-w-6xl">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -43,7 +43,7 @@ const FullPageSection = ({
         <h1 className="text-4xl md:text-6xl font-display font-bold mb-8 text-white uppercase tracking-tight">
           {title}
         </h1>
-        
+
         <Link href={buttonHref}>
           <button className="px-10 py-4 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest text-sm inline-flex items-center gap-2 group text-left">
             {buttonText}
@@ -65,16 +65,16 @@ export default function Home() {
     <div className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-black no-scrollbar text-white">
       <Navbar />
 
-      <FullPageSection 
-        title="Stargazing Experiences"
-        subtitle="Current Event"
+      <FullPageSection
+        title="Astro Party Stargazing"
+        subtitle="Experience our"
         buttonText="Learn More"
         buttonHref="/stargazing"
         bgImage={hero1}
         isFirst={true}
       />
 
-      <FullPageSection 
+      <FullPageSection
         title="Astrotour Expeditions"
         subtitle="Now Booking"
         buttonText="View Itinerary"
@@ -82,9 +82,9 @@ export default function Home() {
         bgImage={hero2}
       />
 
-      <FullPageSection 
-        title="Aeromodelling Workshops"
-        subtitle="Engineering Flight"
+      <FullPageSection
+        title="AstroEvents"
+        subtitle="Experience universe at your place"
         buttonText="Register Now"
         buttonHref="/aeromodelling"
         bgImage={hero3}
