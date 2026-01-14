@@ -5,7 +5,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "wouter";
 import hero1 from "@assets/home_page_stargazing_image_1768287805053.webp";
 import hero2 from "@assets/home_page_Astro_tour_image_1768288024510.webp";
-import hero3 from "@assets/home_page_Astro_tour_image_1768288024510.webp";
+import hero3 from "@assets/home_page_Astro_event_image_2_1768373006182.webp";
 
 const FullPageSection = ({
   title,
