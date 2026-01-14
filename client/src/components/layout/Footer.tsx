@@ -30,7 +30,7 @@ export default function Footer() {
       </div>
       
       <div className="mt-8 text-center text-[8px] tracking-[0.3em] uppercase text-white/30">
-        Stargazer Ventures &copy; 2026
+        AXploration Camps &copy; 2026
       </div>
     </footer>
   );
