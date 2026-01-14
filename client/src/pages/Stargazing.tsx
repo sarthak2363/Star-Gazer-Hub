@@ -96,8 +96,27 @@ function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
   );
 }
 
+import videoFeedback from "@assets/Sweet,_true_and_very_very_encouraging_feedback_our_participant_1768372460674.mp4";
+
 export default function Stargazing() {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
+  const testimonials = [
+    {
+      name: "Rahul Sharma",
+      review: "Absolutely mind-blowing experience! The detail we could see through the 12-inch telescope was incredible. Highly recommend for families.",
+      rating: 5
+    },
+    {
+      name: "Priya Patil",
+      review: "The bonfire jamming session was the highlight for me. Great music, great stars, and even better people. Truly a once in a lifetime event.",
+      rating: 5
+    },
+    {
+      name: "Amit Verma",
+      review: "Expert knowledge shared by the team was fascinating. I learned so much about Indian ancient astronomy. A must-attend event.",
+      rating: 5
+    }
+  ];
   const highlights = [
     {
       icon: <Utensils className="w-6 h-6 text-green-400" />,
@@ -520,6 +539,55 @@ export default function Stargazing() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              {/* Testimonials and Review Videos Section */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Left Section: Testimonials */}
+                <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+                  <h4 className="text-xl font-display font-bold mb-2 flex items-center gap-2">
+                    <Users className="w-5 h-5 text-cyan-400" /> Testimonials
+                  </h4>
+                  <p className="text-white/40 text-xs mb-6 uppercase tracking-widest text-left">
+                    What our stargazers say about their journey
+                  </p>
+                  <div className="space-y-4">
+                    {testimonials.map((t, i) => (
+                      <div key={i} className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                        <div className="flex items-center gap-1 mb-2 text-yellow-400">
+                          {[...Array(t.rating)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 fill-current" />
+                          ))}
+                        </div>
+                        <p className="text-sm text-white/70 italic mb-2 text-left">"{t.review}"</p>
+                        <span className="text-xs font-bold text-cyan-400">— {t.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6 pt-6 border-t border-white/10 text-center">
+                    <p className="text-xs text-white/30 uppercase tracking-[0.2em]">4.9/5 Based on 200+ Google Reviews</p>
+                  </div>
+                </div>
+
+                {/* Right Section: Review Videos */}
+                <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+                  <h4 className="text-xl font-display font-bold mb-6 flex items-center gap-2">
+                    <Camera className="w-5 h-5 text-purple-400" /> Review Videos
+                  </h4>
+                  <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                    <video 
+                      controls 
+                      className="w-full h-auto aspect-video object-cover"
+                      poster={eventImg}
+                    >
+                      <source src={videoFeedback} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <p className="text-center text-[10px] text-white/30 mt-4 uppercase tracking-widest">
+                    A special message from one of our participants
+                  </p>
+                </div>
               </div>
             </div>
           </div>
