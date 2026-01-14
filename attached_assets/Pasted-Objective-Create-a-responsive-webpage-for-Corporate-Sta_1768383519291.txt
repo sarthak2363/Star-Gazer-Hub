@@ -1,0 +1,159 @@
+Objective:
+Create a responsive webpage for Corporate Stargazing that integrates seamlessly into an existing stargazing website.
+
+1️⃣ Page Routing & Navigation
+
+This page should open when the user clicks on “Corporate Events” under the “Stargazing” option in the website header.
+
+URL structure should remain consistent with existing stargazing pages.
+
+2️⃣ Hero Section (Top Section)
+
+Center-aligned main heading, styled exactly like the Public Stargazing page heading.
+
+Main Heading:
+Corporate Stargazing
+
+Tagline (below heading):
+Where Corporate Meets the Cosmic
+
+Clean, elegant, premium look suitable for corporate clients.
+
+3️⃣ Offers Section (Interactive Cards)
+
+Create three horizontal cards representing service offerings.
+
+Each card should be clickable and expandable (modal / accordion / slide-down).
+
+Card Titles:
+
+Single Session
+
+Dual Sky Experience (better name for two sessions)
+
+Overnight Cosmic Retreat
+
+On Click (Expanded Content):
+
+Show dummy placeholder content such as:
+
+Duration
+
+Ideal for team size
+
+Key highlights
+
+Customization options
+
+At the end of each card’s details, include a prominent:
+“Enquire Now” button
+
+Clicking the button should redirect to a WhatsApp chat (use placeholder WhatsApp link).
+
+4️⃣ “What is Stargazing?” Section
+
+A text-based section below the cards.
+
+Short, engaging description explaining:
+
+What stargazing is
+
+Why it’s a meaningful experience
+
+Tone: informative yet inspiring.
+
+5️⃣ Past Events Photo Scroll
+
+Horizontal scrolling image gallery.
+
+Display photos from past corporate stargazing events.
+
+Include left/right navigation arrows.
+
+Use placeholder images for now.
+
+6️⃣ Client Logos Carousel
+
+Horizontal logo slider.
+
+Only 3 logos visible at a time
+
+Features:
+
+Forward & backward arrows on both sides
+
+Automatic scrolling enabled
+
+Use placeholder company logos.
+
+7️⃣ Split Content Section (Full Width)
+
+Divide the section width-wise into two equal columns:
+
+Left Column:
+
+Importance of Stargazing
+
+Bullet points or short paragraphs
+
+Focus on:
+
+Mental wellness
+
+Curiosity
+
+Connection with nature
+
+Right Column:
+
+Why Choose Stargazing for Corporate Events
+
+Focus on:
+
+Team bonding
+
+Stress relief
+
+Unique corporate experience
+
+Long-lasting impact
+
+8️⃣ Enquiry Form Section
+
+Simple and professional enquiry form.
+
+Input fields:
+
+Name
+
+Company Name
+
+Email
+
+Phone Number
+
+Event Type / Message
+
+On submission:
+
+Form data should be sent to company email (use placeholder email).
+
+Include a clear Submit / Enquire button.
+
+9️⃣ Footer
+
+Use the same footer as the Public Stargazing page.
+
+No changes to footer design or content.
+
+10️⃣ General Design & UX Notes
+
+Fully responsive (desktop, tablet, mobile).
+
+Smooth scrolling and subtle animations.
+
+Corporate-premium visual tone.
+
+Maintain consistency with existing stargazing pages.
+
+Clean typography and spacing.

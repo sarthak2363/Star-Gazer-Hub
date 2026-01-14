@@ -1,0 +1,26 @@
+Create a responsive webpage titled “Corporate Stargazing” for an existing stargazing website.
+
+This page should open when a user clicks on “Corporate Events” under the “Stargazing” option in the header menu. The page design and structure should be consistent with the Public Stargazing page.
+
+At the top of the page, add a center-aligned main heading styled exactly like the Public Stargazing page. The heading text should be “Corporate Stargazing” with a tagline below it that reads “Where Corporate Meets the Cosmic”.
+
+Below the hero section, add a section with three interactive cards representing the corporate stargazing offerings. The three cards should be titled:
+Single Session
+Dual Sky Experience (this represents two sessions)
+Overnight Cosmic Retreat
+
+Each card should be clickable. When clicked, it should reveal detailed information using dummy placeholder content such as duration, ideal group size, highlights, and customization options. At the end of the expanded content of each card, include an “Enquire Now” button that redirects the user to a WhatsApp chat link.
+
+Below the offers section, add a text-based section titled “What is Stargazing” with a short, engaging description explaining what stargazing is and why it is a meaningful and unique experience.
+
+After this section, include a horizontal scrolling gallery displaying photos from past corporate stargazing events. Use placeholder images. Add left and right navigation arrows for manual scrolling.
+
+Next, add a client logos carousel section. Only three logos should be visible at a time. Include forward and backward navigation arrows on both sides and enable automatic scrolling. Use placeholder logos for now.
+
+Following this, add a full-width section divided into two equal columns. The left column should be titled “Importance of Stargazing” and explain its benefits such as mental wellness, connection with nature, and curiosity. The right column should be titled “Why Choose Stargazing for Corporate Events” and highlight team bonding, stress relief, uniqueness, and long-term impact.
+
+Below this section, add an enquiry form. The form should include the following fields: Name, Company Name, Email, Phone Number, and Message or Event Requirement. On submission, the form data should be sent to the company’s email address (use a placeholder email).
+
+At the bottom of the page, include the same footer used on the Public Stargazing page without any modifications.
+
+Ensure the entire page is fully responsive for desktop, tablet, and mobile devices. Use smooth scrolling, subtle animations, clean typography, and a professional corporate visual tone throughout the page.

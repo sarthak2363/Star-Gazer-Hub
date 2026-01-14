@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Stargazing from "@/pages/Stargazing";
+import CorporateStargazing from "@/pages/CorporateStargazing";
 import Astrotour from "@/pages/Astrotour";
 import Aeromodelling from "@/pages/Aeromodelling";
 
@@ -14,6 +15,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/stargazing" component={Stargazing} />
+      <Route path="/stargazing/corporate" component={CorporateStargazing} />
       <Route path="/astrotour" component={Astrotour} />
       <Route path="/aeromodelling" component={Aeromodelling} />
       <Route component={NotFound} />

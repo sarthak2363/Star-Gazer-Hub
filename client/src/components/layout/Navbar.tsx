@@ -30,7 +30,7 @@ export default function Navbar() {
             { title: "25th Jan 2026", href: "/stargazing" },
           ]
         },
-        { title: "Corporate Events", href: "/stargazing", icon: <Building className="w-4 h-4" /> },
+        { title: "Corporate Events", href: "/stargazing/corporate", icon: <Building className="w-4 h-4" /> },
         { title: "School Programs", href: "/stargazing", icon: <School className="w-4 h-4" /> },
       ]
     },
