@@ -164,7 +164,7 @@ export default function Stargazing() {
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      className="absolute top-full left-0 mt-4 z-50 bg-black/95 border border-white/10 p-4 rounded-3xl backdrop-blur-xl shadow-2xl"
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-4 z-50 bg-[#0a0f1d] border border-white/10 p-6 rounded-3xl backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] min-w-[320px]"
                     >
                       <DayPicker
                         mode="single"
@@ -176,24 +176,24 @@ export default function Stargazing() {
                         }}
                         className="text-white"
                         classNames={{
-                          months: "w-full",
-                          month: "space-y-4",
-                          caption: "flex justify-center pt-1 relative items-center mb-4",
-                          caption_label: "text-sm font-medium text-white px-8",
-                          nav: "flex items-center",
-                          nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 transition-opacity",
-                          nav_button_previous: "absolute left-1",
-                          nav_button_next: "absolute right-1",
+                          months: "w-full flex flex-col items-center",
+                          month: "space-y-4 w-full",
+                          caption: "flex justify-center items-center relative mb-4 h-10",
+                          caption_label: "text-base font-bold text-white",
+                          nav: "flex items-center justify-between absolute inset-0 w-full px-2",
+                          nav_button: "h-8 w-8 bg-white/5 hover:bg-white/10 text-white rounded-full flex items-center justify-center transition-all opacity-80 hover:opacity-100",
+                          nav_button_previous: "relative",
+                          nav_button_next: "relative",
                           table: "w-full border-collapse",
-                          head_row: "flex",
-                          head_cell: "text-white/40 rounded-md w-9 font-normal text-[0.8rem] uppercase flex-1",
-                          row: "flex w-full mt-2",
-                          cell: "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 flex-1",
-                          day: "h-9 w-9 p-0 font-normal aria-selected:opacity-100 hover:bg-white/10 rounded-full transition-colors mx-auto flex items-center justify-center",
-                          day_selected: "bg-cyan-500 text-black hover:bg-cyan-500 hover:text-black focus:bg-cyan-500 focus:text-black",
-                          day_today: "bg-white/5 text-white",
-                          day_outside: "text-white/20 opacity-50",
-                          day_disabled: "text-white/20 opacity-50",
+                          head_row: "flex justify-between mb-2",
+                          head_cell: "text-white/30 rounded-md w-10 font-medium text-[0.7rem] uppercase text-center",
+                          row: "flex justify-between w-full mt-1",
+                          cell: "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 w-10",
+                          day: "h-10 w-10 p-0 font-normal aria-selected:opacity-100 hover:bg-white/10 rounded-full transition-all flex items-center justify-center mx-auto cursor-pointer",
+                          day_selected: "bg-cyan-500 text-black font-bold hover:bg-cyan-500 hover:text-black focus:bg-cyan-500 focus:text-black",
+                          day_today: "bg-white/10 text-white border border-white/20",
+                          day_outside: "text-white/10 opacity-30",
+                          day_disabled: "text-white/10 opacity-30",
                           day_hidden: "invisible",
                         }}
                       />
@@ -226,7 +226,7 @@ export default function Stargazing() {
                 <X className="w-8 h-8 text-red-400" />
               </div>
               <h3 className="text-2xl font-display font-bold mb-4">No Event Found</h3>
-              <p className="text-white/60 mb-8">Sorry, we don't have any stargazing event on this date. Please select from the available dates marked with a border on the calendar.</p>
+              <p className="text-white/60 mb-8">Sorry, we don't have any stargazing event on this date. Please select from the available dates marked with an underline on the calendar.</p>
               <button 
                 onClick={() => setShowAlert(false)}
                 className="w-full py-3 bg-white text-black font-bold rounded-2xl hover:bg-white/90 transition-colors"
