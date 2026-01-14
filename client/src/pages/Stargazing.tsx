@@ -542,9 +542,9 @@ export default function Stargazing() {
               </div>
 
               {/* Testimonials and Review Videos Section */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Left Section: Testimonials */}
-                <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+              <div className="flex flex-col md:flex-row gap-6">
+                {/* Left Section: Testimonials (50% approx) */}
+                <div className="flex-1 bg-white/5 border border-white/10 rounded-3xl p-8">
                   <h4 className="text-xl font-display font-bold mb-2 flex items-center gap-2">
                     <Users className="w-5 h-5 text-cyan-400" /> Testimonials
                   </h4>
@@ -569,8 +569,8 @@ export default function Stargazing() {
                   </div>
                 </div>
 
-                {/* Right Section: Review Videos */}
-                <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+                {/* Right Section: Review Videos (50% approx) */}
+                <div className="flex-1 bg-white/5 border border-white/10 rounded-3xl p-8">
                   <h4 className="text-xl font-display font-bold mb-6 flex items-center gap-2">
                     <Camera className="w-5 h-5 text-purple-400" /> Review Videos
                   </h4>
