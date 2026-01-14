@@ -25,8 +25,10 @@ import {
   Eye,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
 } from "lucide-react";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import eventImg from "@assets/13th_event_1767776866680.jpeg";
 import heroBgImage from "@assets/generated_images/people_stargazing_under_milky_way.png";
 
@@ -95,6 +97,7 @@ function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
 }
 
 export default function Stargazing() {
+  const [isTimelineOpen, setIsTimelineOpen] = useState(false);
   const highlights = [
     {
       icon: <Utensils className="w-6 h-6 text-green-400" />,
@@ -295,27 +298,68 @@ export default function Stargazing() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white/5 border border-white/10 rounded-3xl p-8"
+              className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden"
             >
-              <h3 className="text-2xl font-display font-bold mb-6 flex items-center gap-3">
-                <Clock className="w-6 h-6 text-cyan-400" /> Astro – Party Event
-                Timeline
-              </h3>
-              <div className="space-y-4">
-                {timeline.map((item, i) => (
-                  <div key={i} className="flex gap-4 items-start group">
-                    <div className="w-2 h-2 rounded-full bg-cyan-500 mt-2 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                    <div className="flex-1 pb-4 border-b border-white/5 last:border-0">
-                      <span className="text-cyan-400 font-mono text-sm block mb-1">
-                        {item.time}
-                      </span>
-                      <span className="text-white/80 text-left block">
-                        {item.event}
-                      </span>
-                    </div>
+              <button
+                onClick={() => setIsTimelineOpen(!isTimelineOpen)}
+                className="w-full p-8 flex items-center justify-between hover:bg-white/5 transition-colors group text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-cyan-500/10 rounded-2xl">
+                    <Clock className="w-6 h-6 text-cyan-400" />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <h3 className="text-2xl font-display font-bold text-white">
+                      Astro – Party Event Timeline
+                    </h3>
+                    <p className="text-white/40 text-sm mt-1 uppercase tracking-widest">
+                      Click to view complete schedule
+                    </p>
+                  </div>
+                </div>
+                <motion.div
+                  animate={{ rotate: isTimelineOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="w-6 h-6 text-white/40 group-hover:text-white transition-colors" />
+                </motion.div>
+              </button>
+
+              <AnimatePresence>
+                {isTimelineOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-8 pt-0 space-y-4 border-t border-white/5">
+                      <div className="mt-8 space-y-4">
+                        {timeline.map((item, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.05 }}
+                            className="flex gap-4 items-start group"
+                          >
+                            <div className="w-2 h-2 rounded-full bg-cyan-500 mt-2 flex-shrink-0 group-hover:scale-150 transition-transform" />
+                            <div className="flex-1 pb-4 border-b border-white/5 last:border-0">
+                              <span className="text-cyan-400 font-mono text-sm block mb-1">
+                                {item.time}
+                              </span>
+                              <span className="text-white/80 text-left block">
+                                {item.event}
+                              </span>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
 
             {/* Check-in Info */}
