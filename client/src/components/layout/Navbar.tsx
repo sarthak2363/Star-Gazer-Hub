@@ -17,21 +17,21 @@ export default function Navbar() {
     {
       id: "stargazing",
       title: "Stargazing",
-      href: "/stargazing",
+      href: "#",
       icon: <Star className="w-5 h-5 text-yellow-400" />,
       subItems: [
         { 
           title: "Public Stargazing", 
-          href: "/stargazing/public", 
+          href: "/stargazing", 
           icon: <Users className="w-4 h-4" />,
           nested: [
-            { title: "10th Jan 2026", href: "/stargazing/public/jan-10" },
-            { title: "24th Jan 2026", href: "/stargazing/public/jan-24" },
-            { title: "25th Jan 2026", href: "/stargazing/public/jan-25" },
+            { title: "10th Jan 2026", href: "/stargazing" },
+            { title: "24th Jan 2026", href: "/stargazing" },
+            { title: "25th Jan 2026", href: "/stargazing" },
           ]
         },
-        { title: "Corporate Events", href: "/stargazing/corporate", icon: <Building className="w-4 h-4" /> },
-        { title: "School Programs", href: "/stargazing/school", icon: <School className="w-4 h-4" /> },
+        { title: "Corporate Events", href: "/stargazing", icon: <Building className="w-4 h-4" /> },
+        { title: "School Programs", href: "/stargazing", icon: <School className="w-4 h-4" /> },
       ]
     },
     {
