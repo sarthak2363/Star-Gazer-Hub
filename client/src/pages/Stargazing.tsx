@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Star,
   Moon,
@@ -28,9 +28,9 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import eventImg from "@assets/13th_event_1767776866680.jpeg";
 import heroBgImage from "@assets/generated_images/people_stargazing_under_milky_way.png";
+import videoFeedback from "@assets/Sweet,_true_and_very_very_encouraging_feedback_our_participant_1768372460674.mp4";
 
 const GALLERY_IMAGES = [
   { src: eventImg, alt: "Stargazing Event 1" },
@@ -96,10 +96,9 @@ function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
   );
 }
 
-import videoFeedback from "@assets/Sweet,_true_and_very_very_encouraging_feedback_our_participant_1768372460674.mp4";
-
 export default function Stargazing() {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
+  
   const testimonials = [
     {
       name: "Rahul Sharma",
@@ -117,6 +116,7 @@ export default function Stargazing() {
       rating: 5
     }
   ];
+
   const highlights = [
     {
       icon: <Utensils className="w-6 h-6 text-green-400" />,
@@ -280,8 +280,6 @@ export default function Stargazing() {
               </p>
             </motion.div>
 
-
-
             <div className="bg-white/5 border-l-4 border-cyan-500 p-6 rounded-r-xl">
               <p className="italic text-white/80 m-0 text-left">
                 "Experience many new and fascinating things like our place in
@@ -441,6 +439,46 @@ export default function Stargazing() {
                 ))}
               </ul>
             </motion.div>
+
+            {/* Testimonials Section - NEW POSITION */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white/5 border border-white/10 rounded-3xl p-8"
+            >
+              <h4 className="text-xl font-display font-bold mb-2 flex items-center gap-2">
+                <Users className="w-5 h-5 text-cyan-400" /> Testimonials
+              </h4>
+              <p className="text-white/40 text-xs mb-6 uppercase tracking-widest text-left">
+                What our stargazers say about their journey
+              </p>
+              <div className="space-y-4">
+                {testimonials.map((t, i) => (
+                  <div
+                    key={i}
+                    className="p-4 bg-white/5 rounded-2xl border border-white/5"
+                  >
+                    <div className="flex items-center gap-1 mb-2 text-yellow-400">
+                      {[...Array(t.rating)].map((_, i) => (
+                        <Star key={i} className="w-3 h-3 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-sm text-white/70 italic mb-2 text-left">
+                      "{t.review}"
+                    </p>
+                    <span className="text-xs font-bold text-cyan-400">
+                      — {t.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 pt-6 border-t border-white/10 text-center">
+                <p className="text-xs text-white/30 uppercase tracking-[0.2em]">
+                  4.9/5 Based on 200+ Google Reviews
+                </p>
+              </div>
+            </motion.div>
           </div>
 
           {/* Right Column: Booking Card */}
@@ -541,62 +579,31 @@ export default function Stargazing() {
                 </ul>
               </div>
 
-              {/* Testimonials and Review Videos Section */}
-              <div className="flex flex-col md:flex-row gap-6">
-                {/* Left Section: Testimonials (50% approx) */}
-                <div className="flex-1 bg-white/5 border border-white/10 rounded-3xl p-8">
-                  <h4 className="text-xl font-display font-bold mb-2 flex items-center gap-2">
-                    <Users className="w-5 h-5 text-cyan-400" /> Testimonials
-                  </h4>
-                  <p className="text-white/40 text-xs mb-6 uppercase tracking-widest text-left">
-                    What our stargazers say about their journey
-                  </p>
-                  <div className="space-y-4">
-                    {testimonials.map((t, i) => (
-                      <div key={i} className="p-4 bg-white/5 rounded-2xl border border-white/5">
-                        <div className="flex items-center gap-1 mb-2 text-yellow-400">
-                          {[...Array(t.rating)].map((_, i) => (
-                            <Star key={i} className="w-3 h-3 fill-current" />
-                          ))}
-                        </div>
-                        <p className="text-sm text-white/70 italic mb-2 text-left">"{t.review}"</p>
-                        <span className="text-xs font-bold text-cyan-400">— {t.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-6 pt-6 border-t border-white/10 text-center">
-                    <p className="text-xs text-white/30 uppercase tracking-[0.2em]">4.9/5 Based on 200+ Google Reviews</p>
-                  </div>
+              {/* Review Video Section - NEW POSITION */}
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+                <h4 className="text-xl font-display font-bold mb-6 flex items-center gap-2">
+                  <Camera className="w-5 h-5 text-purple-400" /> Review Videos
+                </h4>
+                <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                  <video
+                    controls
+                    className="w-full h-auto aspect-video object-cover"
+                    poster={eventImg}
+                  >
+                    <source src={videoFeedback} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
-
-                {/* Right Section: Review Videos (50% approx) */}
-                <div className="flex-1 bg-white/5 border border-white/10 rounded-3xl p-8">
-                  <h4 className="text-xl font-display font-bold mb-6 flex items-center gap-2">
-                    <Camera className="w-5 h-5 text-purple-400" /> Review Videos
-                  </h4>
-                  <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                    <video 
-                      controls 
-                      className="w-full h-auto aspect-video object-cover"
-                      poster={eventImg}
-                    >
-                      <source src={videoFeedback} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  <p className="text-center text-[10px] text-white/30 mt-4 uppercase tracking-widest">
-                    A special message from one of our participants
-                  </p>
-                </div>
+                <p className="text-center text-[10px] text-white/30 mt-4 uppercase tracking-widest">
+                  A special message from one of our participants
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
 
       <Footer />
     </div>
-    
   );
 }
