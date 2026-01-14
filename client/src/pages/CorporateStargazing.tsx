@@ -7,6 +7,7 @@ import {
   Clock,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   MessageSquare,
   Compass,
   Zap,
