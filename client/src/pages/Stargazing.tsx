@@ -117,6 +117,21 @@ function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
 }
 export default function Stargazing() {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.calendar-container') && !target.closest('.calendar-trigger')) {
+        setShowCalendar(false);
+      }
+      if (!target.closest('.location-container') && !target.closest('.location-trigger')) {
+        setShowLocations(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const [selectedLocation, setSelectedLocation] = useState("Panshet");
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(LOCATION_EVENTS["Panshet"][0]);
   const [showCalendar, setShowCalendar] = useState(false);
@@ -208,10 +223,14 @@ export default function Stargazing() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="text-4xl md:text-7xl font-display font-bold mb-4 tracking-tight drop-shadow-2xl">Stargazing Astro Party</h1>
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <div className="relative">
+              <div className="relative calendar-container">
                 <button 
-                  onClick={() => setShowCalendar(!showCalendar)}
-                  className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium flex items-center gap-2 hover:bg-cyan-500/10 transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowCalendar(!showCalendar);
+                    setShowLocations(false);
+                  }}
+                  className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium flex items-center gap-2 hover:bg-cyan-500/10 transition-colors calendar-trigger"
                 >
                   <CalendarIcon className="w-4 h-4" /> {selectedDate ? format(selectedDate, "dd MMMM yyyy") : "Select Date"}
                 </button>
@@ -222,12 +241,14 @@ export default function Stargazing() {
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      className="absolute top-full left-0 mt-4 z-50 bg-black/95 border border-white/10 p-4 rounded-3xl backdrop-blur-xl shadow-2xl"
+                      className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 mt-4 z-50 bg-black/95 border border-white/10 p-4 rounded-3xl backdrop-blur-xl shadow-2xl w-[320px]"
                     >
                       <DayPicker
                         mode="single"
                         selected={selectedDate}
                         onSelect={handleDateSelect}
+                        showOutsideDays
+                        fixedWeeks
                         modifiers={{ event: LOCATION_EVENTS[selectedLocation] || [] }}
                         modifiersStyles={{
                           event: { border: "2px solid #06b6d4", color: "#06b6d4", borderRadius: "50%" }
@@ -244,10 +265,14 @@ export default function Stargazing() {
                 </AnimatePresence>
               </div>
 
-              <div className="relative">
+              <div className="relative location-container">
                 <button 
-                  onClick={() => setShowLocations(!showLocations)}
-                  className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium flex items-center gap-2 hover:bg-orange-500/10 transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowLocations(!showLocations);
+                    setShowCalendar(false);
+                  }}
+                  className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium flex items-center gap-2 hover:bg-orange-500/10 transition-colors location-trigger"
                 >
                   <MapPin className="w-4 h-4" /> {selectedLocation} (45 Km From Pune)
                 </button>
@@ -258,7 +283,7 @@ export default function Stargazing() {
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      className="absolute top-full left-0 mt-4 z-50 bg-black/95 border border-white/10 p-2 rounded-2xl backdrop-blur-xl shadow-2xl min-w-[160px]"
+                      className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 mt-4 z-50 bg-black/95 border border-white/10 p-2 rounded-2xl backdrop-blur-xl shadow-2xl min-w-[160px]"
                     >
                       {locations.map((loc) => (
                         <button
