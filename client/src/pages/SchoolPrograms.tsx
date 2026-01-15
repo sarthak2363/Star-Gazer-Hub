@@ -31,7 +31,6 @@ import schoolImg10 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.24_PM_(6)_176
 import schoolImg11 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.24_PM_1768469844864.jpeg";
 import schoolImg12 from "@assets/WhatsApp_Image_2026-01-14_at_10.04.56_PM_(1)_1768469844864.jpeg";
 import schoolImg13 from "@assets/WhatsApp_Image_2026-01-14_at_10.04.56_PM_(2)_1768469844865.jpeg";
-import schoolImg14 from "@assets/WhatsApp_Image_2026-01-14_at_10.04.56_PM_1768469844865.jpeg";
 
 const SCHOOL_OFFERS = [
   {
@@ -74,7 +73,6 @@ const GALLERY_IMAGES = [
   { src: schoolImg11, alt: "Solar Observation Workshop" },
   { src: schoolImg12, alt: "Space Science Presentation" },
   { src: schoolImg13, alt: "Astronomy Interaction" },
-  { src: schoolImg14, alt: "School Astronomy Event" },
 ];
 
 function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
