@@ -18,7 +18,20 @@ import {
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import heroBgImage from "@assets/generated_images/people_stargazing_under_milky_way.png";
-import eventImg from "@assets/13th_event_1767776866680.jpeg";
+import schoolImg1 from "@assets/school_1768469844860.jpeg";
+import schoolImg2 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.20_PM_(1)_1768469844860.jpeg";
+import schoolImg3 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.20_PM_1768469844861.jpeg";
+import schoolImg4 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.21_PM_1768469844861.jpeg";
+import schoolImg5 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.23_PM_(1)_1768469844861.jpeg";
+import schoolImg6 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.23_PM_1768469844862.jpeg";
+import schoolImg7 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.24_PM_(3)_1768469844862.jpeg";
+import schoolImg8 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.24_PM_(4)_1768469844862.jpeg";
+import schoolImg9 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.24_PM_(5)_1768469844863.jpeg";
+import schoolImg10 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.24_PM_(6)_1768469844863.jpeg";
+import schoolImg11 from "@assets/WhatsApp_Image_2026-01-14_at_3.52.24_PM_1768469844864.jpeg";
+import schoolImg12 from "@assets/WhatsApp_Image_2026-01-14_at_10.04.56_PM_(1)_1768469844864.jpeg";
+import schoolImg13 from "@assets/WhatsApp_Image_2026-01-14_at_10.04.56_PM_(2)_1768469844865.jpeg";
+import schoolImg14 from "@assets/WhatsApp_Image_2026-01-14_at_10.04.56_PM_1768469844865.jpeg";
 
 const SCHOOL_OFFERS = [
   {
@@ -48,10 +61,20 @@ const SCHOOL_OFFERS = [
 ];
 
 const GALLERY_IMAGES = [
-  { src: eventImg, alt: "School Event 1" },
-  { src: eventImg, alt: "School Event 2" },
-  { src: eventImg, alt: "School Event 3" },
-  { src: eventImg, alt: "School Event 4" },
+  { src: schoolImg1, alt: "School Astronomy Workshop" },
+  { src: schoolImg2, alt: "Space Exploration Presentation" },
+  { src: schoolImg3, alt: "Hands-on Rocketry Session" },
+  { src: schoolImg4, alt: "Astronomy Seminar" },
+  { src: schoolImg5, alt: "Stargazing Group Photo" },
+  { src: schoolImg6, alt: "Telescope Handling Session" },
+  { src: schoolImg7, alt: "Observing the Cosmos" },
+  { src: schoolImg8, alt: "Students Observing Stars" },
+  { src: schoolImg9, alt: "Night Sky Training" },
+  { src: schoolImg10, alt: "Classroom Astronomy Session" },
+  { src: schoolImg11, alt: "Solar Observation Workshop" },
+  { src: schoolImg12, alt: "Space Science Presentation" },
+  { src: schoolImg13, alt: "Astronomy Interaction" },
+  { src: schoolImg14, alt: "School Astronomy Event" },
 ];
 
 function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
