@@ -38,12 +38,22 @@ const GALLERY_IMAGES = [
   { src: eventImg, alt: "Stargazing Event 3" },
 ];
 
-const EVENT_DATES = [
-  new Date(2026, 0, 10),
-  new Date(2026, 0, 16),
-  new Date(2026, 0, 24),
-  new Date(2026, 0, 25),
-];
+const LOCATION_EVENTS: Record<string, Date[]> = {
+  "Panshet": [
+    new Date(2026, 0, 24),
+    new Date(2026, 0, 25),
+    new Date(2026, 1, 14),
+  ],
+  "Velhe": [
+    new Date(2026, 0, 16),
+    new Date(2026, 1, 7),
+    new Date(2026, 1, 28),
+  ],
+  "Mumbai": [],
+  "Bhandardara": [],
+};
+
+const ALL_EVENT_DATES = Object.values(LOCATION_EVENTS).flat();
 
 function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -107,19 +117,20 @@ function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
 }
 export default function Stargazing() {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(EVENT_DATES[0]);
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-
   const [selectedLocation, setSelectedLocation] = useState("Panshet");
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(LOCATION_EVENTS["Panshet"][0]);
+  const [showCalendar, setShowCalendar] = useState(false);
   const [showLocations, setShowLocations] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const locations = ["Panshet", "Velhe", "Mumbai", "Bhandardara"];
 
   const handleDateSelect = (date: Date | undefined) => {
     if (!date) return;
-    const isEvent = EVENT_DATES.some((d) => isSameDay(d, date));
-    if (isEvent) {
+    const locationDates = LOCATION_EVENTS[selectedLocation] || [];
+    const isEventInLocation = locationDates.some((d) => isSameDay(d, date));
+    
+    if (isEventInLocation) {
       setSelectedDate(date);
       setShowCalendar(false);
     } else {
@@ -127,7 +138,22 @@ export default function Stargazing() {
     }
   };
 
-  const checkInDate = selectedDate || EVENT_DATES[0];
+  const handleLocationSelect = (loc: string) => {
+    setSelectedLocation(loc);
+    setShowLocations(false);
+    // Auto-select the first available date for the new location if current date isn't valid there
+    const locationDates = LOCATION_EVENTS[loc] || [];
+    if (locationDates.length > 0) {
+      const isCurrentDateValid = selectedDate && locationDates.some(d => isSameDay(d, selectedDate));
+      if (!isCurrentDateValid) {
+        setSelectedDate(locationDates[0]);
+      }
+    } else {
+      setSelectedDate(undefined);
+    }
+  };
+
+  const checkInDate = selectedDate || ALL_EVENT_DATES[0];
   const departureDate = addDays(checkInDate, 1);
 
   const testimonials = [
@@ -202,7 +228,7 @@ export default function Stargazing() {
                         mode="single"
                         selected={selectedDate}
                         onSelect={handleDateSelect}
-                        modifiers={{ event: EVENT_DATES }}
+                        modifiers={{ event: LOCATION_EVENTS[selectedLocation] || [] }}
                         modifiersStyles={{
                           event: { border: "2px solid #06b6d4", color: "#06b6d4", borderRadius: "50%" }
                         }}
@@ -237,10 +263,7 @@ export default function Stargazing() {
                       {locations.map((loc) => (
                         <button
                           key={loc}
-                          onClick={() => {
-                            setSelectedLocation(loc);
-                            setShowLocations(false);
-                          }}
+                          onClick={() => handleLocationSelect(loc)}
                           className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-colors ${
                             selectedLocation === loc ? "bg-orange-500/20 text-orange-400" : "hover:bg-white/5 text-white/70 hover:text-white"
                           }`}
@@ -272,8 +295,8 @@ export default function Stargazing() {
               <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <X className="w-8 h-8 text-red-400" />
               </div>
-              <h3 className="text-2xl font-display font-bold mb-4">No Event Found</h3>
-              <p className="text-white/60 mb-8">Sorry, we don't have any stargazing event on this date. Please select from the available dates marked with a border on the calendar.</p>
+              <h3 className="text-2xl font-display font-bold mb-4">No Event Scheduled</h3>
+              <p className="text-white/60 mb-8">We don't have event on this date in this location, kindly change the location or select any other date.</p>
               <button 
                 onClick={() => setShowAlert(false)}
                 className="w-full py-3 bg-white text-black font-bold rounded-2xl hover:bg-white/90 transition-colors"
