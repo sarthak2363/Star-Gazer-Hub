@@ -26,7 +26,7 @@ import "react-day-picker/dist/style.css";
 
 // Mock images - we'll use generated ones or placeholders that match the vibe
 import penchHero from "@assets/generated_images/people_stargazing_under_milky_way.png";
-import jungleSafari from "@assets/home_page_Astro_tour_image_1768287805053.webp";
+import jungleSafari from "@assets/home_page_Astro_tour_image_1768287084463.png";
 
 const TOUR_DATES = [
   new Date(2025, 11, 26),
