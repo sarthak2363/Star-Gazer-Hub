@@ -24,7 +24,7 @@ import {
   ChevronDown,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DayPicker } from "react-day-picker";
 import { format, isSameDay, addDays } from "date-fns";
 import "react-day-picker/dist/style.css";
@@ -47,29 +47,57 @@ const EVENT_DATES = [
 
 function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (images.length <= 1 || isHovered) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images.length, isHovered]);
+
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-cyan-500/5">
-      <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+    <div
+      className="relative w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-cyan-500/5"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        className="flex transition-transform duration-500 ease-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
         {images.map((image, i) => (
-          <div key={i} className="min-w-full">
-            <img src={image.src} alt={image.alt} className="w-full h-auto object-cover" />
+          <div key={i} className="min-w-full h-[420px] md:h-[520px] lg:h-[600px]">
+            <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
           </div>
         ))}
       </div>
+
       {images.length > 1 && (
         <>
           <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group">
             <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
           </button>
+
           <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group">
             <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
           </button>
+
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
             {images.map((_, i) => (
-              <button key={i} onClick={() => setCurrentIndex(i)} className={`w-2 h-2 rounded-full transition-all ${i === currentIndex ? "bg-cyan-400 w-6" : "bg-white/30 hover:bg-white/50"}`} />
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  i === currentIndex ? "bg-cyan-400 w-6" : "bg-white/30 hover:bg-white/50"
+                }`}
+              />
             ))}
           </div>
         </>
@@ -77,7 +105,6 @@ function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
     </div>
   );
 }
-
 export default function Stargazing() {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(EVENT_DATES[0]);
@@ -233,12 +260,11 @@ export default function Stargazing() {
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="prose prose-invert prose-cyan max-w-none">
               <h2 className="text-3xl font-display font-bold text-white mb-6">Welcome to our Stargazing program</h2>
               <p className="text-lg text-white/70 leading-relaxed text-left">A premium stargazing experience near Pune — where the night sky becomes more than just a view.</p>
-              <p className="text-lg text-white/70 leading-relaxed text-left">AstroParty is curated by Aeronautics and Space Exploration (AXSX).</p>
+              <p className="text-lg text-white/70 leading-relaxed text-left">Beyond observation, AstroParty offers something deeper — calm, perspective, and wonder. It’s a pause from city noise, a moment to slow down, and a chance to feel connected to the vast universe above.</p>
+              <p className="text-lg text-white/70 leading-relaxed text-left">AstroParty is curated by Aeronautics and Space Exploration (AXSX), working in astronomy and space science since 2010.
+              Brought to you by AXCamps, a dedicated division for outdoor stargazing experiences, corporate events, and school astronomy programs.</p>
+              <p className="text-lg text-white/70 leading-relaxed text-left">AstroParty isn’t just an event —it’s a memory written in starlight. </p>
             </motion.div>
-
-            <div className="bg-white/5 border-l-4 border-cyan-500 p-6 rounded-r-xl">
-              <p className="italic text-white/80 m-0 text-left">"Experience many new and fascinating things like our place in the universe, our solar family..."</p>
-            </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               {highlights.map((item, i) => (

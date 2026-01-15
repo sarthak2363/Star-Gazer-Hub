@@ -21,22 +21,21 @@ import eventImg from "@assets/13th_event_1767776866680.jpeg";
 const CORPORATE_OFFERS = [
   {
     title: "Single Session",
-    duration: "3-4 Hours",
+    duration: "3 Hours (6 PM - 9 PM)",
     groupSize: "Up to 50 people",
     highlights: ["Interactive Sky Tour", "Telescope Viewing", "Mythology Stories"],
-    customization: "Theme-based storytelling available",
     desc: "A focused, high-impact introduction to the cosmos perfect for an evening team mixer."
   },
   {
-    title: "Dual Sky Experience",
-    duration: "6 Hours (2 Sessions)",
+    title: "Dual Session",
+    duration: "6 Hours (6 Pm - 11 PM)",
     groupSize: "Up to 100 people",
     highlights: ["Deep Sky Objects", "Planetary Observation", "Science Workshops"],
     customization: "Custom catering & photography",
     desc: "Two deep-dive sessions covering different celestial regions and scientific concepts."
   },
   {
-    title: "Overnight Cosmic Retreat",
+    title: "Overnight Session",
     duration: "Overnight (5PM - 9AM)",
     groupSize: "Flexible",
     highlights: ["Luxury Tent Stay", "Midnight Jamming", "Morning Solar Viewing"],
@@ -59,6 +58,39 @@ const CLIENT_LOGOS = [
   { name: "ApexSolutions", logo: "https://placehold.co/200x100/020617/ffffff?text=Apex" },
 ];
 
+function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  return (
+    <div className="relative w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-blue-500/5">
+      <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+        {images.map((image, i) => (
+          <div key={i} className="min-w-full">
+            <img src={image.src} alt={image.alt} className="w-full h-auto object-cover" />
+          </div>
+        ))}
+      </div>
+      {images.length > 1 && (
+        <>
+          <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group">
+            <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+          </button>
+          <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group">
+            <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+          </button>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((_, i) => (
+              <button key={i} onClick={() => setCurrentIndex(i)} className={`w-2 h-2 rounded-full transition-all ${i === currentIndex ? "bg-blue-400 w-6" : "bg-white/30 hover:bg-white/50"}`} />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function CorporateStargazing() {
   const [expandedOffer, setExpandedOffer] = useState<number | null>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -72,7 +104,7 @@ export default function CorporateStargazing() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-[#020617] text-white selection:bg-blue-500/30">
       <Navbar />
 
       {/* Hero Section */}
@@ -82,22 +114,25 @@ export default function CorporateStargazing() {
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-4xl md:text-7xl font-display font-bold mb-4 tracking-tight uppercase">Corporate Stargazing</h1>
-            <p className="text-xl md:text-2xl text-cyan-400 font-light max-w-3xl mx-auto italic tracking-widest uppercase">
+            <h1 className="text-4xl md:text-7xl font-display font-bold mb-2 tracking-tight uppercase">Corporate Stargazing</h1>
+            <p className="text-xl md:text-2xl text-blue-400 font-light max-w-3xl mx-auto italic tracking-widest uppercase mb-0">
               Where Corporate Meets the Cosmic
             </p>
           </motion.div>
         </div>
       </div>
 
+      <section className="py-0 container mx-auto px-4">
+      <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 text-center">Our Offers:</h2>
+
       {/* Offers Section */}
-      <section className="py-20 container mx-auto px-4">
+      
         <div className="grid md:grid-cols-3 gap-8">
           {CORPORATE_OFFERS.map((offer, idx) => (
             <motion.div
               key={idx}
               layout
-              className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden cursor-pointer hover:border-cyan-500/50 transition-colors"
+              className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden cursor-pointer hover:border-blue-500/50 transition-colors"
               onClick={() => setExpandedOffer(expandedOffer === idx ? null : idx)}
             >
               <div className="p-8">
@@ -114,15 +149,15 @@ export default function CorporateStargazing() {
                     >
                       <div className="pt-4 border-t border-white/10 space-y-3">
                         <div className="flex items-center gap-2 text-sm">
-                          <Clock className="w-4 h-4 text-cyan-400" />
+                          <Clock className="w-4 h-4 text-blue-400" />
                           <span><strong>Duration:</strong> {offer.duration}</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm">
-                          <Users className="w-4 h-4 text-cyan-400" />
+                          <Users className="w-4 h-4 text-blue-400" />
                           <span><strong>Group Size:</strong> {offer.groupSize}</span>
                         </div>
                         <div className="space-y-2">
-                          <p className="text-sm font-bold text-cyan-400">Highlights:</p>
+                          <p className="text-sm font-bold text-blue-400">Highlights:</p>
                           <ul className="list-disc list-inside text-sm text-white/70">
                             {offer.highlights.map((h, i) => <li key={i}>{h}</li>)}
                           </ul>
@@ -155,40 +190,26 @@ export default function CorporateStargazing() {
       {/* What is Stargazing */}
       <section className="py-20 bg-white/[0.02]">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-8">What is Stargazing?</h2>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-8">Why AXSX?</h2>
           <p className="text-lg text-white/70 leading-relaxed italic">
-            Stargazing is the act of observing the stars and other celestial bodies in the night sky. 
-            It is a timeless experience that transcends the daily grind of corporate life, offering a 
-            unique perspective on our place in the universe. It encourages curiosity, mindfulness, 
-            and a shared sense of wonder that brings teams closer together in a way no boardroom ever can.
+            Stargazing is magical at any age, but AstroParty is rare. Guided by experts and powered by a 12-inch primary mirror telescope, we bring planets, galaxies, and deep-sky wonders to life under truly dark skies.
+          </p>
+          <p className="text-lg text-white/70 leading-relaxed italic">
+            It is curated by Aeronautics and Space Exploration (AXSX), working in astronomy and space science since 2010.
+            Brought to you by AXCamps, a dedicated division for outdoor stargazing experiences, corporate events, and school astronomy programs.
+
           </p>
         </div>
       </section>
-
-      {/* Gallery Section */}
-      <section className="py-20 overflow-hidden">
-        <div className="container mx-auto px-4 mb-12 flex justify-between items-center">
-          <h2 className="text-3xl font-display font-bold">Past Corporate Events</h2>
-          <div className="flex gap-4">
-            <button onClick={() => scrollGallery('left')} className="p-3 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 transition-colors">
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button onClick={() => scrollGallery('right')} className="p-3 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 transition-colors">
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
-        </div>
-        <div 
-          ref={galleryRef}
-          className="flex gap-6 overflow-x-auto no-scrollbar snap-x px-4 md:px-[10%]"
-        >
-          {GALLERY_IMAGES.map((img, i) => (
-            <div key={i} className="min-w-[300px] md:min-w-[450px] aspect-video rounded-3xl overflow-hidden snap-center">
-              <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-            </div>
-          ))}
-        </div>
-      </section>
+      
+      <br></br>
+      <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 text-center">Past Events at a Glimpse</h2>
+      
+      
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 0.90 }} viewport={{ once: true }}>
+        <ImageCarousel images={GALLERY_IMAGES} />
+        <p className="text-center text-xs text-white/30 mt-4 uppercase tracking-widest">Swipe or click arrows to view more</p>
+      </motion.div>
 
       {/* Client Logos Carousel */}
       <section className="py-20 border-y border-white/5 overflow-hidden">
@@ -209,7 +230,7 @@ export default function CorporateStargazing() {
       <section className="py-20 container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-16">
           <div className="space-y-8">
-            <h2 className="text-3xl font-display font-bold text-cyan-400">Importance of Stargazing</h2>
+            <h2 className="text-3xl font-display font-bold text-blue-400">Importance of Stargazing</h2>
             <div className="space-y-6">
               <div className="flex gap-4">
                 <Heart className="w-6 h-6 text-pink-400 flex-shrink-0" />
@@ -256,25 +277,25 @@ export default function CorporateStargazing() {
           <form className="grid md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-widest text-white/40 ml-4">Full Name</label>
-              <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-cyan-500 outline-none transition-colors" />
+              <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors" />
             </div>
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-widest text-white/40 ml-4">Company Name</label>
-              <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-cyan-500 outline-none transition-colors" />
+              <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors" />
             </div>
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-widest text-white/40 ml-4">Email Address</label>
-              <input type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-cyan-500 outline-none transition-colors" />
+              <input type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors" />
             </div>
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-widest text-white/40 ml-4">Phone Number</label>
-              <input type="tel" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-cyan-500 outline-none transition-colors" />
+              <input type="tel" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors" />
             </div>
             <div className="md:col-span-2 space-y-2">
               <label className="text-xs uppercase tracking-widest text-white/40 ml-4">Event Requirements</label>
-              <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-cyan-500 outline-none transition-colors resize-none"></textarea>
+              <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors resize-none"></textarea>
             </div>
-            <button className="md:col-span-2 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-2xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] uppercase tracking-widest text-sm">
+            <button className="md:col-span-2 py-4 bg-blue-500 hover:bg-blue-400 text-black font-bold rounded-2xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] uppercase tracking-widest text-sm">
               Send Enquiry
             </button>
           </form>

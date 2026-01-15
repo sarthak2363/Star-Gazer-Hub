@@ -16,7 +16,7 @@ import {
   Rocket,
   Lightbulb,
 } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import heroBgImage from "@assets/generated_images/people_stargazing_under_milky_way.png";
 import eventImg from "@assets/13th_event_1767776866680.jpeg";
 
@@ -54,6 +54,67 @@ const GALLERY_IMAGES = [
   { src: eventImg, alt: "School Event 4" },
 ];
 
+function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (images.length <= 1 || isHovered) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images.length, isHovered]);
+
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  return (
+    <div
+      className="relative w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-cyan-500/5"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        className="flex transition-transform duration-500 ease-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {images.map((image, i) => (
+          <div key={i} className="min-w-full h-[420px] md:h-[520px] lg:h-[600px]">
+            <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
+          </div>
+        ))}
+      </div>
+
+      {images.length > 1 && (
+        <>
+          <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group">
+            <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+          </button>
+
+          <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group">
+            <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+          </button>
+
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  i === currentIndex ? "bg-cyan-400 w-6" : "bg-white/30 hover:bg-white/50"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function SchoolPrograms() {
   const [expandedOffer, setExpandedOffer] = useState<number | null>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -84,6 +145,8 @@ export default function SchoolPrograms() {
           </motion.div>
         </div>
       </div>
+
+     
 
       {/* Offers Section */}
       <section className="py-20 container mx-auto px-4">
@@ -161,29 +224,10 @@ export default function SchoolPrograms() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-20 overflow-hidden">
-        <div className="container mx-auto px-4 mb-12 flex justify-between items-center">
-          <h2 className="text-3xl font-display font-bold">Students Exploring the Sky</h2>
-          <div className="flex gap-4">
-            <button onClick={() => scrollGallery('left')} className="p-3 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 transition-colors">
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button onClick={() => scrollGallery('right')} className="p-3 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 transition-colors">
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
-        </div>
-        <div 
-          ref={galleryRef}
-          className="flex gap-6 overflow-x-auto no-scrollbar snap-x px-4 md:px-[10%]"
-        >
-          {GALLERY_IMAGES.map((img, i) => (
-            <div key={i} className="min-w-[300px] md:min-w-[450px] aspect-video rounded-3xl overflow-hidden snap-center">
-              <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-            </div>
-          ))}
-        </div>
-      </section>
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 0.90 }} viewport={{ once: true }}>
+        <ImageCarousel images={GALLERY_IMAGES} />
+        <p className="text-center text-xs text-white/30 mt-4 uppercase tracking-widest">Swipe or click arrows to view more</p>
+      </motion.div>
 
       {/* Importance Section for Schools */}
       <section className="py-20 container mx-auto px-4">
