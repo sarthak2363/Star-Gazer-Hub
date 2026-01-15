@@ -37,10 +37,10 @@ export default function Navbar() {
     {
       id: "astrotour",
       title: "Astrotour",
-      href: "/astrotour",
+      href: "#",
       icon: <Telescope className="w-5 h-5 text-cyan-400" />,
       subItems: [
-        { title: "Pench Astro-Wildlife", href: "/astrotour/pench", icon: <Tent className="w-4 h-4" /> },
+        { title: "Pench Astro Tour", href: "/astrotour", icon: <Tent className="w-4 h-4" /> },
         { title: "Tadoba Astro-Wildlife", href: "/astrotour/tadoba", icon: <Compass className="w-4 h-4" /> },
         { title: "Ladakh & Hanle", href: "/astrotour/ladakh", icon: <Map className="w-4 h-4" /> },
       ]
