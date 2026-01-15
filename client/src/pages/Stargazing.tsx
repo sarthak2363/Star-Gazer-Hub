@@ -111,6 +111,11 @@ export default function Stargazing() {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
+  const [selectedLocation, setSelectedLocation] = useState("Panshet");
+  const [showLocations, setShowLocations] = useState(false);
+
+  const locations = ["Panshet", "Velhe", "Mumbai", "Bhandardara"];
+
   const handleDateSelect = (date: Date | undefined) => {
     if (!date) return;
     const isEvent = EVENT_DATES.some((d) => isSameDay(d, date));
@@ -213,9 +218,40 @@ export default function Stargazing() {
                 </AnimatePresence>
               </div>
 
-              <span className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium flex items-center gap-2 text-left">
-                <MapPin className="w-4 h-4" /> Panshet (45 Km From Pune)
-              </span>
+              <div className="relative">
+                <button 
+                  onClick={() => setShowLocations(!showLocations)}
+                  className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium flex items-center gap-2 hover:bg-orange-500/10 transition-colors"
+                >
+                  <MapPin className="w-4 h-4" /> {selectedLocation} (45 Km From Pune)
+                </button>
+
+                <AnimatePresence>
+                  {showLocations && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      className="absolute top-full left-0 mt-4 z-50 bg-black/95 border border-white/10 p-2 rounded-2xl backdrop-blur-xl shadow-2xl min-w-[160px]"
+                    >
+                      {locations.map((loc) => (
+                        <button
+                          key={loc}
+                          onClick={() => {
+                            setSelectedLocation(loc);
+                            setShowLocations(false);
+                          }}
+                          className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-colors ${
+                            selectedLocation === loc ? "bg-orange-500/20 text-orange-400" : "hover:bg-white/5 text-white/70 hover:text-white"
+                          }`}
+                        >
+                          {loc}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
             <p className="text-xl md:text-2xl text-white/80 font-light max-w-3xl mx-auto italic drop-shadow-lg">
               "Because Your Soul Deserves A Sky Full Of Stars"
