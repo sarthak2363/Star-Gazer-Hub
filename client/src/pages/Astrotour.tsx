@@ -58,13 +58,14 @@ export default function Astrotour() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-[#f2f4e6] text-slate-900">
+
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden min-h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90" style={{ backgroundImage: `url(${penchHero})` }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-white" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#cbcfb6]" />
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -119,7 +120,7 @@ export default function Astrotour() {
           <div className="space-y-8">
             <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter text-slate-900">The Jungle Book <br/><span className="text-emerald-600">Legacy</span></h2>
             <p className="text-lg text-slate-600 leading-relaxed text-left">
-              Pench Tiger Reserve, immortalized by Rudyard Kipling's "The Jungle Book," is a haven for wildlife enthusiasts. Encompassing dense forests, open grasslands, and meandering rivers, it provides a picturesque backdrop for thrilling safaris.
+              Pench Tiger Reserve, immortalised by Rudyard Kipling's "The Jungle Book," is a haven for wildlife enthusiasts. Encompassing dense forests, open grasslands, and meandering rivers, it provides a picturesque backdrop for thrilling safaris.
             </p>
             <p className="text-lg text-slate-600 leading-relaxed text-left">
               Recently designated as India’s ﬁrst Dark Sky Park, it's the perfect destination for stargazing enthusiasts. Pench offers unparalleled views of the stars, connecting you with the majesty of the cosmos in ways you never thought possible.
@@ -189,15 +190,15 @@ export default function Astrotour() {
                 ))}
               </ul>
             </div>
-            <div className="bg-slate-800 border border-slate-700 rounded-[2.5rem] p-10 shadow-2xl">
+            <div className="bg-[#f2f4e6] border border-slate-700 rounded-[2.5rem] p-10 shadow-2xl">
               <span className="text-emerald-400 font-bold uppercase tracking-widest text-sm mb-4 block text-left">Pricing Details</span>
               <div className="space-y-6 mb-10">
                 <div className="flex justify-between items-center pb-6 border-b border-white/10">
-                  <span className="text-white/60 text-lg">Single Sharing</span>
-                  <span className="text-3xl font-display font-bold text-white">₹24,900</span>
+                  <span className="text-slate-800 text-lg">Single Sharing</span>
+                  <span className="text-3xl font-display font-bold text-slate-800">₹24,900</span>
                 </div>
                 <div className="flex justify-between items-center pb-6 border-b border-white/10">
-                  <span className="text-white/60 text-lg">Double Sharing</span>
+                  <span className="text-slate/800 text-lg">Double Sharing</span>
                   <div className="text-right">
                     <span className="text-white/40 line-through text-sm block">₹21,900</span>
                     <span className="text-3xl font-display font-bold text-emerald-400">₹18,900</span>

@@ -230,7 +230,7 @@ export default function Stargazing() {
                     setShowCalendar(!showCalendar);
                     setShowLocations(false);
                   }}
-                  className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium flex items-center gap-2 hover:bg-cyan-500/10 transition-colors calendar-trigger"
+                  className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-white-500/30 rounded-full text-white-400 text-sm font-medium flex items-center gap-2 hover:bg-white-500/10 transition-colors calendar-trigger"
                 >
                   <CalendarIcon className="w-4 h-4" /> {selectedDate ? format(selectedDate, "dd MMMM yyyy") : "Select Date"}
                 </button>
@@ -272,7 +272,7 @@ export default function Stargazing() {
                     setShowLocations(!showLocations);
                     setShowCalendar(false);
                   }}
-                  className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium flex items-center gap-2 hover:bg-orange-500/10 transition-colors location-trigger"
+                  className="px-4 py-2 bg-black/50 backdrop-blur-sm border border-blue-500/30 rounded-full text-blue-400 text-sm font-medium flex items-center gap-2 hover:bg-blue-500/10 transition-colors location-trigger"
                 >
                   <MapPin className="w-4 h-4" /> {selectedLocation} (45 Km From Pune)
                 </button>
@@ -290,7 +290,7 @@ export default function Stargazing() {
                           key={loc}
                           onClick={() => handleLocationSelect(loc)}
                           className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-colors ${
-                            selectedLocation === loc ? "bg-orange-500/20 text-orange-400" : "hover:bg-white/5 text-white/70 hover:text-white"
+                            selectedLocation === loc ? "bg-blue-500/20 text-blue-400" : "hover:bg-white/5 text-white/70 hover:text-white"
                           }`}
                         >
                           {loc}
@@ -341,7 +341,7 @@ export default function Stargazing() {
       <div className="container mx-auto px-4 pb-20 mt-12">
         <div className="grid lg:grid-cols-12 gap-12 max-w-7xl mx-auto">
           <div className="lg:col-span-7 space-y-12">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="prose prose-invert prose-cyan max-w-none">
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="prose prose-invert prose-blue max-w-none">
               <h2 className="text-3xl font-display font-bold text-white mb-6">Welcome to our Stargazing program</h2>
               <p className="text-lg text-white/70 leading-relaxed text-left">A premium stargazing experience near Pune — where the night sky becomes more than just a view.</p>
               <p className="text-lg text-white/70 leading-relaxed text-left">Beyond observation, AstroParty offers something deeper — calm, perspective, and wonder. It’s a pause from city noise, a moment to slow down, and a chance to feel connected to the vast universe above.</p>
@@ -352,7 +352,7 @@ export default function Stargazing() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {highlights.map((item, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 transition-all group">
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all group">
                   <div className="mb-4 transform group-hover:scale-110 transition-transform">{item.icon}</div>
                   <h3 className="text-lg font-bold mb-2 font-display text-white">{item.title}</h3>
                   <p className="text-sm text-white/50 text-left">{item.desc}</p>
@@ -363,7 +363,7 @@ export default function Stargazing() {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
               <button onClick={() => setIsTimelineOpen(!isTimelineOpen)} className="w-full p-8 flex items-center justify-between hover:bg-white/5 transition-colors group text-left">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-cyan-500/10 rounded-2xl"><Clock className="w-6 h-6 text-cyan-400" /></div>
+                  <div className="p-3 bg-blue-500/10 rounded-2xl"><Clock className="w-6 h-6 text-blue-400" /></div>
                   <div>
                     <h3 className="text-2xl font-display font-bold text-white">Astro – Party Event Timeline</h3>
                     <p className="text-white/40 text-sm mt-1 uppercase tracking-widest">Click to view complete schedule</p>
@@ -378,9 +378,9 @@ export default function Stargazing() {
                       <div className="mt-8 space-y-4">
                         {timeline.map((item, i) => (
                           <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} className="flex gap-4 items-start group">
-                            <div className="w-2 h-2 rounded-full bg-cyan-500 mt-2 flex-shrink-0 group-hover:scale-150 transition-transform" />
+                            <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0 group-hover:scale-150 transition-transform" />
                             <div className="flex-1 pb-4 border-b border-white/5 last:border-0">
-                              <span className="text-cyan-400 font-mono text-sm block mb-1">{item.time}</span>
+                              <span className="text-blue-400 font-mono text-sm block mb-1">{item.time}</span>
                               <span className="text-white/80 text-left block">{item.event}</span>
                             </div>
                           </motion.div>
@@ -401,12 +401,12 @@ export default function Stargazing() {
                 <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
                   <span className="text-xs text-white/40 uppercase tracking-wider block mb-2">Check In</span>
                   <span className="text-xl font-bold text-white">{format(checkInDate, "dd MMMM yyyy")}</span>
-                  <span className="text-cyan-400 block">5:00 PM</span>
+                  <span className="text-blue-400 block">5:00 PM</span>
                 </div>
                 <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
                   <span className="text-xs text-white/40 uppercase tracking-wider block mb-2">Departure</span>
                   <span className="text-xl font-bold text-white">{format(departureDate, "dd MMMM yyyy")}</span>
-                  <span className="text-cyan-400 block">9:30 AM</span>
+                  <span className="text-blue-400 block">9:30 AM</span>
                 </div>
               </div>
             </motion.div>
@@ -416,14 +416,14 @@ export default function Stargazing() {
               <ul className="grid md:grid-cols-2 gap-4">
                 {equipment.map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-white/70 text-left">
-                    <Eye className="w-4 h-4 text-cyan-500 flex-shrink-0" /> {item}
+                    <Eye className="w-4 h-4 text-blue-400 flex-shrink-0" /> {item}
                   </li>
                 ))}
               </ul>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white/5 border border-white/10 rounded-3xl p-8">
-              <h4 className="text-xl font-display font-bold mb-2 flex items-center gap-2"><Users className="w-5 h-5 text-cyan-400" /> Testimonials</h4>
+              <h4 className="text-xl font-display font-bold mb-2 flex items-center gap-2"><Users className="w-5 h-5 text-blue-400" /> Testimonials</h4>
               <div className="space-y-4">
                 {testimonials.map((t, i) => (
                   <div key={i} className="p-4 bg-white/5 rounded-2xl border border-white/5">
@@ -431,7 +431,7 @@ export default function Stargazing() {
                       {[...Array(t.rating)].map((_, i) => <Star key={i} className="w-3 h-3 fill-current" />)}
                     </div>
                     <p className="text-sm text-white/70 italic mb-2 text-left">"{t.review}"</p>
-                    <span className="text-xs font-bold text-cyan-400">— {t.name}</span>
+                    <span className="text-xs font-bold text-blue-400">— {t.name}</span>
                   </div>
                 ))}
               </div>
@@ -449,14 +449,14 @@ export default function Stargazing() {
                 <div className="space-y-6 mb-8">
                   <div className="flex justify-between items-center p-4 bg-white/5 rounded-2xl border border-white/5">
                     <div><span className="block text-xs text-white/40 uppercase tracking-wider">Age Above 10</span><span className="text-2xl font-bold text-white">2190 ₹</span></div>
-                    <span className="text-xs text-cyan-400 font-bold bg-cyan-400/10 px-2 py-1 rounded">Per Participant</span>
+                    <span className="text-xs text-blue-400 font-bold bg-blue-400/10 px-2 py-1 rounded">Per Participant</span>
                   </div>
                   <div className="flex justify-between items-center p-4 bg-white/5 rounded-2xl border border-white/5">
                     <div><span className="block text-xs text-white/40 uppercase tracking-wider">Age Below 10</span><span className="text-2xl font-bold text-white">1790 ₹</span></div>
-                    <span className="text-xs text-cyan-400 font-bold bg-cyan-400/10 px-2 py-1 rounded">Per Participant</span>
+                    <span className="text-xs text-blue-400 font-bold bg-blue-400/10 px-2 py-1 rounded">Per Participant</span>
                   </div>
                 </div>
-                <button className="w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-2xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] transform hover:-translate-y-1 active:scale-[0.98]">Enquire Now!!</button>
+                <button className="w-full py-4 bg-blue-500 hover:bg-blue-400 text-black font-bold rounded-2xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] transform hover:-translate-y-1 active:scale-[0.98]">Enquire Now!!</button>
               </motion.div>
 
               <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
@@ -464,7 +464,7 @@ export default function Stargazing() {
                 <ul className="grid grid-cols-1 gap-3">
                   {takeaways.map((text, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-white/60 text-left">
-                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-500/50" /> {text}
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50" /> {text}
                     </li>
                   ))}
                 </ul>

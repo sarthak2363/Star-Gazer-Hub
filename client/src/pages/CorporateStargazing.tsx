@@ -23,23 +23,21 @@ const CORPORATE_OFFERS = [
     title: "Single Session",
     duration: "3 Hours (6 PM - 9 PM)",
     groupSize: "Up to 50 people",
-    highlights: ["Interactive Sky Tour", "Telescope Viewing", "Mythology Stories"],
+    highlights: ["Interactive Sky Tour", "Telescope Viewing", "Constellations Stories"],
     desc: "A focused, high-impact introduction to the cosmos perfect for an evening team mixer."
   },
   {
     title: "Dual Session",
-    duration: "6 Hours (6 Pm - 11 PM)",
-    groupSize: "Up to 100 people",
-    highlights: ["Deep Sky Objects", "Planetary Observation", "Science Workshops"],
-    customization: "Custom catering & photography",
+    duration: "6 Hours (6 PM - 11 PM)",
+    groupSize: "Up to 50 people",
+    highlights: ["Deep Sky Objects", "Interesting Stories", "Science Perspectives"],
     desc: "Two deep-dive sessions covering different celestial regions and scientific concepts."
   },
   {
     title: "Overnight Session",
-    duration: "Overnight (5PM - 9AM)",
-    groupSize: "Flexible",
-    highlights: ["Luxury Tent Stay", "Midnight Jamming", "Morning Solar Viewing"],
-    customization: "Full corporate branding & hospitality",
+    duration: "Overnight (6 PM - 7:30 AM)",
+    groupSize: "Up to 50 people",
+    highlights: ["Overnight Observation", "Detailed Information", "Solar Spots Viewing"],
     desc: "The ultimate team bonding experience under a blanket of stars with full hospitality."
   }
 ];
@@ -162,14 +160,13 @@ export default function CorporateStargazing() {
                             {offer.highlights.map((h, i) => <li key={i}>{h}</li>)}
                           </ul>
                         </div>
-                        <p className="text-sm text-white/70"><strong>Customization:</strong> {offer.customization}</p>
                         
                         <button 
                           onClick={(e) => {
                             e.stopPropagation();
                             window.open("https://wa.me/919028174363?text=I'm interested in " + offer.title, "_blank");
                           }}
-                          className="w-full mt-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-2xl flex items-center justify-center gap-2 transition-colors"
+                          className="w-full mt-6 py-3 bg-blue-400 hover:bg-blue-500 text-white font-bold rounded-2xl flex items-center justify-center gap-2 transition-colors"
                         >
                           <MessageSquare className="w-4 h-4" /> Enquire Now
                         </button>
@@ -233,14 +230,14 @@ export default function CorporateStargazing() {
             <h2 className="text-3xl font-display font-bold text-blue-400">Importance of Stargazing</h2>
             <div className="space-y-6">
               <div className="flex gap-4">
-                <Heart className="w-6 h-6 text-pink-400 flex-shrink-0" />
+                <Heart className="w-6 h-6 text-blue-400 flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-bold mb-2">Mental Wellness</h4>
                   <p className="text-white/60">The vastness of the sky helps put stressors into perspective, promoting calm and clarity.</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <Compass className="w-6 h-6 text-green-400 flex-shrink-0" />
+                <Compass className="w-6 h-6 text-blue-400 flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-bold mb-2">Connection with Nature</h4>
                   <p className="text-white/60">Reconnect with the rhythmic patterns of our planet and the cosmos.</p>
@@ -249,17 +246,17 @@ export default function CorporateStargazing() {
             </div>
           </div>
           <div className="space-y-8">
-            <h2 className="text-3xl font-display font-bold text-orange-400">Why Choose for Corporate?</h2>
+            <h2 className="text-3xl font-display font-bold text-blue-400">Why Choose for Corporate?</h2>
             <div className="space-y-6">
               <div className="flex gap-4">
-                <Users className="w-6 h-6 text-indigo-400 flex-shrink-0" />
+                <Users className="w-6 h-6 text-blue-400 flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-bold mb-2">Team Bonding</h4>
                   <p className="text-white/60">A shared astronomical discovery creates lasting memories and stronger interpersonal ties.</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <Zap className="w-6 h-6 text-yellow-400 flex-shrink-0" />
+                <Zap className="w-6 h-6 text-blue-400 flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-bold mb-2">Uniqueness</h4>
                   <p className="text-white/60">Stand out from traditional off-sites with an experience that is truly out of this world.</p>
