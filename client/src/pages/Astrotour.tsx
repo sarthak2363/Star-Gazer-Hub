@@ -24,17 +24,32 @@ import { format, isSameDay } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-// Mock images - we'll use generated ones or placeholders that match the vibe
+// Images
 import penchHero from "@assets/generated_images/people_stargazing_under_milky_way.png";
 import jungleSafari from "@assets/home_page_Astro_tour_image_1768287084463.png";
+import groupPhoto1 from "@assets/Pench_group_photo_1_1768816310215.png";
+import groupPhoto2 from "@assets/Pench_group_photo_2_1768816310217.png";
 
 const TOUR_DATES = [
   new Date(2025, 11, 26),
   new Date(2026, 0, 24),
 ];
 
+const PENCH_PHOTOS = [
+  { url: groupPhoto1, caption: "Stargazing Batch 001 at Pench" },
+  { url: groupPhoto2, caption: "Sillari Horizon - The Dark Sky Sanctuary" }
+];
+
 export default function Astrotour() {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
+  const [currentPhoto, setCurrentPhoto] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentPhoto((prev) => (prev + 1) % PENCH_PHOTOS.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const itinerary = [
     { day: "Day 1", events: [
@@ -143,6 +158,66 @@ export default function Astrotour() {
           <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-emerald-100 shadow-2xl">
             <img src={jungleSafari} alt="Pench Tiger" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+          </div>
+        </div>
+      </section>
+
+      {/* Group Photos Carousel */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-display font-bold uppercase tracking-widest text-slate-800">Our Past Expeditions</h2>
+            <p className="text-slate-500 mt-2">Memories from our previous Pench Astro-Wildlife tours</p>
+          </div>
+          
+          <div className="relative max-w-5xl mx-auto aspect-[16/9] rounded-[3rem] overflow-hidden shadow-2xl border border-slate-200">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPhoto}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                className="absolute inset-0"
+              >
+                <img 
+                  src={PENCH_PHOTOS[currentPhoto].url} 
+                  alt={PENCH_PHOTOS[currentPhoto].caption}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8 text-white text-center">
+                  <p className="text-xl font-medium italic">{PENCH_PHOTOS[currentPhoto].caption}</p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Carousel Controls */}
+            <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 hover:opacity-100 transition-opacity">
+              <button 
+                onClick={() => setCurrentPhoto((prev) => (prev - 1 + PENCH_PHOTOS.length) % PENCH_PHOTOS.length)}
+                className="p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all"
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
+              <button 
+                onClick={() => setCurrentPhoto((prev) => (prev + 1) % PENCH_PHOTOS.length)}
+                className="p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+            </div>
+
+            {/* Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {PENCH_PHOTOS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPhoto(i)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all ${i === currentPhoto ? "bg-emerald-500 w-8" : "bg-white/50"}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
