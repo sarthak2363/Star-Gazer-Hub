@@ -90,6 +90,28 @@ export default function Home() {
         bgImage={hero3}
       />
 
+      <section className="snap-start h-screen w-full flex flex-col items-center justify-center bg-emerald-950 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500 via-transparent to-transparent" />
+        </div>
+        
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          className="text-center relative z-10"
+        >
+          <h2 className="text-emerald-400 font-bold tracking-[0.3em] uppercase mb-4">Plan Your Stargazing</h2>
+          <h1 className="text-5xl md:text-7xl font-display font-bold mb-10 text-white uppercase tracking-tighter">
+            Astronomical <br/>Calendar 2026
+          </h1>
+          <Link href="/calendar">
+            <button className="px-12 py-5 bg-white text-emerald-950 font-bold hover:bg-emerald-400 hover:text-white transition-all duration-300 uppercase tracking-widest text-sm shadow-2xl shadow-emerald-500/20">
+              Explore 2026 Events
+            </button>
+          </Link>
+        </motion.div>
+      </section>
+
       <div className="snap-start min-h-fit">
         <Footer />
       </div>

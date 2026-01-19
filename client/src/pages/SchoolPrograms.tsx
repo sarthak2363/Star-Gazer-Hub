@@ -232,14 +232,12 @@ export default function SchoolPrograms() {
         <div className="container mx-auto px-4 text-center max-w-4xl">
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 text-blue-400">Beyond the Books</h2>
           <p className="text-lg text-white/70 leading-relaxed italic">
-            Astronomy is the "Gateway Science." Our school programs are designed to take learning out of the 
-            four walls of a classroom and under the infinite expanse of the sky. We aim to spark a lifelong 
-            passion for STEM, helping students understand physics, mathematics, and geography through the 
-            direct, awe-inspiring observation of the universe.
+            AXCamps is a dedicated outreach division of Aeronautics and Space Exploration (AXSX), an organization working in the fields of astronomy and space science since 2010. Through AXCamps, we design safe, engaging, and educational stargazing programs for schools—combining expert guidance, powerful telescopes, and hands-on learning to spark curiosity and scientific thinking among students.
           </p>
         </div>
       </section>
 
+      <h3 className="text-3xl md:text-5xl font-display font-bold mb-8 text-blue-400 text-center">Making Space Science Come Alive in Schools</h3>
       {/* Gallery Section */}
       <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 0.90 }} viewport={{ once: true }}>
         <ImageCarousel images={GALLERY_IMAGES} />
