@@ -250,7 +250,7 @@ export default function Astrotour() {
             <p className="text-slate-500 mt-2">Memories from our previous Pench Astro-Wildlife tours</p>
           </div>
           
-          <div className="relative max-w-5xl mx-auto aspect-[16/9] rounded-[3rem] overflow-hidden shadow-2xl border border-slate-200">
+          <div className="relative w-full aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl border border-slate-200">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentPhoto}
@@ -267,34 +267,34 @@ export default function Astrotour() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8 text-white text-center">
-                  <p className="text-xl font-medium italic">{PENCH_PHOTOS[currentPhoto].caption}</p>
+                  <p className="text-2xl font-display font-bold uppercase tracking-wider drop-shadow-lg">{PENCH_PHOTOS[currentPhoto].caption}</p>
                 </div>
               </motion.div>
             </AnimatePresence>
 
             {/* Carousel Controls */}
-            <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 hover:opacity-100 transition-opacity">
+            <div className="absolute inset-0 flex items-center justify-between px-8 opacity-0 hover:opacity-100 transition-opacity">
               <button 
                 onClick={() => setCurrentPhoto((prev) => (prev - 1 + PENCH_PHOTOS.length) % PENCH_PHOTOS.length)}
-                className="p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all"
+                className="p-4 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all border border-white/30"
               >
                 <ChevronLeft className="w-8 h-8" />
               </button>
               <button 
                 onClick={() => setCurrentPhoto((prev) => (prev + 1) % PENCH_PHOTOS.length)}
-                className="p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all"
+                className="p-4 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all border border-white/30"
               >
                 <ChevronRight className="w-8 h-8" />
               </button>
             </div>
 
             {/* Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
               {PENCH_PHOTOS.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrentPhoto(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${i === currentPhoto ? "bg-emerald-500 w-8" : "bg-white/50"}`}
+                  className={`w-3 h-3 rounded-full transition-all ${i === currentPhoto ? "bg-emerald-500 w-10" : "bg-white/50"}`}
                 />
               ))}
             </div>
