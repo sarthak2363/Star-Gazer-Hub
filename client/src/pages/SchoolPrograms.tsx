@@ -44,14 +44,14 @@ const SCHOOL_OFFERS = [
     title: "Dual Session",
     duration: "5 hrs (6 PM - 11 PM)",
     groupSize: "Up to 50 students",
-    highlights: ["Solar Sunspot Viewing", "Water Rocketry Workshop", "Space Science Quiz"],
+    highlights: ["Telescope Viewing", "Deep Sky Objects", "Story telling"],
     desc: "An immersive day of hands-on science and direct solar observation."
   },
   {
     title: "Overnight Session",
     duration: "Overnight (6 PM - 8 AM)",
     groupSize: "Up to 50 students",
-    highlights: ["Deep Sky Observation", "Telescope Handling", "Career Guidance Session"],
+    highlights: ["Deep Sky Observation", "Telescope Handling", "Interesting tales of Constellations"],
     desc: "The ultimate astronomical experience where students learn to navigate the night sky like professionals."
   }
 ];
