@@ -139,9 +139,9 @@ export default function Astrotour() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden min-h-[80vh] flex items-center justify-center">
+      <section className="relative pt-32 pb-24 overflow-hidden min-h-[80vh] flex items-center justify-center bg-[#f2f4e6]">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90" style={{ backgroundImage: `url(${penchHero})` }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#cbcfb6]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#f2f4e6]" />
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -460,7 +460,7 @@ export default function Astrotour() {
                 {[
                   { icon: <Home className="w-5 h-5" />, text: "Comfortable AC Deluxe Room accommodation" },
                   { icon: <Plane className="w-5 h-5" />, text: "Hassle-free travel Nagpur to Pench & back" },
-                  { icon: <Utensils className="w-5 h-5" />, text: "All daily meals, snacks and beverages" },
+                  { icon: <Utensils className="w-5 h-5" />, text: "All daily meals, snacks and beverages (Veg and Non-veg Available)" },
                   { icon: <Compass className="w-5 h-5" />, text: "Expert astronomy & wildlife guidance" },
                   { icon: <Zap className="w-5 h-5" />, text: "Entry fees for all parks & sessions" }
                 ].map((item, i) => (
