@@ -1,6 +1,7 @@
+import { format } from "date-fns";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -147,7 +148,7 @@ function PolaroidMonth({ data, onEventClick }: { data: typeof CALENDAR_DATA[0], 
       </div>
 
       {/* Bottom Part: Calendar Grid */}
-      <div className="px-1 pb-4">
+      <div className="px-1">
         <div className="flex justify-between items-baseline mb-4">
            <h3 className="font-display text-2xl font-bold text-slate-800 tracking-tighter uppercase">{data.month}</h3>
         </div>
@@ -158,7 +159,7 @@ function PolaroidMonth({ data, onEventClick }: { data: typeof CALENDAR_DATA[0], 
           ))}
         </div>
 
-        <div className="grid grid-cols-7 gap-1">
+        <div className="grid grid-cols-7 gap-1 pb-2">
           {blanks.map((_, i) => (
             <div key={`blank-${i}`} className="aspect-square" />
           ))}
@@ -194,6 +195,11 @@ function PolaroidMonth({ data, onEventClick }: { data: typeof CALENDAR_DATA[0], 
 
 export default function AstronomicalCalendar() {
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const today = new Date();
+  const currentMonthName = format(today, 'MMMM yyyy');
+  const currentDay = today.getDate();
+  
+  const todayEvent = CALENDAR_DATA.find(m => m.month === currentMonthName)?.events.find(e => e.date === currentDay);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -205,21 +211,61 @@ export default function AstronomicalCalendar() {
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-indigo-600 rounded-full blur-[120px]" />
         </div>
         
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <span className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-md text-blue-300 text-xs font-bold uppercase tracking-widest mb-6">
-              Celestial Guide 2026
-            </span>
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tighter uppercase">
-              Astronomical <span className="text-blue-400">Calendar</span>
-            </h1>
-            <p className="text-xl text-blue-100/60 max-w-2xl mx-auto italic">
-              "A roadmap to the heavens. Never miss a meteor shower, conjunction, or celestial milestone."
-            </p>
-          </motion.div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-left"
+            >
+              <span className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-md text-blue-300 text-xs font-bold uppercase tracking-widest mb-6">
+                Celestial Guide 2026
+              </span>
+              <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tighter uppercase">
+                Astronomical <span className="text-blue-400">Calendar</span>
+              </h1>
+              <p className="text-xl text-blue-100/60 max-w-2xl italic">
+                "A roadmap to the heavens. Never miss a meteor shower, conjunction, or celestial milestone."
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 p-4">
+                <div className="px-3 py-1 bg-blue-500 rounded-full text-[10px] font-bold uppercase tracking-widest">Today</div>
+              </div>
+              
+              <div className="flex items-center gap-6 mb-6">
+                <div className="text-center">
+                  <span className="block text-4xl font-display font-bold text-blue-400">{format(today, 'dd')}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-blue-200/50">{format(today, 'MMM yyyy')}</span>
+                </div>
+                <div className="h-12 w-px bg-white/10" />
+                <div>
+                  <h3 className="text-xl font-display font-bold uppercase tracking-tight text-white">
+                    {todayEvent ? todayEvent.title : "Clear Skies Predicted"}
+                  </h3>
+                  <p className="text-sm text-blue-100/60">
+                    {todayEvent ? "Special celestial event today!" : "Perfect night for deep-sky observation."}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                  <span className="text-[10px] uppercase tracking-widest text-blue-300 block mb-1">Visible Tonight</span>
+                  <span className="text-sm font-medium text-white">Jupiter, Mars, Orion Nebula</span>
+                </div>
+                <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                  <span className="text-[10px] uppercase tracking-widest text-blue-300 block mb-1">Sky Condition</span>
+                  <span className="text-sm font-medium text-white">Excellent Visibility</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
