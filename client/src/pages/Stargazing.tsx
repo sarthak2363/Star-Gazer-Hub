@@ -335,7 +335,6 @@ export default function Stargazing() {
 
       <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 0.90 }} viewport={{ once: true }}>
         <ImageCarousel images={GALLERY_IMAGES} />
-        <p className="text-center text-xs text-white/30 mt-4 uppercase tracking-widest">Swipe or click arrows to view more</p>
       </motion.div>
 
       <div className="container mx-auto px-4 pb-20 mt-12">
