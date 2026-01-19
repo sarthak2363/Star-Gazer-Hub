@@ -82,21 +82,23 @@ export default function Astrotour() {
     return () => clearInterval(timer);
   }, []);
 
+  const [activeDay, setActiveDay] = useState<number | null>(0);
+
   const itinerary = [
-    { day: "Day 1", events: [
+    { day: "Day 1", title: "Arrival & Orientation", events: [
       { time: "9:00 AM - 11:30 AM", activity: "Nagpur Arrival" },
       { time: "11:45 AM - 1:00 PM", activity: "Travel to Pench" },
       { time: "1:00 PM", activity: "Check-in & Lunch" },
       { time: "5:00 PM", activity: "Tour Orientation" },
       { time: "6:30 PM - 9:30 PM", activity: "Night Stargazing Session" }
     ]},
-    { day: "Day 2", events: [
+    { day: "Day 2", title: "Into the Wild", events: [
       { time: "6:00 AM - 10:00 AM", activity: "Morning Jungle Safari" },
       { time: "1:00 PM", activity: "Lunch" },
       { time: "2:30 PM - 6:00 PM", activity: "Afternoon Jungle Safari" },
       { time: "10:20 PM - 1:00 AM", activity: "Deep Sky Night Stargazing" }
     ]},
-    { day: "Day 3", events: [
+    { day: "Day 3", title: "Closing & Departure", events: [
       { time: "9:30 AM", activity: "Tour Closing Program" },
       { time: "11:30 AM", activity: "Check out" },
       { time: "2:00 PM", activity: "Arrival at Nagpur" }
@@ -273,24 +275,86 @@ export default function Astrotour() {
       </section>
 
       {/* Itinerary Section */}
-      <section className="py-24 container mx-auto px-4 max-w-5xl">
-        <h2 className="text-4xl font-display font-bold text-center mb-16 uppercase tracking-widest text-slate-800">Tour Itinerary</h2>
-        <div className="space-y-12">
+      <section className="py-24 container mx-auto px-4 max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-display font-bold uppercase tracking-widest text-slate-800">Tour Itinerary</h2>
+          <p className="text-slate-500 mt-2">Click on each day to reveal the adventure</p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
           {itinerary.map((day, i) => (
-            <div key={i} className="relative pl-12 border-l-2 border-emerald-200">
-              <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]" />
-              <h3 className="text-3xl font-display font-bold text-emerald-600 mb-8 uppercase text-left">{day.day}</h3>
-              <div className="grid gap-6">
-                {day.events.map((event, j) => (
-                  <div key={j} className="flex flex-col md:flex-row md:items-center gap-4 p-6 bg-white shadow-lg shadow-emerald-900/5 border border-emerald-50 rounded-3xl">
-                    <span className="font-mono text-blue-600 w-48 shrink-0 text-left font-bold">{event.time}</span>
-                    <span className="text-slate-700 font-medium text-lg text-left">{event.activity}</span>
-                  </div>
-                ))}
+            <button
+              key={i}
+              onClick={() => setActiveDay(activeDay === i ? null : i)}
+              className={`p-8 rounded-[2rem] transition-all text-left relative overflow-hidden group ${
+                activeDay === i 
+                  ? "bg-emerald-600 text-white shadow-2xl shadow-emerald-200 ring-4 ring-emerald-100" 
+                  : "bg-white text-slate-800 shadow-xl shadow-emerald-900/5 border border-emerald-50 hover:bg-emerald-50"
+              }`}
+            >
+              <div className="relative z-10">
+                <span className={`text-xs font-bold uppercase tracking-widest mb-2 block ${activeDay === i ? "text-emerald-200" : "text-emerald-600"}`}>
+                  {day.day}
+                </span>
+                <h3 className="text-2xl font-display font-bold uppercase">{day.title}</h3>
+                <div className={`mt-4 flex items-center gap-2 text-sm font-medium ${activeDay === i ? "text-emerald-100" : "text-slate-400"}`}>
+                  <Clock className="w-4 h-4" />
+                  {day.events.length} Activities
+                  <ChevronDown className={`w-4 h-4 ml-auto transition-transform duration-300 ${activeDay === i ? "rotate-180" : ""}`} />
+                </div>
               </div>
-            </div>
+              {activeDay === i && (
+                <motion.div 
+                  layoutId="active-bg"
+                  className="absolute inset-0 bg-emerald-600 -z-0"
+                  initial={false}
+                />
+              )}
+            </button>
           ))}
         </div>
+
+        <AnimatePresence mode="wait">
+          {activeDay !== null && (
+            <motion.div
+              key={activeDay}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-emerald-900/10 border border-emerald-100"
+            >
+              <div className="flex items-center gap-4 mb-10 pb-6 border-b border-emerald-50">
+                <div className="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 font-bold">
+                  {itinerary[activeDay].day.replace('Day ', '')}
+                </div>
+                <div>
+                  <h3 className="text-3xl font-display font-bold text-slate-800 uppercase tracking-tight">
+                    {itinerary[activeDay].title}
+                  </h3>
+                  <p className="text-slate-500">Scheduled activities and timings</p>
+                </div>
+              </div>
+
+              <div className="grid gap-6">
+                {itinerary[activeDay].events.map((event, j) => (
+                  <motion.div 
+                    key={j}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: j * 0.1 }}
+                    className="flex flex-col md:flex-row md:items-center gap-4 p-6 bg-emerald-50/30 border border-emerald-50 rounded-3xl group hover:bg-emerald-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-3 w-48 shrink-0">
+                      <div className="w-2 h-2 rounded-full bg-emerald-400 group-hover:scale-150 transition-transform" />
+                      <span className="font-mono text-blue-600 font-bold">{event.time}</span>
+                    </div>
+                    <span className="text-slate-700 font-medium text-lg text-left">{event.activity}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* Package Details */}
