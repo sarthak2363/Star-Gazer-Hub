@@ -206,7 +206,9 @@ export default function AstronomicalCalendar() {
       <Navbar />
       
       <section className="pt-32 pb-20 bg-blue-950 text-white overflow-hidden relative">
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-transparent to-slate-950" />
+        <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-64 h-64 bg-blue-600 rounded-full blur-[100px]" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-indigo-600 rounded-full blur-[120px]" />
         </div>
