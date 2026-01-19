@@ -29,10 +29,33 @@ import penchHero from "@assets/generated_images/people_stargazing_under_milky_wa
 import jungleSafari from "@assets/home_page_Astro_tour_image_1768287084463.png";
 import groupPhoto1 from "@assets/Pench_group_photo_1_1768816310215.png";
 import groupPhoto2 from "@assets/Pench_group_photo_2_1768816310217.png";
+import wildlife1 from "@assets/1_1768817394594.jpeg";
+import wildlife2 from "@assets/2_1768817394596.jpeg";
+import wildlife3 from "@assets/3_1768817394597.jpeg";
+import wildlife4 from "@assets/4_1768817394597.jpeg";
+import wildlife5 from "@assets/5_1768817394598.jpeg";
+import wildlife6 from "@assets/6_1768817394598.jpeg";
+import wildlife7 from "@assets/7_1768817394599.jpeg";
+import wildlife8 from "@assets/8_1768817394599.jpeg";
+import wildlife9 from "@assets/9_1768817394599.jpeg";
+import wildlife10 from "@assets/17_1768817394600.jpeg";
+import wildlife11 from "@assets/18_1768817394600.jpeg";
+import wildlife12 from "@assets/19_1768817394600.jpeg";
+import wildlife13 from "@assets/20_1768817394600.jpeg";
+import star1 from "@assets/21_1768817394601.jpeg";
+import star2 from "@assets/22_1768817394601.jpeg";
+import star3 from "@assets/23_1768817394601.jpeg";
+import milkyWay1 from "@assets/WhatsApp_Image_2024-08-24_at_6.18.23_PM_(1)_1768817394602.jpeg";
+import milkyWay2 from "@assets/WhatsApp_Image_2024-08-24_at_6.18.25_PM_1768817394602.jpeg";
+import nebula1 from "@assets/25_1768817394603.jpeg";
 
 const TOUR_DATES = [
   new Date(2025, 11, 26),
   new Date(2026, 0, 24),
+];
+
+const WILDLIFE_PHOTOS = [
+  wildlife1, wildlife2, wildlife3, wildlife4, wildlife5, wildlife6, wildlife7, wildlife8, wildlife9, wildlife10, wildlife11, wildlife12, wildlife13, star1, star2, star3, milkyWay1, milkyWay2, nebula1
 ];
 
 const PENCH_PHOTOS = [
@@ -43,11 +66,19 @@ const PENCH_PHOTOS = [
 export default function Astrotour() {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState(0);
+  const [currentWildlifePhoto, setCurrentWildlifePhoto] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentPhoto((prev) => (prev + 1) % PENCH_PHOTOS.length);
     }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentWildlifePhoto((prev) => (prev + 1) % WILDLIFE_PHOTOS.length);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
 
@@ -156,8 +187,27 @@ export default function Astrotour() {
             </div>
           </div>
           <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-emerald-100 shadow-2xl">
-            <img src={jungleSafari} alt="Pench Tiger" className="w-full h-full object-cover" />
+            <AnimatePresence mode="wait">
+              <motion.img 
+                key={currentWildlifePhoto}
+                src={WILDLIFE_PHOTOS[currentWildlifePhoto]} 
+                alt="Pench Wildlife" 
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.8 }}
+                className="w-full h-full object-cover" 
+              />
+            </AnimatePresence>
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 px-3 py-1.5 bg-black/20 backdrop-blur-md rounded-full">
+              {WILDLIFE_PHOTOS.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentWildlifePhoto ? "bg-white scale-125" : "bg-white/40"}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
