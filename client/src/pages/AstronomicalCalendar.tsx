@@ -132,16 +132,16 @@ function PolaroidMonth({ data, onEventClick }: { data: typeof CALENDAR_DATA[0], 
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      className="bg-slate-900 p-4 shadow-2xl rounded-sm transform hover:rotate-1 hover:scale-105 transition-all duration-500 border border-blue-500/20"
+      className="bg-white p-4 shadow-2xl rounded-sm transform hover:rotate-1 hover:scale-105 transition-all duration-500 border border-slate-200"
     >
       {/* Top Part: Image */}
-      <div className="aspect-square overflow-hidden mb-6 bg-slate-800 relative">
+      <div className="aspect-square overflow-hidden mb-6 bg-slate-100 relative">
         <img 
           src={data.image} 
           alt={data.month} 
-          className="w-full h-full object-cover opacity-80"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute top-2 right-2 bg-blue-600/60 backdrop-blur-md px-3 py-1 rounded-full text-white text-[10px] font-bold tracking-widest uppercase">
+        <div className="absolute top-2 right-2 bg-blue-600/80 backdrop-blur-md px-3 py-1 rounded-full text-white text-[10px] font-bold tracking-widest uppercase">
           {data.month.split(' ')[0]}
         </div>
       </div>
@@ -149,12 +149,12 @@ function PolaroidMonth({ data, onEventClick }: { data: typeof CALENDAR_DATA[0], 
       {/* Bottom Part: Calendar Grid */}
       <div className="px-1 pb-4">
         <div className="flex justify-between items-baseline mb-4">
-           <h3 className="font-display text-2xl font-bold text-blue-100 tracking-tighter uppercase">{data.month}</h3>
+           <h3 className="font-display text-2xl font-bold text-slate-800 tracking-tighter uppercase">{data.month}</h3>
         </div>
         
         <div className="grid grid-cols-7 gap-1 mb-2">
           {DAYS_OF_WEEK.map((d, i) => (
-            <div key={i} className="text-[10px] font-bold text-blue-400/60 text-center uppercase">{d}</div>
+            <div key={i} className="text-[10px] font-bold text-slate-400 text-center uppercase">{d}</div>
           ))}
         </div>
 
@@ -169,8 +169,8 @@ function PolaroidMonth({ data, onEventClick }: { data: typeof CALENDAR_DATA[0], 
               <button 
                 key={day} 
                 onClick={() => hasEvent && onEventClick(event)}
-                className={`aspect-square relative flex items-center justify-center text-xs font-medium rounded-sm transition-colors ${
-                  hasEvent ? "bg-blue-600/20 text-blue-300 hover:bg-blue-600/40" : "text-slate-400 hover:bg-slate-800"
+                className={`aspect-square relative flex items-center justify-center text-xs font-medium rounded-sm transition-all ${
+                  hasEvent ? "bg-blue-600/10 text-blue-600 hover:bg-blue-600 hover:text-white font-bold" : "text-slate-600 hover:bg-slate-100"
                 }`}
               >
                 {day}
@@ -180,7 +180,7 @@ function PolaroidMonth({ data, onEventClick }: { data: typeof CALENDAR_DATA[0], 
                     transition={{ repeat: Infinity, duration: 2 }}
                     className="absolute -top-1 -right-1"
                   >
-                    <Star className="w-2.5 h-2.5 fill-blue-400 text-blue-400" />
+                    <Star className="w-2.5 h-2.5 fill-blue-500 text-blue-500" />
                   </motion.div>
                 )}
               </button>
