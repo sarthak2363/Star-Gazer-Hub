@@ -49,6 +49,25 @@ import milkyWay1 from "@assets/WhatsApp_Image_2024-08-24_at_6.18.23_PM_(1)_17688
 import milkyWay2 from "@assets/WhatsApp_Image_2024-08-24_at_6.18.25_PM_1768817394602.jpeg";
 import nebula1 from "@assets/25_1768817394603.jpeg";
 
+// Accommodation Images
+import room1 from "@assets/room_1768818760213.jpeg";
+import room2 from "@assets/room_2_1768818760213.jpeg";
+import acRoom1 from "@assets/VRK_AC_Room_1_1768818760214.jpg";
+import acRoom2 from "@assets/VRK_AC_Room_2_1768818760214.jpg";
+import restaurant1 from "@assets/VRK_Restaurant_1768818760215.jpg";
+import restaurant2 from "@assets/VRK_Restaurant_2_1768818760215.jpg";
+import cottage1 from "@assets/VRK_1768818760216.jpg";
+
+const ACCOMMODATION_PHOTOS = [
+  { url: cottage1, caption: "Eco-friendly Cottages at Pench" },
+  { url: acRoom1, caption: "Spacious AC Deluxe Rooms" },
+  { url: acRoom2, caption: "Double/Triple Sharing Options" },
+  { url: restaurant1, caption: "The Dining Hall" },
+  { url: restaurant2, caption: "Outdoor Restaurant Seating" },
+  { url: room1, caption: "Cozy Interiors" },
+  { url: room2, caption: "Traditional Decor" }
+];
+
 const TOUR_DATES = [
   new Date(2025, 11, 26),
   new Date(2026, 0, 24),
@@ -79,6 +98,15 @@ export default function Astrotour() {
     const timer = setInterval(() => {
       setCurrentWildlifePhoto((prev) => (prev + 1) % WILDLIFE_PHOTOS.length);
     }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const [currentAccommPhoto, setCurrentAccommPhoto] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentAccommPhoto((prev) => (prev + 1) % ACCOMMODATION_PHOTOS.length);
+    }, 4500);
     return () => clearInterval(timer);
   }, []);
 
@@ -355,6 +383,70 @@ export default function Astrotour() {
             </motion.div>
           )}
         </AnimatePresence>
+      </section>
+
+      {/* Accommodation Carousel */}
+      <section className="py-24 bg-emerald-900/5 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-display font-bold uppercase tracking-widest text-slate-800">Your Stay at Pench</h2>
+            <p className="text-slate-500 mt-2">Experience comfort in the heart of the wilderness at Vasundhara Retreat</p>
+          </div>
+
+          <div className="relative max-w-6xl mx-auto rounded-[3.5rem] overflow-hidden shadow-2xl border-8 border-white">
+            <div className="aspect-[21/9] relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentAccommPhoto}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 1 }}
+                  className="absolute inset-0"
+                >
+                  <img 
+                    src={ACCOMMODATION_PHOTOS[currentAccommPhoto].url} 
+                    alt={ACCOMMODATION_PHOTOS[currentAccommPhoto].caption}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-10 left-10 right-10">
+                    <motion.p 
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                      className="text-2xl font-display font-bold text-white uppercase tracking-wider text-center drop-shadow-lg"
+                    >
+                      {ACCOMMODATION_PHOTOS[currentAccommPhoto].caption}
+                    </motion.p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Progress Bar */}
+              <div className="absolute bottom-0 left-0 h-1.5 bg-white/20 w-full">
+                <motion.div 
+                  key={currentAccommPhoto}
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 4.5, ease: "linear" }}
+                  className="h-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]"
+                />
+              </div>
+            </div>
+
+            {/* Navigation Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {ACCOMMODATION_PHOTOS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentAccommPhoto(i)}
+                  className={`w-2 h-2 rounded-full transition-all ${i === currentAccommPhoto ? "bg-white w-6" : "bg-white/40 hover:bg-white/60"}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Package Details */}
