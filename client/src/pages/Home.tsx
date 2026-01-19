@@ -90,9 +90,12 @@ export default function Home() {
         bgImage={hero3}
       />
 
-      <section className="snap-start h-screen w-full flex flex-col items-center justify-center bg-emerald-950 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500 via-transparent to-transparent" />
+      <section className="snap-start h-screen w-full flex flex-col items-center justify-center bg-slate-950 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-30 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-blue-950/20 to-slate-950" />
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600 rounded-full blur-[120px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600 rounded-full blur-[120px]" />
         </div>
         
         <motion.div 
@@ -100,12 +103,12 @@ export default function Home() {
           whileInView={{ opacity: 1, scale: 1 }}
           className="text-center relative z-10"
         >
-          <h2 className="text-emerald-400 font-bold tracking-[0.3em] uppercase mb-4">Plan Your Stargazing</h2>
+          <h2 className="text-blue-400 font-bold tracking-[0.3em] uppercase mb-4">Plan Your Stargazing</h2>
           <h1 className="text-5xl md:text-7xl font-display font-bold mb-10 text-white uppercase tracking-tighter">
             Astronomical <br/>Calendar 2026
           </h1>
           <Link href="/calendar">
-            <button className="px-12 py-5 bg-white text-emerald-950 font-bold hover:bg-emerald-400 hover:text-white transition-all duration-300 uppercase tracking-widest text-sm shadow-2xl shadow-emerald-500/20">
+            <button className="px-12 py-5 bg-white text-slate-950 font-bold hover:bg-blue-500 hover:text-white transition-all duration-300 uppercase tracking-widest text-sm shadow-2xl shadow-blue-500/20">
               Explore 2026 Events
             </button>
           </Link>
