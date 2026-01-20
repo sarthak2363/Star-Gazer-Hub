@@ -75,7 +75,7 @@ export default function LadakhAstrotour() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#B0E0E6] text-blue-950 selection:bg-white/30">
+    <div className="min-h-screen bg-[#B0E0E6] text-[#716040] selection:bg-white/30">
       <Navbar />
 
       {/* Hero Section */}
@@ -111,7 +111,7 @@ export default function LadakhAstrotour() {
       {/* Main Attractions */}
       <section className="py-24 container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold uppercase mb-4 text-blue-950">Celestial <span className="text-blue-800">Highlights</span></h2>
+          <h2 className="text-3xl md:text-5xl font-display font-bold uppercase mb-4 text-[#716040]">Celestial <span className="text-blue-800">Highlights</span></h2>
           <div className="h-1.5 w-24 bg-blue-800 mx-auto rounded-full" />
         </div>
         
@@ -139,8 +139,8 @@ export default function LadakhAstrotour() {
               className="p-10 bg-white/80 backdrop-blur-sm border border-blue-200 rounded-[2.5rem] shadow-xl shadow-blue-900/10 hover:border-blue-500 transition-all"
             >
               <div className="mb-6">{item.icon}</div>
-              <h3 className="text-2xl font-display font-bold mb-4 text-blue-950">{item.title}</h3>
-              <p className="text-blue-900/80 leading-relaxed text-left">{item.desc}</p>
+              <h3 className="text-2xl font-display font-bold mb-4 text-[#716040]">{item.title}</h3>
+              <p className="text-[#716040]/80 leading-relaxed text-left">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -154,8 +154,8 @@ export default function LadakhAstrotour() {
             <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
           </div>
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter text-blue-950">Beyond the <br/><span className="text-blue-800">Stars</span></h2>
-            <p className="text-lg text-blue-900/80 leading-relaxed text-left">
+            <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter text-[#716040]">Beyond the <br/><span className="text-blue-800">Stars</span></h2>
+            <p className="text-lg text-[#716040]/80 leading-relaxed text-left">
               Ladakh offers a playground for outdoor enthusiasts. From trekking along ancient trails to conquering towering peaks, adventures await in this rugged beauty.
             </p>
             <div className="grid grid-cols-2 gap-4">
@@ -167,13 +167,13 @@ export default function LadakhAstrotour() {
                 "Local Cultural Insights",
                 "Wildlife Spotting"
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2 text-blue-900">
+                <div key={i} className="flex items-center gap-2 text-[#716040]">
                   <CheckCircle2 className="w-4 h-4 text-blue-700" />
                   <span className="text-sm font-medium">{item}</span>
                 </div>
               ))}
             </div>
-            <p className="text-blue-800/70 italic text-left">
+            <p className="text-[#716040]/70 italic text-left">
               "Experience the tranquility of Hanle village and explore the mysteries of the universe."
             </p>
           </div>
@@ -183,7 +183,7 @@ export default function LadakhAstrotour() {
       {/* Itinerary */}
       <section className="py-24 container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-display font-bold uppercase tracking-widest text-blue-950">The Expedition Itinerary</h2>
+          <h2 className="text-4xl font-display font-bold uppercase tracking-widest text-[#716040]">The Expedition Itinerary</h2>
           <p className="text-blue-700/60 mt-2 uppercase text-xs tracking-[0.3em]">Day by Day Breakdown</p>
         </div>
         
@@ -193,13 +193,13 @@ export default function LadakhAstrotour() {
               <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-blue-700 shadow-[0_0_15px_rgba(29,78,216,0.5)]" />
               <div className="mb-2 text-left">
                 <span className="text-blue-800 font-display font-bold text-xl uppercase">{item.day}</span>
-                <h3 className="text-3xl font-display font-bold text-blue-950 uppercase">{item.title}</h3>
+                <h3 className="text-3xl font-display font-bold text-[#716040] uppercase">{item.title}</h3>
               </div>
               <div className="grid gap-4 mt-6">
                 {item.events.map((event, j) => (
                   <div key={j} className="flex flex-col md:flex-row md:items-center gap-4 p-6 bg-white shadow-lg shadow-blue-900/5 border border-blue-100 rounded-3xl hover:bg-blue-50 transition-colors">
                     <span className="font-mono text-blue-700 w-32 shrink-0 text-left font-bold text-xs uppercase">{event.time}</span>
-                    <span className="text-blue-900 font-medium text-lg text-left">{event.activity}</span>
+                    <span className="text-[#716040] font-medium text-lg text-left">{event.activity}</span>
                   </div>
                 ))}
               </div>
@@ -211,7 +211,7 @@ export default function LadakhAstrotour() {
       {/* Essential Kits */}
       <section className="py-24 bg-blue-100/30 border-y border-blue-200">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-display font-bold text-center mb-16 uppercase text-blue-950">Your Personal Kit List</h2>
+          <h2 className="text-3xl font-display font-bold text-center mb-16 uppercase text-[#716040]">Your Personal Kit List</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { title: "Personal", items: ["Personal Medicine", "Handbag / Backpack", "UV Sunglasses", "Cap / Hat"] },
@@ -223,7 +223,7 @@ export default function LadakhAstrotour() {
                 <h4 className="text-blue-800 font-bold uppercase mb-4 text-left border-b border-blue-100 pb-2">{cat.title}</h4>
                 <ul className="space-y-3">
                   {cat.items.map((item, j) => (
-                    <li key={j} className="text-blue-900/80 text-sm flex items-center gap-2">
+                    <li key={j} className="text-[#716040]/80 text-sm flex items-center gap-2">
                       <ChevronRight className="w-3 h-3 text-blue-500/50" />
                       {item}
                     </li>
@@ -241,7 +241,7 @@ export default function LadakhAstrotour() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 blur-[120px] -z-10" />
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
-              <h2 className="text-4xl font-display font-bold mb-8 uppercase text-left text-blue-950">What's Included</h2>
+              <h2 className="text-4xl font-display font-bold mb-8 uppercase text-left text-[#716040]">What's Included</h2>
               <ul className="space-y-4">
                 {[
                   { icon: <Home className="w-5 h-5" />, text: "Accommodation: Hotels, homestays and camps" },
@@ -250,7 +250,7 @@ export default function LadakhAstrotour() {
                   { icon: <Compass className="w-5 h-5" />, text: "Expert astronomy and location guidance" },
                   { icon: <Zap className="w-5 h-5" />, text: "Entrance Fees: IAO, Monasteries, Wildlife" }
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-blue-900 text-left">
+                  <li key={i} className="flex items-center gap-4 text-[#716040] text-left">
                     <div className="p-2 bg-blue-100 rounded-lg text-blue-800 shrink-0">{item.icon}</div>
                     {item.text}
                   </li>
@@ -260,9 +260,9 @@ export default function LadakhAstrotour() {
               <div className="mt-12 p-6 bg-blue-50 rounded-2xl border border-blue-200">
                 <div className="flex gap-3 mb-4">
                   <Info className="w-5 h-5 text-blue-700 shrink-0" />
-                  <h4 className="font-bold text-blue-900 uppercase text-sm">Exclusions</h4>
+                  <h4 className="font-bold text-[#716040] uppercase text-sm">Exclusions</h4>
                 </div>
-                <p className="text-xs text-blue-800/70 leading-relaxed text-left">
+                <p className="text-xs text-[#716040]/70 leading-relaxed text-left">
                   Airfare to Leh, Daily Lunch, Travel Insurance, Personal Expenses (Souvenirs, snacks), Tips & Gratuities.
                 </p>
               </div>
@@ -270,7 +270,7 @@ export default function LadakhAstrotour() {
             
             <div className="bg-blue-950 border border-blue-800 rounded-[2.5rem] p-10 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4">
-                <span className="px-3 py-1 bg-blue-500/20 text-blue-400 text-[10px] font-bold uppercase rounded-full border border-blue-500/30">
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-400 text-[10px] font-bold uppercase rounded-full border border-sky-500/30">
                   Best Value
                 </span>
               </div>
@@ -287,7 +287,7 @@ export default function LadakhAstrotour() {
                   </div>
                   <span className="text-4xl font-display font-bold text-blue-400">₹36,990</span>
                 </div>
-                <div className="p-4 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-blue-400 text-sm text-left">
+                <div className="p-4 bg-blue-500/10 rounded-2xl border border-sky-500/20 text-blue-400 text-sm text-left">
                   <strong>Group Discount (4+):</strong> ₹36,990 per participant
                 </div>
               </div>
@@ -308,15 +308,15 @@ export default function LadakhAstrotour() {
         <div className="flex flex-wrap justify-center gap-12">
           <div className="text-left">
             <span className="block text-xs uppercase tracking-widest text-blue-800/60 mb-1">WhatsApp / Call</span>
-            <span className="text-xl font-bold text-blue-950">+91 76665 19425</span>
+            <span className="text-xl font-bold text-[#716040]">+91 76665 19425</span>
           </div>
           <div className="text-left">
             <span className="block text-xs uppercase tracking-widest text-blue-800/60 mb-1">Email Inquiry</span>
-            <span className="text-xl font-bold text-blue-950">axcamps@gmail.com</span>
+            <span className="text-xl font-bold text-[#716040]">axcamps@gmail.com</span>
           </div>
           <div className="text-left">
             <span className="block text-xs uppercase tracking-widest text-blue-800/60 mb-1">Official Site</span>
-            <span className="text-xl font-bold text-blue-950">www.axsx.in</span>
+            <span className="text-xl font-bold text-[#716040]">www.axsx.in</span>
           </div>
         </div>
       </section>
