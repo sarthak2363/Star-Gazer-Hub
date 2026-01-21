@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Telescope, 
   Star, 
@@ -19,8 +19,34 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 
+// Import Ladakh landscape images
+import img1 from "@/attached_assets/1696140527_356630133_6546870062042711_927205431282500651_n_1768974785209.jpg";
+import img2 from "@/attached_assets/A_bike_tour_through_Ladakh_-__A_memorable_journey_1768974785210.jpg";
+import img3 from "@/attached_assets/image_processing20180901-4-kv9tub_1768974785210.jpg";
+import img4 from "@/attached_assets/IMG-20190620-WA0005_1768974785211.jpg";
+import img5 from "@/attached_assets/ladakh9_1768974785212.jpg";
+import img6 from "@/attached_assets/ladakh-inner_1768974785212.jpg";
+import img7 from "@/attached_assets/ladakh_vehicle_1768974785211.jpg";
+import img8 from "@/attached_assets/leh-city-view_1768974785213.jpg";
+import img9 from "@/attached_assets/leh_ladakh_1768974785213.jpg";
+import img10 from "@/attached_assets/leh-to-pangong-lake-1_1768974785213.jpg";
+import img11 from "@/attached_assets/Nubra-Valley_(1)_1768974785214.jpg";
+import img12 from "@/attached_assets/nubra-valley_1768974785214.jpg";
+import img13 from "@/attached_assets/pangong-lake-ladakh_1768974785214.jpg";
+import img14 from "@/attached_assets/Ladakh-FIG-scaled_1768974785212.jpg";
+
+const heroImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14];
+
 export default function LadakhAstrotour() {
   const [openDay, setOpenDay] = useState<number | null>(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
   const itinerary = [
     { 
@@ -77,21 +103,38 @@ export default function LadakhAstrotour() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#B0E0E6] text-[#716040] selection:bg-white/30">
+    <div className="min-h-screen bg-[#B0E0E6] text-[#E6D3A3] selection:bg-white/30">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden min-h-[90vh] flex items-center justify-center">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596464846428-208362be649d?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat opacity-100" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#B0E0E6]" />
+        <div className="absolute inset-0 z-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="absolute inset-0"
+            >
+              <img 
+                src={heroImages[currentImageIndex]} 
+                alt="Ladakh Landscape" 
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
+          {/* Semi-transparent layer for text visibility */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#B0E0E6]" />
+        </div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-block px-4 py-1 rounded-full bg-blue-800 text-white text-xs font-bold uppercase tracking-widest mb-6 shadow-lg shadow-blue-800/20">
-              The Himalayan Star Safari
-            </span>
+            
             <h1 className="text-5xl md:text-8xl font-display font-bold mb-6 tracking-tighter uppercase leading-none drop-shadow-2xl text-white">
-              Leh Ladakh <br/><span className="text-blue-200">Astro-Tour</span>
+              Leh Ladakh <br/><span className="text-[#F1E2B8]">Astro-Tour</span>
             </h1>
             <p className="text-xl md:text-2xl text-white font-medium max-w-3xl mx-auto italic mb-10 drop-shadow-lg">
               "Witness the universe's vastness from the roof of the world."
