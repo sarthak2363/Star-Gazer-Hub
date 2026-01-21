@@ -37,14 +37,34 @@ const img14 = "/attached_assets/Ladakh-FIG-scaled_1768974785212.jpg";
 
 const heroImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14];
 
+// Extra stunning Ladakh images for the "Beyond the Stars" carousel
+const starImg1 = "/attached_assets/0cd01184-af2f-4b09-9d15-de1fe179894b_1768975381562.jpg";
+const starImg2 = "/attached_assets/3a1386e2-199f-4493-9670-e8ea4280406d_1768975381563.png";
+const starImg3 = "/attached_assets/454-1_1768975381563.jpg";
+const starImg4 = "/attached_assets/1667471069_1768975381563.png";
+const starImg5 = "/attached_assets/61651568595556_1768975381564.webp";
+const starImg6 = "/attached_assets/Hanle-Feature-Image-4_1768975381564.jpg";
+const starImg7 = "/attached_assets/iao-three_four_1768975381565.webp";
+const starImg8 = "/attached_assets/Untitled-design-7_1768975381567.png";
+
+const starCarouselImages = [starImg1, starImg2, starImg3, starImg4, starImg5, starImg6, starImg7, starImg8];
+
 export default function LadakhAstrotour() {
   const [openDay, setOpenDay] = useState<number | null>(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [starCarouselIndex, setStarCarouselIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
     }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setStarCarouselIndex((prev) => (prev + 1) % starCarouselImages.length);
+    }, 3500);
     return () => clearInterval(timer);
   }, []);
 
@@ -194,9 +214,24 @@ export default function LadakhAstrotour() {
       {/* Cultural & Adventure */}
       <section className="py-24 bg-blue-100/50">
         <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative aspect-video lg:aspect-square rounded-[3rem] overflow-hidden border border-blue-200 shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1589412227329-4119859f518e?q=80&w=2070&auto=format&fit=crop" alt="Ladakh Landscape" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
+          <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-blue-200 shadow-2xl">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={starCarouselIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0"
+              >
+                <img 
+                  src={starCarouselImages[starCarouselIndex]} 
+                  alt="Stellar Ladakh" 
+                  className="w-full h-full object-cover" 
+                />
+              </motion.div>
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent pointer-events-none" />
           </div>
           <div className="space-y-8">
             <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter text-[#716040]">Beyond the <br/><span className="text-blue-800">Stars</span></h2>
