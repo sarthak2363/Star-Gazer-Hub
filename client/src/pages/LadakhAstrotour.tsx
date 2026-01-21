@@ -20,20 +20,20 @@ import {
 import Navbar from "@/components/layout/Navbar";
 
 // Import Ladakh landscape images
-import img1 from "@/attached_assets/1696140527_356630133_6546870062042711_927205431282500651_n_1768974785209.jpg";
-import img2 from "@/attached_assets/A_bike_tour_through_Ladakh_-__A_memorable_journey_1768974785210.jpg";
-import img3 from "@/attached_assets/image_processing20180901-4-kv9tub_1768974785210.jpg";
-import img4 from "@/attached_assets/IMG-20190620-WA0005_1768974785211.jpg";
-import img5 from "@/attached_assets/ladakh9_1768974785212.jpg";
-import img6 from "@/attached_assets/ladakh-inner_1768974785212.jpg";
-import img7 from "@/attached_assets/ladakh_vehicle_1768974785211.jpg";
-import img8 from "@/attached_assets/leh-city-view_1768974785213.jpg";
-import img9 from "@/attached_assets/leh_ladakh_1768974785213.jpg";
-import img10 from "@/attached_assets/leh-to-pangong-lake-1_1768974785213.jpg";
-import img11 from "@/attached_assets/Nubra-Valley_(1)_1768974785214.jpg";
-import img12 from "@/attached_assets/nubra-valley_1768974785214.jpg";
-import img13 from "@/attached_assets/pangong-lake-ladakh_1768974785214.jpg";
-import img14 from "@/attached_assets/Ladakh-FIG-scaled_1768974785212.jpg";
+const img1 = "/attached_assets/1696140527_356630133_6546870062042711_927205431282500651_n_1768974785209.jpg";
+const img2 = "/attached_assets/A_bike_tour_through_Ladakh_-__A_memorable_journey_1768974785210.jpg";
+const img3 = "/attached_assets/image_processing20180901-4-kv9tub_1768974785210.jpg";
+const img4 = "/attached_assets/IMG-20190620-WA0005_1768974785211.jpg";
+const img5 = "/attached_assets/ladakh9_1768974785212.jpg";
+const img6 = "/attached_assets/ladakh-inner_1768974785212.jpg";
+const img7 = "/attached_assets/ladakh_vehicle_1768974785211.jpg";
+const img8 = "/attached_assets/leh-city-view_1768974785213.jpg";
+const img9 = "/attached_assets/leh_ladakh_1768974785213.jpg";
+const img10 = "/attached_assets/leh-to-pangong-lake-1_1768974785213.jpg";
+const img11 = "/attached_assets/Nubra-Valley_(1)_1768974785214.jpg";
+const img12 = "/attached_assets/nubra-valley_1768974785214.jpg";
+const img13 = "/attached_assets/pangong-lake-ladakh_1768974785214.jpg";
+const img14 = "/attached_assets/Ladakh-FIG-scaled_1768974785212.jpg";
 
 const heroImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14];
 
