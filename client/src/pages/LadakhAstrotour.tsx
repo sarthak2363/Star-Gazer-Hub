@@ -20,6 +20,8 @@ import {
 import Navbar from "@/components/layout/Navbar";
 
 export default function LadakhAstrotour() {
+  const [openDay, setOpenDay] = useState<number | null>(0);
+
   const itinerary = [
     { 
       day: "Day 1 & 2", 
@@ -184,32 +186,84 @@ export default function LadakhAstrotour() {
       <section className="py-24 container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-display font-bold uppercase tracking-widest text-[#716040]">The Expedition Itinerary</h2>
-          <p className="text-blue-700/60 mt-2 uppercase text-xs tracking-[0.3em]">Day by Day Breakdown</p>
+          <p className="text-[#716040]/60 mt-2 uppercase text-xs tracking-[0.3em]">Click on a day to explore</p>
         </div>
         
-        <div className="space-y-12">
+        <div className="space-y-6">
           {itinerary.map((item, i) => (
-            <div key={i} className="relative pl-12 border-l-2 border-blue-500/30">
-              <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-blue-700 shadow-[0_0_15px_rgba(29,78,216,0.5)]" />
-              <div className="mb-2 text-left">
-                <span className="text-blue-800 font-display font-bold text-xl uppercase">{item.day}</span>
-                <h3 className="text-3xl font-display font-bold text-[#716040] uppercase">{item.title}</h3>
-              </div>
-              <div className="grid gap-4 mt-6">
-                {item.events.map((event, j) => (
-                  <div key={j} className="flex flex-col md:flex-row md:items-center gap-4 p-6 bg-white shadow-lg shadow-blue-900/5 border border-blue-100 rounded-3xl hover:bg-blue-50 transition-colors">
-                    <span className="font-mono text-blue-700 w-32 shrink-0 text-left font-bold text-xs uppercase">{event.time}</span>
-                    <span className="text-[#716040] font-medium text-lg text-left">{event.activity}</span>
+            <div 
+              key={i} 
+              className={`group overflow-hidden border-2 rounded-[2rem] transition-all duration-500 ${
+                openDay === i 
+                ? "bg-white border-[#716040] shadow-2xl shadow-[#716040]/10" 
+                : "bg-white/40 border-[#716040]/10 hover:border-[#716040]/30"
+              }`}
+            >
+              <button 
+                onClick={() => setOpenDay(openDay === i ? null : i)}
+                className="w-full flex items-center justify-between p-8 md:p-10 text-left transition-colors"
+                data-testid={`button-itinerary-day-${i}`}
+              >
+                <div className="flex items-center gap-8">
+                  <span className={`text-5xl font-display font-black transition-colors duration-500 ${
+                    openDay === i ? "text-[#716040]" : "text-[#716040]/20 group-hover:text-[#716040]/40"
+                  }`}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#716040]/40 mb-1 block">
+                      {item.day}
+                    </span>
+                    <h3 className="text-2xl md:text-3xl font-display font-bold text-[#716040] uppercase group-hover:tracking-wider transition-all">
+                      {item.title}
+                    </h3>
                   </div>
-                ))}
-              </div>
+                </div>
+                <div className={`p-3 rounded-full border-2 transition-all duration-500 ${
+                  openDay === i 
+                  ? "bg-[#716040] border-[#716040] text-white rotate-180" 
+                  : "border-[#716040]/10 text-[#716040]"
+                }`}>
+                  <ChevronRight className="w-6 h-6" />
+                </div>
+              </button>
+
+              <motion.div
+                initial={false}
+                animate={{ 
+                  height: openDay === i ? "auto" : 0,
+                  opacity: openDay === i ? 1 : 0
+                }}
+                transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
+                className="overflow-hidden"
+              >
+                <div className="p-8 md:p-10 pt-0 space-y-4">
+                  <div className="h-px bg-[#716040]/10 w-full mb-8" />
+                  {item.events.map((event, j) => (
+                    <motion.div 
+                      key={j}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: j * 0.1 }}
+                      className="flex flex-col md:flex-row md:items-start gap-4 p-6 bg-[#B0E0E6]/10 rounded-3xl border border-[#716040]/5 hover:bg-[#B0E0E6]/20 transition-colors"
+                    >
+                      <span className="font-mono text-[#716040] w-32 shrink-0 font-bold text-xs uppercase pt-1">
+                        {event.time}
+                      </span>
+                      <span className="text-[#716040] font-medium text-lg">
+                        {event.activity}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Essential Kits */}
-      <section className="py-24 bg-blue-100/30 border-y border-blue-200">
+      <section className="py-24 bg-white/20 border-y border-[#716040]/10">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-display font-bold text-center mb-16 uppercase text-[#716040]">Your Personal Kit List</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -219,12 +273,12 @@ export default function LadakhAstrotour() {
               { title: "Winter Gear", items: ["Woolen Cap & Gloves", "Woolen Socks", "Woolen Scarf", "Extra Layering"] },
               { title: "Skincare", items: ["Cold Cream", "Sun Screen (SPF 35+)", "Lip Balm", "Moisturizer"] },
             ].map((cat, i) => (
-              <div key={i} className="p-8 bg-white/90 backdrop-blur-sm rounded-3xl border border-blue-200 shadow-sm">
-                <h4 className="text-blue-800 font-bold uppercase mb-4 text-left border-b border-blue-100 pb-2">{cat.title}</h4>
+              <div key={i} className="p-8 bg-white/80 backdrop-blur-sm rounded-3xl border border-[#716040]/10 shadow-sm">
+                <h4 className="text-[#716040] font-bold uppercase mb-4 text-left border-b border-[#716040]/10 pb-2">{cat.title}</h4>
                 <ul className="space-y-3">
                   {cat.items.map((item, j) => (
                     <li key={j} className="text-[#716040]/80 text-sm flex items-center gap-2">
-                      <ChevronRight className="w-3 h-3 text-blue-500/50" />
+                      <ChevronRight className="w-3 h-3 text-[#716040]/50" />
                       {item}
                     </li>
                   ))}
@@ -237,8 +291,8 @@ export default function LadakhAstrotour() {
 
       {/* Package Details */}
       <section className="py-24 container mx-auto px-4">
-        <div className="bg-white/90 backdrop-blur-sm shadow-2xl shadow-blue-900/10 border border-blue-200 rounded-[3rem] p-12 overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 blur-[120px] -z-10" />
+        <div className="bg-white/90 backdrop-blur-sm shadow-2xl shadow-[#716040]/10 border border-[#716040]/20 rounded-[3rem] p-12 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#716040]/5 blur-[120px] -z-10" />
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
               <h2 className="text-4xl font-display font-bold mb-8 uppercase text-left text-[#716040]">What's Included</h2>
@@ -251,15 +305,15 @@ export default function LadakhAstrotour() {
                   { icon: <Zap className="w-5 h-5" />, text: "Entrance Fees: IAO, Monasteries, Wildlife" }
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-4 text-[#716040] text-left">
-                    <div className="p-2 bg-blue-100 rounded-lg text-blue-800 shrink-0">{item.icon}</div>
+                    <div className="p-2 bg-[#716040]/10 rounded-lg text-[#716040] shrink-0">{item.icon}</div>
                     {item.text}
                   </li>
                 ))}
               </ul>
               
-              <div className="mt-12 p-6 bg-blue-50 rounded-2xl border border-blue-200">
+              <div className="mt-12 p-6 bg-white/50 rounded-2xl border border-[#716040]/10">
                 <div className="flex gap-3 mb-4">
-                  <Info className="w-5 h-5 text-blue-700 shrink-0" />
+                  <Info className="w-5 h-5 text-[#716040] shrink-0" />
                   <h4 className="font-bold text-[#716040] uppercase text-sm">Exclusions</h4>
                 </div>
                 <p className="text-xs text-[#716040]/70 leading-relaxed text-left">
@@ -268,33 +322,33 @@ export default function LadakhAstrotour() {
               </div>
             </div>
             
-            <div className="bg-blue-950 border border-blue-800 rounded-[2.5rem] p-10 shadow-2xl relative overflow-hidden">
+            <div className="bg-[#716040] border border-[#5a4d33] rounded-[2.5rem] p-10 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4">
-                <span className="px-3 py-1 bg-blue-500/20 text-blue-400 text-[10px] font-bold uppercase rounded-full border border-sky-500/30">
+                <span className="px-3 py-1 bg-white/10 text-white text-[10px] font-bold uppercase rounded-full border border-white/20">
                   Best Value
                 </span>
               </div>
-              <span className="text-blue-400 font-bold uppercase tracking-widest text-sm mb-4 block text-left">Investment</span>
+              <span className="text-white/60 font-bold uppercase tracking-widest text-sm mb-4 block text-left">Investment</span>
               <div className="space-y-6 mb-10">
                 <div className="flex justify-between items-center pb-6 border-b border-white/10">
-                  <span className="text-blue-200/60 text-lg">Standard Adult</span>
+                  <span className="text-white/80 text-lg">Standard Adult</span>
                   <span className="text-3xl font-display font-bold text-white">₹39,990</span>
                 </div>
                 <div className="flex justify-between items-center pb-6 border-b border-white/10">
                   <div className="text-left">
-                    <span className="text-blue-200/60 text-lg block">Early Bird</span>
-                    <span className="text-xs text-blue-400 uppercase font-bold">Before June 20, 2026</span>
+                    <span className="text-white/80 text-lg block">Early Bird</span>
+                    <span className="text-xs text-white/60 uppercase font-bold">Before June 20, 2026</span>
                   </div>
-                  <span className="text-4xl font-display font-bold text-blue-400">₹36,990</span>
+                  <span className="text-4xl font-display font-bold text-white">₹36,990</span>
                 </div>
-                <div className="p-4 bg-blue-500/10 rounded-2xl border border-sky-500/20 text-blue-400 text-sm text-left">
+                <div className="p-4 bg-white/5 rounded-2xl border border-white/10 text-white/90 text-sm text-left">
                   <strong>Group Discount (4+):</strong> ₹36,990 per participant
                 </div>
               </div>
-              <button className="w-full py-5 bg-blue-700 text-white font-bold rounded-2xl hover:bg-blue-600 transition-all uppercase tracking-widest shadow-[0_0_20px_rgba(29,78,216,0.2)]">
+              <button className="w-full py-5 bg-white text-[#716040] font-bold rounded-2xl hover:bg-white/90 transition-all uppercase tracking-widest shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                 Enquire for Booking
               </button>
-              <p className="text-center mt-6 text-[10px] text-blue-400/50 uppercase tracking-widest leading-relaxed">
+              <p className="text-center mt-6 text-[10px] text-white/40 uppercase tracking-widest leading-relaxed">
                 *20% Advance for booking | Rates exclude GST
               </p>
             </div>
@@ -304,18 +358,18 @@ export default function LadakhAstrotour() {
 
       {/* Footer Contact */}
       <section className="py-24 container mx-auto px-4 text-center">
-        <h2 className="text-2xl font-display font-bold mb-8 uppercase text-blue-400">Ready for the Star Safari?</h2>
+        <h2 className="text-2xl font-display font-bold mb-8 uppercase text-[#716040]/50">Ready for the Star Safari?</h2>
         <div className="flex flex-wrap justify-center gap-12">
           <div className="text-left">
-            <span className="block text-xs uppercase tracking-widest text-blue-800/60 mb-1">WhatsApp / Call</span>
+            <span className="block text-xs uppercase tracking-widest text-[#716040]/60 mb-1">WhatsApp / Call</span>
             <span className="text-xl font-bold text-[#716040]">+91 76665 19425</span>
           </div>
           <div className="text-left">
-            <span className="block text-xs uppercase tracking-widest text-blue-800/60 mb-1">Email Inquiry</span>
+            <span className="block text-xs uppercase tracking-widest text-[#716040]/60 mb-1">Email Inquiry</span>
             <span className="text-xl font-bold text-[#716040]">axcamps@gmail.com</span>
           </div>
           <div className="text-left">
-            <span className="block text-xs uppercase tracking-widest text-blue-800/60 mb-1">Official Site</span>
+            <span className="block text-xs uppercase tracking-widest text-[#716040]/60 mb-1">Official Site</span>
             <span className="text-xl font-bold text-[#716040]">www.axsx.in</span>
           </div>
         </div>
