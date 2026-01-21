@@ -39,15 +39,18 @@ const heroImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
 
 // Extra stunning Ladakh images for the "Beyond the Stars" carousel
 const starImg1 = "/attached_assets/0cd01184-af2f-4b09-9d15-de1fe179894b_1768975381562.jpg";
-const starImg2 = "/attached_assets/3a1386e2-199f-4493-9670-e8ea4280406d_1768975381563.png";
-const starImg3 = "/attached_assets/454-1_1768975381563.jpg";
-const starImg4 = "/attached_assets/1667471069_1768975381563.png";
-const starImg5 = "/attached_assets/61651568595556_1768975381564.webp";
-const starImg6 = "/attached_assets/Hanle-Feature-Image-4_1768975381564.jpg";
-const starImg7 = "/attached_assets/iao-three_four_1768975381565.webp";
-const starImg8 = "/attached_assets/Untitled-design-7_1768975381567.png";
+const starImg2 = "/attached_assets/2CCA1809-4439-40EF-82F9-29E149B357EC_1768975381562.jpg";
+const starImg3 = "/attached_assets/3a1386e2-199f-4493-9670-e8ea4280406d_1768975381563.png";
+const starImg4 = "/attached_assets/454-1_1768975381563.jpg";
+const starImg5 = "/attached_assets/1667471069_1768975381563.png";
+const starImg6 = "/attached_assets/61651568595556_1768975381564.webp";
+const starImg7 = "/attached_assets/A_bike_tour_through_Ladakh_-__A_memorable_journey_1768975381564.jpg";
+const starImg8 = "/attached_assets/hanle-dark-sky-reserve-184025327-16x9_0_1768975381564.jpg";
+const starImg9 = "/attached_assets/Hanle-Feature-Image-4_1768975381564.jpg";
+const starImg10 = "/attached_assets/iao-three_four_1768975381565.webp";
+const starImg11 = "/attached_assets/Untitled-design-7_1768975381567.png";
 
-const starCarouselImages = [starImg1, starImg2, starImg3, starImg4, starImg5, starImg6, starImg7, starImg8];
+const starCarouselImages = [starImg1, starImg2, starImg3, starImg4, starImg5, starImg6, starImg7, starImg8, starImg9, starImg10, starImg11];
 
 export default function LadakhAstrotour() {
   const [openDay, setOpenDay] = useState<number | null>(0);
