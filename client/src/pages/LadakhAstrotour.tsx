@@ -21,7 +21,7 @@ import Navbar from "@/components/layout/Navbar";
 
 // Import Ladakh landscape images
 const img1 = "/attached_assets/1696140527_356630133_6546870062042711_927205431282500651_n_1768974785209.jpg";
-const img2 = "/attached_assets/A_bike_tour_through_Ladakh_-__A_memorable_journey_1768974785210.jpg";
+const img2 = "@assets/A_bike_tour_through_Ladakh_-__A_memorable_journey_1768974785210.jpg";
 const img3 = "/attached_assets/image_processing20180901-4-kv9tub_1768974785210.jpg";
 const img4 = "/attached_assets/IMG-20190620-WA0005_1768974785211.jpg";
 const img5 = "/attached_assets/ladakh9_1768974785212.jpg";
