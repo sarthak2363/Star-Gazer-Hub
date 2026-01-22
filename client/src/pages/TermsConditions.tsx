@@ -114,7 +114,7 @@ export default function TermsConditions() {
   const [openSection, setOpenSection] = useState<number | null>(0);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0a0c10] text-white">
       <Navbar />
 
       {/* Hero Section */}
@@ -125,8 +125,8 @@ export default function TermsConditions() {
             alt="Starry Sky Background" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0c10]" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
@@ -152,10 +152,10 @@ export default function TermsConditions() {
           {termsData.map((item, i) => (
             <div 
               key={i} 
-              className={`group overflow-hidden border-2 rounded-[2rem] transition-all duration-500 ${
+              className={`group overflow-hidden border transition-all duration-500 rounded-[2rem] ${
                 openSection === i 
-                ? "bg-white border-blue-600 shadow-2xl shadow-blue-600/10" 
-                : "bg-white border-slate-100 hover:border-blue-200"
+                ? "bg-white/5 border-blue-500/50 shadow-2xl shadow-blue-500/10" 
+                : "bg-white/[0.02] border-white/10 hover:border-blue-500/30"
               }`}
             >
               <button 
@@ -165,18 +165,18 @@ export default function TermsConditions() {
               >
                 <div className="flex items-center gap-6">
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-colors duration-500 ${
-                    openSection === i ? "bg-blue-600 text-white" : "bg-slate-50 text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-400"
+                    openSection === i ? "bg-blue-600 text-white" : "bg-white/5 text-white/40 group-hover:bg-blue-600/20 group-hover:text-white"
                   }`}>
                     <FileText className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 mb-1 block">
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/40 mb-1 block">
                       {item.section}
                     </span>
-                    <h3 className="text-xl font-display font-bold text-slate-900 uppercase">
+                    <h3 className="text-xl font-display font-bold text-white uppercase">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-slate-500 mt-1 line-clamp-2 group-hover:text-slate-600 transition-colors">
+                    <p className="text-sm text-white/60 mt-1 line-clamp-2 group-hover:text-white/80 transition-colors">
                       {item.summary}
                     </p>
                   </div>
@@ -184,7 +184,7 @@ export default function TermsConditions() {
                 <div className={`p-2 rounded-full border transition-all duration-500 ${
                   openSection === i 
                   ? "bg-blue-600 border-blue-600 text-white rotate-180" 
-                  : "border-slate-200 text-slate-400"
+                  : "border-white/10 text-white/40"
                 }`}>
                   <ChevronRight className="w-5 h-5" />
                 </div>
@@ -199,9 +199,9 @@ export default function TermsConditions() {
                     transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
                   >
                     <div className="px-8 pb-8">
-                      <div className="h-px bg-slate-100 w-full mb-6" />
-                      <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                        <p className="text-slate-700 leading-relaxed">
+                      <div className="h-px bg-white/10 w-full mb-6" />
+                      <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
+                        <p className="text-white/80 leading-relaxed">
                           {item.details}
                         </p>
                       </div>
@@ -214,12 +214,12 @@ export default function TermsConditions() {
         </div>
 
         {/* User Protection moved below */}
-        <div className="p-8 bg-blue-50 rounded-[2.5rem] border border-blue-100">
+        <div className="p-8 bg-blue-900/10 rounded-[2.5rem] border border-blue-500/20">
           <div className="flex items-center gap-4 mb-6">
-            <Shield className="w-10 h-10 text-blue-600" />
-            <h3 className="text-2xl font-display font-bold text-slate-900 uppercase">User Protection</h3>
+            <Shield className="w-10 h-10 text-blue-500" />
+            <h3 className="text-2xl font-display font-bold text-white uppercase">User Protection</h3>
           </div>
-          <p className="text-slate-600 text-sm leading-relaxed mb-8">
+          <p className="text-white/60 text-sm leading-relaxed mb-8">
             These terms ensure a safe, educational, and respectful environment for all our participants and staff.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
@@ -228,8 +228,8 @@ export default function TermsConditions() {
               { icon: <AlertCircle className="w-4 h-4" />, text: "Safety First" },
               { icon: <Scale className="w-4 h-4" />, text: "Fair Participation" }
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3 text-slate-700 font-medium text-sm p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
-                {item.icon}
+              <div key={i} className="flex items-center gap-3 text-white/80 font-medium text-sm p-4 bg-white/5 rounded-2xl border border-white/10">
+                <span className="text-blue-400">{item.icon}</span>
                 {item.text}
               </div>
             ))}
@@ -238,14 +238,14 @@ export default function TermsConditions() {
       </section>
 
       {/* Footer Contact */}
-      <footer className="py-12 bg-slate-50 border-t border-slate-200 text-center">
+      <footer className="py-12 bg-black/40 border-t border-white/10 text-center">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center gap-6 text-[10px] uppercase tracking-widest text-slate-400 mb-6 font-medium">
-            <a href="/terms" className="hover:text-blue-600 transition-colors">Terms & Conditions</a>
+          <div className="flex justify-center gap-6 text-[10px] uppercase tracking-widest text-white/40 mb-6 font-medium">
+            <a href="/terms" className="hover:text-blue-400 transition-colors">Terms & Conditions</a>
             <span>•</span>
-            <a href="/privacy" className="hover:text-blue-600 transition-colors">Privacy Policy</a>
+            <a href="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</a>
           </div>
-          <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em]">
+          <p className="text-[10px] text-white/20 uppercase tracking-[0.2em]">
             © 2026 AXSX – Aeronautics & Space Exploration.
           </p>
         </div>
