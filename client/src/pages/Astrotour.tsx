@@ -145,9 +145,6 @@ export default function Astrotour() {
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-block px-4 py-1 rounded-full bg-emerald-600 text-white text-xs font-bold uppercase tracking-widest mb-6 shadow-lg shadow-emerald-600/20">
-              India's First Dark Sky Park
-            </span>
             <h1 className="text-5xl md:text-8xl font-display font-bold mb-6 tracking-tighter uppercase leading-none drop-shadow-xl text-white">
               Pench Astro <br/><span className="text-emerald-400">Wildlife</span> Tour
             </h1>
@@ -176,9 +173,9 @@ export default function Astrotour() {
       <section className="py-24 container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           {[
-            { icon: <Star className="w-8 h-8 text-blue-500" />, title: "Dark Sky Park", desc: "India's first designated dark sky sanctuary with zero light pollution." },
+            { icon: <Star className="w-8 h-8 text-green-500" />, title: "Dark Sky Park", desc: "India's first designated dark sky sanctuary with zero light pollution." },
             { icon: <Binoculars className="w-8 h-8 text-emerald-600" />, title: "Tiger Safari", desc: "Thrilling morning and afternoon safaris in the land of Mowgli." },
-            { icon: <Camera className="w-8 h-8 text-indigo-500" />, title: "Astrophotography", desc: "Learn to capture the Milky Way with expert guidance and gear." },
+            { icon: <Camera className="w-8 h-8 text-green-500" />, title: "Astrophotography", desc: "Learn to capture the Milky Way with expert guidance and gear." },
             { icon: <ShieldCheck className="w-8 h-8 text-emerald-500" />, title: "Full Package", desc: "AC stay, meals, and Nagpur-to-Nagpur transport included." },
           ].map((item, i) => (
             <motion.div key={i} whileHover={{ y: -10 }} className="p-8 bg-white shadow-xl shadow-emerald-900/5 border border-emerald-100 rounded-[2.5rem] hover:bg-emerald-50 transition-all">
@@ -374,7 +371,7 @@ export default function Astrotour() {
                   >
                     <div className="flex items-center gap-3 w-48 shrink-0">
                       <div className="w-2 h-2 rounded-full bg-emerald-400 group-hover:scale-150 transition-transform" />
-                      <span className="font-mono text-blue-600 font-bold">{event.time}</span>
+                      <span className="font-mono text-green-600 font-bold">{event.time}</span>
                     </div>
                     <span className="text-slate-700 font-medium text-lg text-left">{event.activity}</span>
                   </motion.div>
@@ -465,7 +462,7 @@ export default function Astrotour() {
                   { icon: <Zap className="w-5 h-5" />, text: "Entry fees for all parks & sessions" }
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-4 text-slate-600 text-left">
-                    <div className="p-2 bg-blue-50 rounded-lg text-blue-600 shrink-0">{item.icon}</div>
+                    <div className="p-2 bg-green-50 rounded-lg text-green-600 shrink-0">{item.icon}</div>
                     {item.text}
                   </li>
                 ))}

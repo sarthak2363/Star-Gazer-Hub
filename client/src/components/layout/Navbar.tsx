@@ -121,6 +121,7 @@ export default function Navbar() {
                         <img 
                           src={starGazingLogo} 
                           alt="StarGazing" 
+                          style={{ height: "26px" }}
                           className={cn(
                             "h-5 w-auto object-contain transition-all duration-300",
                             (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
