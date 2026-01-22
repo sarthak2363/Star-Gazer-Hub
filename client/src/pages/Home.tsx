@@ -94,9 +94,9 @@ export default function Home() {
       <section className="snap-start min-h-screen w-full flex items-center justify-center bg-black px-6 py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&q=80&w=2000" 
+            src="/attached_assets/Untitled-design-7_1769062543493.png" 
             alt="About AXCamps" 
-            className="w-full h-full object-cover opacity-40 transition-transform duration-700 hover:scale-105"
+            className="w-full h-full object-cover opacity-60 transition-transform duration-700 hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
         </div>
