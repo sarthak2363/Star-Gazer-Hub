@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind, ArrowRight, Calendar } from "lucide-react";
+import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind, ArrowRight, Calendar, Shield, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoImg from "@assets/A-camps_1767778433537.png";
 import starGazingLogo from "@assets/StarGazing_white_1767861107932.png";
@@ -62,6 +62,15 @@ export default function Navbar() {
         },
         { title: "RC Workshops", href: "/aeromodelling/workshops", icon: <Wrench className="w-4 h-4" /> },
         { title: "Flight School", href: "/aeromodelling/school", icon: <Rocket className="w-4 h-4" /> },
+      ]
+    },
+    {
+      id: "legal",
+      title: "Legal",
+      href: "/terms",
+      icon: <Shield className="w-5 h-5 text-slate-400" />,
+      subItems: [
+        { title: "Terms & Conditions", href: "/terms", icon: <FileText className="w-4 h-4" /> },
       ]
     },
   ];

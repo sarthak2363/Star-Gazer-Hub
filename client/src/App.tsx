@@ -12,6 +12,7 @@ import Astrotour from "@/pages/Astrotour";
 import LadakhAstrotour from "@/pages/LadakhAstrotour";
 import Aeromodelling from "@/pages/Aeromodelling";
 import AstronomicalCalendar from "@/pages/AstronomicalCalendar";
+import TermsConditions from "@/pages/TermsConditions";
 
 function Router() {
   return (
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/astrotour/ladakh" component={LadakhAstrotour} />
       <Route path="/aeromodelling" component={Aeromodelling} />
       <Route path="/calendar" component={AstronomicalCalendar} />
+      <Route path="/terms" component={TermsConditions} />
       <Route component={NotFound} />
     </Switch>
   );
