@@ -94,11 +94,10 @@ export default function Home() {
       <section className="snap-start min-h-screen w-full flex items-center justify-center bg-black px-6 py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/attached_assets/Untitled-design-7_1769062543493.png" 
+            src="/Ladakh/Untitled-design-7-converted-from-png.jpeg" 
             alt="About AXCamps" 
-            className="w-full h-full object-cover opacity-60 transition-transform duration-700 hover:scale-105"
+            className="w-full h-full object-cover opacity-100 transition-transform duration-700 hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
         </div>
         
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -116,7 +115,7 @@ export default function Home() {
               Discover the visionaries behind India's most immersive astronomical journeys and aeronautical programs. We blend science with adventure to create memories that last a lifetime.
             </p>
             <Link href="/about">
-              <button className="px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full uppercase tracking-widest text-xs transition-all flex items-center gap-3 group">
+              <button className="px-10 py-4 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest text-sm inline-flex items-center gap-2 group text-left">
                 Learn More About Us
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>

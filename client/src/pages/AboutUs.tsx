@@ -25,7 +25,7 @@ export default function AboutUs() {
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1464802686167-b939a67e06d1?auto=format&fit=crop&q=80&w=2000" 
+            src="/Ladakh/Untitled-design-7-converted-from-png.jpeg" 
             alt="Milky Way Background" 
             className="w-full h-full object-cover opacity-60"
           />
@@ -128,6 +128,78 @@ export default function AboutUs() {
                 <img src={teamImages[1]} alt="Experience 2" className="w-full h-80 object-cover rounded-[3rem] border border-white/10" />
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* AXplorers Team Section */}
+      <section className="py-24 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-display font-bold uppercase mb-4 tracking-tighter">
+                AXplorers - The <span className="text-blue-500">Axploration</span> Family
+              </h2>
+              <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-8" />
+              <p className="text-white/60 max-w-2xl mx-auto">
+                Meet the passionate individuals dedicated to bringing the stars closer to you. Our team of educators, astronomers, and adventure specialists.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+            {[...Array(12)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (i % 4) * 0.1 }}
+                className="group"
+              >
+                {/* Polaroid Card */}
+                <div className="bg-[#fdfdfd] p-4 shadow-xl transform transition-transform duration-500 group-hover:rotate-1 group-hover:-translate-y-2">
+                  <div className="aspect-square overflow-hidden bg-gray-200 mb-6 relative">
+                    <img 
+                      src={`https://images.unsplash.com/photo-${[
+                        '1507003211169-0a1dd7228f2d', '1438761681033-6461ffad8d80', 
+                        '1500648767791-00dcc994a43e', '1544005313-94ddf0286df2',
+                        '1552058544-f2b08422138a', '1548142813-c348350df52b',
+                        '1570295999919-56ceb5ecca61', '1595152772835-219674b2a8a6',
+                        '1534528741775-53994a69daeb', '1506794778202-cad84cf45f1d',
+                        '1517841317295-779910ee5bc4', '1527980965255-d3b416303d12'
+                      ][i]}?auto=format&fit=crop&q=80&w=400`} 
+                      alt="Team Member" 
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <div className="space-y-1 text-center pb-4">
+                    <h3 className="font-display font-bold text-gray-900 text-lg uppercase tracking-tight">
+                      {[
+                        "Amit Sharma", "Priya Patel", "Vikram Singh", "Ananya Iyer",
+                        "Rahul Mehra", "Sanjana Rao", "Arjun Kapoor", "Neha Gupta",
+                        "Sameer Khan", "Ishani Deshmukh", "Karan Malhotra", "Riya Sen"
+                      ][i]}
+                    </h3>
+                    <p className="text-blue-600 font-bold text-[10px] uppercase tracking-widest">
+                      {[
+                        "Founder & Lead Explorer", "Head of Operations", "Senior Astronomer", "Education Lead",
+                        "Safety Specialist", "Astro-Photographer", "Base Camp Manager", "Logistics Expert",
+                        "Outreach Coordinator", "Program Designer", "Technical Lead", "Communications"
+                      ][i]}
+                    </p>
+                    <p className="text-gray-500 text-xs italic leading-relaxed pt-2 px-2 border-t border-gray-100 mt-3">
+                      "Dedicated to sharing the beauty of the cosmos through immersive, hands-on experiences and storytelling."
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
