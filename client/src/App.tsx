@@ -14,6 +14,7 @@ import Aeromodelling from "@/pages/Aeromodelling";
 import AstronomicalCalendar from "@/pages/AstronomicalCalendar";
 import TermsConditions from "@/pages/TermsConditions";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import RefundPolicy from "@/pages/RefundPolicy";
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/calendar" component={AstronomicalCalendar} />
       <Route path="/terms" component={TermsConditions} />
       <Route path="/privacy" component={PrivacyPolicy} />
+      <Route path="/refund" component={RefundPolicy} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -34,6 +34,8 @@ export default function Footer() {
           <a href="/terms" className="hover:text-white transition-colors">Terms & Conditions</a>
           <span>•</span>
           <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+          <span>•</span>
+          <a href="/refund" className="hover:text-white transition-colors">Refund Policy</a>
         </div>
         <div className="text-[8px] tracking-[0.3em] uppercase text-white/30">
           AXploration Camps &copy; 2026
