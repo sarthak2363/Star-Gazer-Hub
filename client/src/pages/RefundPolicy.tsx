@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, RefreshCw, XCircle, Ticket, Calendar, AlertTriangle, CheckCircle2, FileText } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const bgImage = "/attached_assets/454-1_1769059003561.jpeg";
 
@@ -162,21 +163,7 @@ export default function RefundPolicy() {
         </div>
       </section>
 
-      {/* Footer Contact */}
-      <footer className="py-12 bg-black/40 border-t border-white/10 text-center">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center gap-6 text-[10px] uppercase tracking-widest text-white/40 mb-6 font-medium">
-            <a href="/terms" className="hover:text-orange-400 transition-colors">Terms & Conditions</a>
-            <span>•</span>
-            <a href="/privacy" className="hover:text-orange-400 transition-colors">Privacy Policy</a>
-            <span>•</span>
-            <a href="/refund" className="hover:text-orange-400 transition-colors font-bold text-white">Refund Policy</a>
-          </div>
-          <p className="text-[10px] text-white/20 uppercase tracking-[0.2em]">
-            © 2026 AXSX – Aeronautics & Space Exploration.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

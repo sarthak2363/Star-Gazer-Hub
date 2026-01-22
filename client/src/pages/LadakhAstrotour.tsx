@@ -18,6 +18,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 // Import Ladakh landscape images
 const img1 =
@@ -677,6 +678,7 @@ export default function LadakhAstrotour() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
