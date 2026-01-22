@@ -118,7 +118,7 @@ export default function TermsConditions() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={bgImage} 
@@ -147,92 +147,90 @@ export default function TermsConditions() {
 
       {/* Content Section */}
       <section className="py-24 container mx-auto px-4 max-w-5xl">
-        <div className="grid lg:grid-cols-[1fr_2fr] gap-12">
-          {/* Quick Info Sidebar */}
-          <div className="space-y-8">
-            <div className="p-8 bg-blue-50 rounded-[2.5rem] border border-blue-100 sticky top-32">
-              <Shield className="w-12 h-12 text-blue-600 mb-6" />
-              <h3 className="text-2xl font-display font-bold text-slate-900 mb-4 uppercase">User Protection</h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                These terms ensure a safe, educational, and respectful environment for all our participants and staff.
-              </p>
-              <div className="space-y-4">
-                {[
-                  { icon: <ScrollText className="w-4 h-4" />, text: "Legal Compliance" },
-                  { icon: <AlertCircle className="w-4 h-4" />, text: "Safety First" },
-                  { icon: <Scale className="w-4 h-4" />, text: "Fair Participation" }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-slate-700 font-medium text-sm">
-                    <div className="p-2 bg-white rounded-lg shadow-sm">{item.icon}</div>
-                    {item.text}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Accordion List */}
-          <div className="space-y-6">
-            {termsData.map((item, i) => (
-              <div 
-                key={i} 
-                className={`group overflow-hidden border-2 rounded-[2rem] transition-all duration-500 ${
-                  openSection === i 
-                  ? "bg-white border-blue-600 shadow-2xl shadow-blue-600/10" 
-                  : "bg-white border-slate-100 hover:border-blue-200"
-                }`}
+        {/* Accordion List */}
+        <div className="space-y-6 mb-16">
+          {termsData.map((item, i) => (
+            <div 
+              key={i} 
+              className={`group overflow-hidden border-2 rounded-[2rem] transition-all duration-500 ${
+                openSection === i 
+                ? "bg-white border-blue-600 shadow-2xl shadow-blue-600/10" 
+                : "bg-white border-slate-100 hover:border-blue-200"
+              }`}
+            >
+              <button 
+                onClick={() => setOpenSection(openSection === i ? null : i)}
+                className="w-full flex items-center justify-between p-8 text-left transition-colors"
+                data-testid={`button-term-section-${i}`}
               >
-                <button 
-                  onClick={() => setOpenSection(openSection === i ? null : i)}
-                  className="w-full flex items-center justify-between p-8 text-left transition-colors"
-                  data-testid={`button-term-section-${i}`}
-                >
-                  <div className="flex items-center gap-6">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-colors duration-500 ${
-                      openSection === i ? "bg-blue-600 text-white" : "bg-slate-50 text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-400"
-                    }`}>
-                      <FileText className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 mb-1 block">
-                        {item.section}
-                      </span>
-                      <h3 className="text-xl font-display font-bold text-slate-900 uppercase">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-slate-500 mt-1 max-w-md line-clamp-1 group-hover:text-slate-600 transition-colors">
-                        {item.summary}
-                      </p>
-                    </div>
-                  </div>
-                  <div className={`p-2 rounded-full border transition-all duration-500 ${
-                    openSection === i 
-                    ? "bg-blue-600 border-blue-600 text-white rotate-180" 
-                    : "border-slate-200 text-slate-400"
+                <div className="flex items-center gap-6">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-colors duration-500 ${
+                    openSection === i ? "bg-blue-600 text-white" : "bg-slate-50 text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-400"
                   }`}>
-                    <ChevronRight className="w-5 h-5" />
+                    <FileText className="w-6 h-6" />
                   </div>
-                </button>
+                  <div>
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 mb-1 block">
+                      {item.section}
+                    </span>
+                    <h3 className="text-xl font-display font-bold text-slate-900 uppercase">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 mt-1 line-clamp-2 group-hover:text-slate-600 transition-colors">
+                      {item.summary}
+                    </p>
+                  </div>
+                </div>
+                <div className={`p-2 rounded-full border transition-all duration-500 ${
+                  openSection === i 
+                  ? "bg-blue-600 border-blue-600 text-white rotate-180" 
+                  : "border-slate-200 text-slate-400"
+                }`}>
+                  <ChevronRight className="w-5 h-5" />
+                </div>
+              </button>
 
-                <AnimatePresence>
-                  {openSection === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
-                    >
-                      <div className="px-8 pb-8">
-                        <div className="h-px bg-slate-100 w-full mb-6" />
-                        <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                          <p className="text-slate-700 leading-relaxed">
-                            {item.details}
-                          </p>
-                        </div>
+              <AnimatePresence>
+                {openSection === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
+                  >
+                    <div className="px-8 pb-8">
+                      <div className="h-px bg-slate-100 w-full mb-6" />
+                      <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                        <p className="text-slate-700 leading-relaxed">
+                          {item.details}
+                        </p>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+
+        {/* User Protection moved below */}
+        <div className="p-8 bg-blue-50 rounded-[2.5rem] border border-blue-100">
+          <div className="flex items-center gap-4 mb-6">
+            <Shield className="w-10 h-10 text-blue-600" />
+            <h3 className="text-2xl font-display font-bold text-slate-900 uppercase">User Protection</h3>
+          </div>
+          <p className="text-slate-600 text-sm leading-relaxed mb-8">
+            These terms ensure a safe, educational, and respectful environment for all our participants and staff.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: <ScrollText className="w-4 h-4" />, text: "Legal Compliance" },
+              { icon: <AlertCircle className="w-4 h-4" />, text: "Safety First" },
+              { icon: <Scale className="w-4 h-4" />, text: "Fair Participation" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 text-slate-700 font-medium text-sm p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+                {item.icon}
+                {item.text}
               </div>
             ))}
           </div>
@@ -240,25 +238,15 @@ export default function TermsConditions() {
       </section>
 
       {/* Footer Contact */}
-      <footer className="py-24 bg-slate-50 border-t border-slate-200 text-center">
+      <footer className="py-12 bg-slate-50 border-t border-slate-200 text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-display font-bold mb-12 uppercase text-slate-900">Have Questions?</h2>
-          <div className="flex flex-wrap justify-center gap-12">
-            <div className="text-left">
-              <span className="block text-xs uppercase tracking-widest text-slate-400 mb-1">WhatsApp</span>
-              <span className="text-xl font-bold text-slate-900">+91 76665 19425</span>
-            </div>
-            <div className="text-left">
-              <span className="block text-xs uppercase tracking-widest text-slate-400 mb-1">Inquiry Email</span>
-              <span className="text-xl font-bold text-slate-900">axcamps@gmail.com</span>
-            </div>
-            <div className="text-left">
-              <span className="block text-xs uppercase tracking-widest text-slate-400 mb-1">Official Site</span>
-              <span className="text-xl font-bold text-slate-900">www.axsx.in</span>
-            </div>
+          <div className="flex justify-center gap-6 text-[10px] uppercase tracking-widest text-slate-400 mb-6 font-medium">
+            <a href="/terms" className="hover:text-blue-600 transition-colors">Terms & Conditions</a>
+            <span>•</span>
+            <a href="/privacy" className="hover:text-blue-600 transition-colors">Privacy Policy</a>
           </div>
-          <p className="mt-16 text-xs text-slate-400 uppercase tracking-[0.2em]">
-            © 2026 AXSX – Aeronautics & Space Exploration. All Rights Reserved.
+          <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em]">
+            © 2026 AXSX – Aeronautics & Space Exploration.
           </p>
         </div>
       </footer>

@@ -29,8 +29,15 @@ export default function Footer() {
         </div>
       </div>
       
-      <div className="mt-8 text-center text-[8px] tracking-[0.3em] uppercase text-white/30">
-        AXploration Camps &copy; 2026
+      <div className="mt-8 flex flex-col items-center gap-4">
+        <div className="flex justify-center gap-6 text-[8px] tracking-widest uppercase text-white/40">
+          <a href="/terms" className="hover:text-white transition-colors">Terms & Conditions</a>
+          <span>•</span>
+          <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+        </div>
+        <div className="text-[8px] tracking-[0.3em] uppercase text-white/30">
+          AXploration Camps &copy; 2026
+        </div>
       </div>
     </footer>
   );
