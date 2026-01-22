@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Shield, FileLock, Eye, Lock, ShieldCheck, Info, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 
-const bgImage = "/attached_assets/454-1_1769059003561.jpeg";
+const bgImage = "/Ladakh hero/1667471069.png";
 
 const privacyData = [
   {
@@ -48,7 +48,6 @@ export default function PrivacyPolicy() {
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src={bgImage} alt="Privacy Background" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0c10]" />
         </div>
         <div className="container mx-auto px-4 relative z-10 text-center">

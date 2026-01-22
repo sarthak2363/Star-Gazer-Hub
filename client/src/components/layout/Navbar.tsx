@@ -64,15 +64,6 @@ export default function Navbar() {
         { title: "Flight School", href: "/aeromodelling/school", icon: <Rocket className="w-4 h-4" /> },
       ]
     },
-    {
-      id: "legal",
-      title: "Legal",
-      href: "/terms",
-      icon: <Shield className="w-5 h-5 text-slate-400" />,
-      subItems: [
-        { title: "Terms & Conditions", href: "/terms", icon: <FileText className="w-4 h-4" /> },
-      ]
-    },
   ];
 
   return (

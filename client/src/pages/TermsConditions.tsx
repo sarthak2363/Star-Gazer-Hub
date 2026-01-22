@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Shield, ScrollText, AlertCircle, Scale, FileText, Info, HelpCircle, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 
-const bgImage = "/attached_assets/454-1_1769059003561.jpeg";
+const bgImage = "/454-1.jpeg";
 
 const termsData = [
   {
@@ -125,7 +125,7 @@ export default function TermsConditions() {
             alt="Starry Sky Background" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+          
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0c10]" />
         </div>
         
@@ -138,6 +138,9 @@ export default function TermsConditions() {
             <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-6 uppercase tracking-tighter">
               Terms & <span className="text-blue-400">Conditions</span>
             </h1>
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto italic font-bold">
+              "AXCamps - Axploration Camps"
+            </p>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto italic">
               "The guiding principles of our cosmic journey together."
             </p>
