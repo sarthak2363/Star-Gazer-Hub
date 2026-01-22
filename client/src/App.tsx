@@ -15,11 +15,13 @@ import AstronomicalCalendar from "@/pages/AstronomicalCalendar";
 import TermsConditions from "@/pages/TermsConditions";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import RefundPolicy from "@/pages/RefundPolicy";
+import AboutUs from "@/pages/AboutUs";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/about" component={AboutUs} />
       <Route path="/stargazing" component={Stargazing} />
       <Route path="/stargazing/corporate" component={CorporateStargazing} />
       <Route path="/stargazing/school" component={SchoolPrograms} />

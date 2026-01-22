@@ -90,6 +90,41 @@ export default function Home() {
         bgImage={hero3}
       />
 
+      {/* About Us Preview */}
+      <section className="snap-start min-h-screen w-full flex items-center justify-center bg-black px-6 py-24 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&q=80&w=2000" 
+            alt="About AXCamps" 
+            className="w-full h-full object-cover opacity-40 transition-transform duration-700 hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        </div>
+        
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl"
+          >
+            <span className="text-blue-400 font-display font-bold tracking-[0.3em] uppercase text-xs mb-4 block">The AXCamps Experience</span>
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 uppercase tracking-tighter leading-tight">
+              Igniting the Spark of <br/><span className="text-blue-400 italic">Exploration</span>
+            </h2>
+            <p className="text-lg text-white/60 mb-10 leading-relaxed">
+              Discover the visionaries behind India's most immersive astronomical journeys and aeronautical programs. We blend science with adventure to create memories that last a lifetime.
+            </p>
+            <Link href="/about">
+              <button className="px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full uppercase tracking-widest text-xs transition-all flex items-center gap-3 group">
+                Learn More About Us
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="snap-start h-screen w-full flex flex-col items-center justify-center bg-slate-950 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-30 mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-blue-950/20 to-slate-950" />
