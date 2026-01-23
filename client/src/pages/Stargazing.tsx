@@ -333,9 +333,60 @@ export default function Stargazing() {
         )}
       </AnimatePresence>
 
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 0.90 }} viewport={{ once: true }}>
-        <ImageCarousel images={GALLERY_IMAGES} />
-      </motion.div>
+      {/* Public Stargazing Content */}
+      <section className="py-24 container mx-auto px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-1 gap-12">
+            {/* Public Stargazing Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white/5 border border-white/10 rounded-[2.5rem] p-12 relative overflow-hidden group hover:border-blue-500/50 transition-all duration-500"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 blur-[80px] -z-10" />
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest">
+                    <Star className="w-4 h-4" />
+                    Open to Everyone
+                  </div>
+                  <h2 className="text-4xl font-display font-bold text-white uppercase tracking-tight">
+                    Public <span className="text-blue-500">Stargazing</span>
+                  </h2>
+                  <p className="text-white/60 text-lg leading-relaxed text-left">
+                    Join our community of night-sky enthusiasts for an unforgettable evening under the stars. Perfect for individuals, couples, and families looking to explore the cosmos through our professional telescopes.
+                  </p>
+                  <ul className="space-y-3">
+                    {[
+                      "Guided observation of planets & constellations",
+                      "Deep-sky exploration through 12-inch telescopes",
+                      "Expert talks on astronomy and mythology",
+                      "Introduction to astrophotography"
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-center gap-3 text-white/80">
+                        <Zap className="w-4 h-4 text-blue-500" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <button className="mt-8 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blue-600/20 uppercase tracking-widest text-sm">
+                    Book Public Session
+                  </button>
+                </div>
+                <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                  <img 
+                    src={eventImg} 
+                    alt="Public Stargazing Session" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       <div className="container mx-auto px-4 pb-20 mt-12">
         <div className="grid lg:grid-cols-12 gap-12 max-w-7xl mx-auto">

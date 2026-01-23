@@ -10,10 +10,65 @@ const stats = [
   { label: "Years of Excellence", value: "10+", icon: <Award className="w-5 h-5" /> }
 ];
 
-const teamImages = [
-  "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&q=80&w=800"
+const teamMembers = [
+  {
+    name: "Kailas Belekar",
+    role: "Founder & Lead Explorer",
+    image: "/Team/Kailas.jpeg"
+  },
+  {
+    name: "Sarthak Chougule",
+    role: "Technical Lead & Astroguide",
+    image: "/team/ashish.jpg"
+  },
+  {
+    name: "Gauri Kshirsagar",
+    role: "PR Lead & Astro Guide",
+    image: "/Team/Gauri.jpeg"
+  },
+  {
+    name: "Vivek Jadhav",
+    role: "Operation Admin & Astro Guide",
+    image: "/Team/Vivek.jpeg"
+  },
+  {
+    name: "Pradnesh Gawade",
+    role: "Design Lead",
+    image: "/Team/Pradnesh.jpeg"
+  },
+  {
+    name: "Vidhita Kirtani",
+    role: "Project Lead, System Head & Astro Guide",
+    image: "/Team/Vidhita.jpg"
+  },
+  {
+    name: "Ashish Merukar",
+    role: "Astro Guide",
+    image: "/team/shashi.jpg"
+  },{
+    name: "Ashish Parmar",
+    role: "Astro Guide",
+    image: "/team/shashi.jpg"
+  },{
+    name: "Shashi Gawari",
+    role: "Astro Guide",
+    image: "/Team/Sashi.jpeg"
+  },{
+    name: "Vivek Mahadule",
+    role: "Astro Guide",
+    image: "/team/shashi.jpg"
+  },
+  {
+    name: "Ekansh Tardeja ",
+    role: "Astro Guide",
+    image: "client/public/Team/Ekansh.jpeg"
+  },
+  {
+    name: "Neel Gaikwad",
+    role: "Astro Guide",
+    image: "/team/shashi.jpg"
+  },
+  
 ];
 
 export default function AboutUs() {
@@ -114,7 +169,7 @@ export default function AboutUs() {
               className="grid grid-cols-2 gap-4"
             >
               <div className="space-y-4">
-                <img src={teamImages[0]} alt="Experience 1" className="w-full h-80 object-cover rounded-[3rem] border border-white/10" />
+                
                 <div className="bg-blue-600 rounded-[2rem] p-8 text-center flex flex-col items-center justify-center">
                    <Sparkles className="w-10 h-10 text-white mb-4 animate-pulse" />
                    <div className="text-white font-bold uppercase tracking-widest text-xs">Innovation in Education</div>
@@ -125,7 +180,7 @@ export default function AboutUs() {
                    <div className="text-4xl font-display font-bold text-purple-400 mb-2">100%</div>
                    <div className="text-white/60 text-[10px] uppercase tracking-widest">Hands-on Experience</div>
                 </div>
-                <img src={teamImages[1]} alt="Experience 2" className="w-full h-80 object-cover rounded-[3rem] border border-white/10" />
+                
               </div>
             </motion.div>
           </div>
@@ -152,7 +207,8 @@ export default function AboutUs() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            {[...Array(12)].map((_, i) => (
+      {teamMembers.map((member, i) => (
+
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -165,36 +221,19 @@ export default function AboutUs() {
                 <div className="bg-[#fdfdfd] p-4 shadow-xl transform transition-transform duration-500 group-hover:rotate-1 group-hover:-translate-y-2">
                   <div className="aspect-square overflow-hidden bg-gray-200 mb-6 relative">
                     <img 
-                      src={`https://images.unsplash.com/photo-${[
-                        '1507003211169-0a1dd7228f2d', '1438761681033-6461ffad8d80', 
-                        '1500648767791-00dcc994a43e', '1544005313-94ddf0286df2',
-                        '1552058544-f2b08422138a', '1548142813-c348350df52b',
-                        '1570295999919-56ceb5ecca61', '1595152772835-219674b2a8a6',
-                        '1534528741775-53994a69daeb', '1506794778202-cad84cf45f1d',
-                        '1517841317295-779910ee5bc4', '1527980965255-d3b416303d12'
-                      ][i]}?auto=format&fit=crop&q=80&w=400`} 
-                      alt="Team Member" 
+                      src={member.image}
+                      alt={member.name}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
+
                     <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <div className="space-y-1 text-center pb-4">
                     <h3 className="font-display font-bold text-gray-900 text-lg uppercase tracking-tight">
-                      {[
-                        "Amit Sharma", "Priya Patel", "Vikram Singh", "Ananya Iyer",
-                        "Rahul Mehra", "Sanjana Rao", "Arjun Kapoor", "Neha Gupta",
-                        "Sameer Khan", "Ishani Deshmukh", "Karan Malhotra", "Riya Sen"
-                      ][i]}
+                      {member.name}
                     </h3>
                     <p className="text-blue-600 font-bold text-[10px] uppercase tracking-widest">
-                      {[
-                        "Founder & Lead Explorer", "Head of Operations", "Senior Astronomer", "Education Lead",
-                        "Safety Specialist", "Astro-Photographer", "Base Camp Manager", "Logistics Expert",
-                        "Outreach Coordinator", "Program Designer", "Technical Lead", "Communications"
-                      ][i]}
-                    </p>
-                    <p className="text-gray-500 text-xs italic leading-relaxed pt-2 px-2 border-t border-gray-100 mt-3">
-                      "Dedicated to sharing the beauty of the cosmos through immersive, hands-on experiences and storytelling."
+                      {member.role}
                     </p>
                   </div>
                 </div>
