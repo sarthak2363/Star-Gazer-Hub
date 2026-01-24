@@ -37,23 +37,31 @@ const SCHOOL_OFFERS = [
     title: "Single Session",
     duration: "2 Hours",
     groupSize: "Up to 50 students",
-    highlights: ["Interactive Slide Show", "Telescope Demonstration", "Astronomy Basics"],
-    desc: "A perfect introduction to space science that brings the universe into the school premises."
+    highlights: [
+      "Interactive Slide Show",
+      "Telescope Demonstration",
+      "Astronomy Basics",
+    ],
+    desc: "A perfect introduction to space science that brings the universe into the school premises.",
   },
   {
     title: "Dual Session",
     duration: "5 hrs (6 PM - 11 PM)",
     groupSize: "Up to 50 students",
     highlights: ["Telescope Viewing", "Deep Sky Objects", "Story telling"],
-    desc: "An immersive day of hands-on science and direct solar observation."
+    desc: "An immersive day of hands-on science and direct solar observation.",
   },
   {
     title: "Overnight Session",
     duration: "Overnight (6 PM - 8 AM)",
     groupSize: "Up to 50 students",
-    highlights: ["Deep Sky Observation", "Telescope Handling", "Interesting tales of Constellations"],
-    desc: "The ultimate astronomical experience where students learn to navigate the night sky like professionals."
-  }
+    highlights: [
+      "Deep Sky Observation",
+      "Telescope Handling",
+      "Interesting tales of Constellations",
+    ],
+    desc: "The ultimate astronomical experience where students learn to navigate the night sky like professionals.",
+  },
 ];
 
 const GALLERY_IMAGES = [
@@ -87,7 +95,8 @@ function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
   }, [images.length, isHovered]);
 
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
-  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const prevSlide = () =>
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
     <div
@@ -100,19 +109,32 @@ function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((image, i) => (
-          <div key={i} className="min-w-full h-[420px] md:h-[520px] lg:h-[600px]">
-            <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
+          <div
+            key={i}
+            className="min-w-full h-[420px] md:h-[520px] lg:h-[600px]"
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="w-full h-full object-cover"
+            />
           </div>
         ))}
       </div>
 
       {images.length > 1 && (
         <>
-          <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group">
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group"
+          >
             <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
           </button>
 
-          <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group">
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm border border-white/10 transition-all group"
+          >
             <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
           </button>
 
@@ -122,7 +144,9 @@ function ImageCarousel({ images }: { images: { src: string; alt: string }[] }) {
                 key={i}
                 onClick={() => setCurrentIndex(i)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  i === currentIndex ? "bg-cyan-400 w-6" : "bg-white/30 hover:bg-white/50"
+                  i === currentIndex
+                    ? "bg-cyan-400 w-6"
+                    : "bg-white/30 hover:bg-white/50"
                 }`}
               />
             ))}
@@ -137,11 +161,14 @@ export default function SchoolPrograms() {
   const [expandedOffer, setExpandedOffer] = useState<number | null>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
 
-  const scrollGallery = (direction: 'left' | 'right') => {
+  const scrollGallery = (direction: "left" | "right") => {
     if (galleryRef.current) {
       const { scrollLeft, clientWidth } = galleryRef.current;
-      const scrollTo = direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth;
-      galleryRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+      const scrollTo =
+        direction === "left"
+          ? scrollLeft - clientWidth
+          : scrollLeft + clientWidth;
+      galleryRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
 
@@ -151,20 +178,27 @@ export default function SchoolPrograms() {
 
       {/* Hero Section */}
       <div className="relative pt-32 pb-24 overflow-hidden min-h-[60vh] flex items-center justify-center">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${heroBgImage})` }} />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBgImage})` }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#020617]" />
-        
+
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-4xl md:text-7xl font-display font-bold mb-4 tracking-tight uppercase">School Stargazing Programs</h1>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-7xl font-display font-bold mb-4 tracking-tight uppercase">
+              School Stargazing Programs
+            </h1>
             <p className="text-xl md:text-2xl text-blue-400 font-light max-w-3xl mx-auto italic tracking-widest uppercase">
               Where Science Meets Wonder
             </p>
           </motion.div>
         </div>
       </div>
-
-     
 
       {/* Offers Section */}
       <section className="py-20 container mx-auto px-4">
@@ -174,12 +208,16 @@ export default function SchoolPrograms() {
               key={idx}
               layout
               className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden cursor-pointer hover:border-blue-500/50 transition-colors"
-              onClick={() => setExpandedOffer(expandedOffer === idx ? null : idx)}
+              onClick={() =>
+                setExpandedOffer(expandedOffer === idx ? null : idx)
+              }
             >
               <div className="p-8">
-                <h3 className="text-2xl font-display font-bold mb-4">{offer.title}</h3>
+                <h3 className="text-2xl font-display font-bold mb-4">
+                  {offer.title}
+                </h3>
                 <p className="text-white/60 text-sm mb-6">{offer.desc}</p>
-                
+
                 <AnimatePresence>
                   {expandedOffer === idx && (
                     <motion.div
@@ -191,35 +229,50 @@ export default function SchoolPrograms() {
                       <div className="pt-4 border-t border-white/10 space-y-3">
                         <div className="flex items-center gap-2 text-sm">
                           <Clock className="w-4 h-4 text-blue-400" />
-                          <span><strong>Duration:</strong> {offer.duration}</span>
+                          <span>
+                            <strong>Duration:</strong> {offer.duration}
+                          </span>
                         </div>
                         <div className="flex items-center gap-2 text-sm">
                           <Users className="w-4 h-4 text-blue-400" />
-                          <span><strong>Ideal for:</strong> {offer.groupSize}</span>
+                          <span>
+                            <strong>Ideal for:</strong> {offer.groupSize}
+                          </span>
                         </div>
                         <div className="space-y-2">
-                          <p className="text-sm font-bold text-blue-400">Key Highlights:</p>
+                          <p className="text-sm font-bold text-blue-400">
+                            Key Highlights:
+                          </p>
                           <ul className="list-disc list-inside text-sm text-white/70">
-                            {offer.highlights.map((h, i) => <li key={i}>{h}</li>)}
+                            {offer.highlights.map((h, i) => (
+                              <li key={i}>{h}</li>
+                            ))}
                           </ul>
                         </div>
-                  
-                        <button 
+
+                        <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            window.open("https://wa.me/919028174363?text=I'm interested in school program: " + offer.title, "_blank");
+                            window.open(
+                              "https://wa.me/917666519425?text=I'm interested in school program: " +
+                                offer.title,
+                              "_blank",
+                            );
                           }}
                           className="w-full mt-6 py-3 bg-blue-400 hover:bg-blue-500 text-white font-bold rounded-2xl flex items-center justify-center gap-2 transition-colors"
                         >
-                          <MessageSquare className="w-4 h-4" /> Enquire for School
+                          <MessageSquare className="w-4 h-4" /> Enquire for
+                          School
                         </button>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-                
+
                 <div className="mt-4 flex justify-center">
-                  <ChevronDown className={`w-6 h-6 text-white/30 transition-transform ${expandedOffer === idx ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`w-6 h-6 text-white/30 transition-transform ${expandedOffer === idx ? "rotate-180" : ""}`}
+                  />
                 </div>
               </div>
             </motion.div>
@@ -230,57 +283,90 @@ export default function SchoolPrograms() {
       {/* Educational Value */}
       <section className="py-20 bg-white/[0.02]">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 text-blue-400">Beyond the Books</h2>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 text-blue-400">
+            Beyond the Books
+          </h2>
           <p className="text-lg text-white/70 leading-relaxed italic">
-            AXCamps is a dedicated outreach division of Aeronautics and Space Exploration (AXSX), an organization working in the fields of astronomy and space science since 2010. Through AXCamps, we design safe, engaging, and educational stargazing programs for schools—combining expert guidance, powerful telescopes, and hands-on learning to spark curiosity and scientific thinking among students.
+            AXCamps is a dedicated outreach division of Aeronautics and Space
+            Exploration (AXSX), an organization working in the fields of
+            astronomy and space science since 2010. Through AXCamps, we design
+            safe, engaging, and educational stargazing programs for
+            schools—combining expert guidance, powerful telescopes, and hands-on
+            learning to spark curiosity and scientific thinking among students.
           </p>
         </div>
       </section>
 
-      <h3 className="text-3xl md:text-5xl font-display font-bold mb-8 text-blue-400 text-center">Making Space Science Come Alive in Schools</h3>
+      <h3 className="text-3xl md:text-5xl font-display font-bold mb-8 text-blue-400 text-center">
+        Making Space Science Come Alive in Schools
+      </h3>
       {/* Gallery Section */}
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 0.90 }} viewport={{ once: true }}>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 0.9 }}
+        viewport={{ once: true }}
+      >
         <ImageCarousel images={GALLERY_IMAGES} />
-        <p className="text-center text-xs text-white/30 mt-4 uppercase tracking-widest">Swipe or click arrows to view more</p>
+        <p className="text-center text-xs text-white/30 mt-4 uppercase tracking-widest">
+          Swipe or click arrows to view more
+        </p>
       </motion.div>
 
       {/* Importance Section for Schools */}
       <section className="py-20 container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-16">
           <div className="space-y-8">
-            <h2 className="text-3xl font-display font-bold text-blue-400">Importance for Students</h2>
+            <h2 className="text-3xl font-display font-bold text-blue-400">
+              Importance for Students
+            </h2>
             <div className="space-y-6">
               <div className="flex gap-4">
                 <Lightbulb className="w-6 h-6 text-blue-400 flex-shrink-0" />
                 <div>
-                  <h4 className="text-xl font-bold mb-2">Scientific Curiosity</h4>
-                  <p className="text-white/60">Asking the big questions about our origins and the nature of space.</p>
+                  <h4 className="text-xl font-bold mb-2">
+                    Scientific Curiosity
+                  </h4>
+                  <p className="text-white/60">
+                    Asking the big questions about our origins and the nature of
+                    space.
+                  </p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <Compass className="w-6 h-6 text-blue-400 flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-bold mb-2">Navigation Skills</h4>
-                  <p className="text-white/60">Learning to read the stars for direction, just like ancient explorers.</p>
+                  <p className="text-white/60">
+                    Learning to read the stars for direction, just like ancient
+                    explorers.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           <div className="space-y-8">
-            <h2 className="text-3xl font-display font-bold text-blue-400">Why Schools Choose AXSX?</h2>
+            <h2 className="text-3xl font-display font-bold text-blue-400">
+              Why Schools Choose AXSX?
+            </h2>
             <div className="space-y-6">
               <div className="flex gap-4">
                 <Rocket className="w-6 h-6 text-blue-400 flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-bold mb-2">Hands-on Learning</h4>
-                  <p className="text-white/60">Practical sessions with professional-grade telescopes and astronomical gear.</p>
+                  <p className="text-white/60">
+                    Practical sessions with professional-grade telescopes and
+                    astronomical gear.
+                  </p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <GraduationCap className="w-6 h-6 text-blue-400 flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-bold mb-2">Career Guidance</h4>
-                  <p className="text-white/60">Mentorship for students interested in astrophysics, aerospace, and space research.</p>
+                  <p className="text-white/60">
+                    Mentorship for students interested in astrophysics,
+                    aerospace, and space research.
+                  </p>
                 </div>
               </div>
             </div>
@@ -291,27 +377,57 @@ export default function SchoolPrograms() {
       {/* Enquiry Form */}
       <section className="py-20 container mx-auto px-4 max-w-4xl">
         <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-12">
-          <h2 className="text-3xl font-display font-bold mb-8 text-center">Plan a Session for Your School</h2>
-          <form className="grid md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
+          <h2 className="text-3xl font-display font-bold mb-8 text-center">
+            Plan a Session for Your School
+          </h2>
+          <form
+            className="grid md:grid-cols-2 gap-6"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <div className="space-y-2">
-              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">Coordinator Name</label>
-              <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors" />
+              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">
+                Coordinator Name
+              </label>
+              <input
+                type="text"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors"
+              />
             </div>
             <div className="space-y-2">
-              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">School Name</label>
-              <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors" />
+              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">
+                School Name
+              </label>
+              <input
+                type="text"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors"
+              />
             </div>
             <div className="space-y-2">
-              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">Email Address</label>
-              <input type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors" />
+              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">
+                Email Address
+              </label>
+              <input
+                type="email"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors"
+              />
             </div>
             <div className="space-y-2">
-              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">Expected Student Count</label>
-              <input type="number" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors" />
+              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">
+                Expected Student Count
+              </label>
+              <input
+                type="number"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-colors"
+              />
             </div>
             <div className="md:col-span-2 space-y-2">
-              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">Program Requirements</label>
-              <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-cyan-500 outline-none transition-colors resize-none"></textarea>
+              <label className="text-xs uppercase tracking-widest text-white/40 ml-4">
+                Program Requirements
+              </label>
+              <textarea
+                rows={4}
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-cyan-500 outline-none transition-colors resize-none"
+              ></textarea>
             </div>
             <button className="md:col-span-2 py-4 bg-blue-400 hover:bg-blue-500 text-white font-bold rounded-2xl transition-all shadow-[0_0_20px_rgba(147,51,234,0.3)] uppercase tracking-widest text-sm">
               Request School Proposal

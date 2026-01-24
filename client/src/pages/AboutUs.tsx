@@ -61,7 +61,7 @@ const teamMembers = [
   {
     name: "Ekansh Tardeja ",
     role: "Astro Guide",
-    image: "client/public/Team/Ekansh.jpeg"
+    image: "Team/Ekansh.jpeg"
   },
   {
     name: "Neel Gaikwad",
