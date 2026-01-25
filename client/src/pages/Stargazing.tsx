@@ -439,7 +439,6 @@ export default function Stargazing() {
         )}
       </AnimatePresence>
 
-      {/* Public Stargazing Content */}
       <section className="py-24 container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-1 gap-12">
