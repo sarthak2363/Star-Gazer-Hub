@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind, ArrowRight, Calendar, Shield, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoImg from "@assets/A-camps_1767778433537.png";
+import logoImg from "@assets/axploration_logo_1769485559596.png";
 import starGazingLogo from "@assets/StarGazing_white_1767861107932.png";
 import astroToursLogo from "@assets/Astrotours_1767855727508.png";
 import astroEventsLogo from "@assets/astroevents_1767855802920.png";
@@ -17,7 +17,7 @@ export default function Navbar() {
     {
       id: "stargazing",
       title: "Stargazing",
-      href: "#",
+      href: "/stargazing",
       icon: <Star className="w-5 h-5 text-yellow-400" />,
       subItems: [
         { 
@@ -36,8 +36,8 @@ export default function Navbar() {
     },
     {
       id: "astrotour",
-      title: "Astrotour",
-      href: "#",
+      title: "Astrotours",
+      href: "/astrotour",
       icon: <Telescope className="w-5 h-5 text-cyan-400" />,
       subItems: [
         { title: "Pench Astro Tour", href: "/astrotour", icon: <Tent className="w-4 h-4" /> },
@@ -46,8 +46,8 @@ export default function Navbar() {
       ]
     },
     {
-      id: "aeromodelling",
-      title: "Aeromodelling",
+      id: "astroevents",
+      title: "Astroevents",
       href: "/aeromodelling",
       icon: <Plane className="w-5 h-5 text-purple-400" />,
       subItems: [
@@ -77,132 +77,90 @@ export default function Navbar() {
         }}
       >
         {/* Logo Container */}
-        <Link href="/">
-          <div 
-            className={cn(
-              "relative z-50 flex items-center justify-center px-4 py-2 rounded-full cursor-pointer transition-all duration-300 backdrop-blur-md border",
-              isHovering 
-                ? "bg-black/80 border-[#93a5ff]/50 shadow-[0_0_30px_rgba(147,165,255,0.6)] scale-105" 
-                : "bg-background/50 border-white/10"
-            )}
-          >
-            <img 
-              src={logoImg} 
-              alt="Stargazer Logo" 
+        <div className="flex flex-col items-center gap-2">
+          <Link href="/">
+            <div 
               className={cn(
-                "h-8 w-auto object-contain transition-all duration-300",
-                isHovering && "drop-shadow-[0_0_8px_rgba(147,165,255,0.8)]"
-              )} 
-            />
-          </div>
-        </Link>
-
-        {/* Main Horizontal Menu */}
-        <AnimatePresence>
-          {isHovering && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="mt-4 flex gap-2 p-2 bg-black/90 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl"
+                "relative z-50 flex flex-col items-center justify-center px-6 py-3 rounded-2xl cursor-pointer transition-all duration-300 backdrop-blur-md border",
+                isHovering 
+                  ? "bg-black/80 border-[#93a5ff]/50 shadow-[0_0_30px_rgba(147,165,255,0.6)] scale-105" 
+                  : "bg-background/50 border-white/10"
+              )}
             >
-              {menuItems.map((item) => (
-                <div 
-                  key={item.id}
-                  className="relative group"
-                  onMouseEnter={() => setActiveMenu(item.id)}
-                >
-                  <Link href={item.href}>
-                    <div className={cn(
-                      "flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer transition-all whitespace-nowrap",
-                      (location === item.href || activeMenu === item.id) ? "bg-white/15 text-white" : "text-muted-foreground hover:text-white"
-                    )}>
-                      {item.id === "stargazing" ? (
-                        <img 
-                          src={starGazingLogo} 
-                          alt="StarGazing" 
-                          style={{ height: "26px" }}
-                          className={cn(
-                            "h-5 w-auto object-contain transition-all duration-300",
-                            (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
-                          )}
-                        />
-                      ) : item.id === "astrotour" ? (
-                        <img 
-                          src={astroToursLogo} 
-                          alt="AstroTours" 
-                          className={cn(
-                            "h-5 w-auto object-contain transition-all duration-300",
-                            (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
-                          )}
-                        />
-                      ) : item.id === "aeromodelling" ? (
-                        <img 
-                          src={astroEventsLogo} 
-                          alt="AstroEvents" 
-                          className={cn(
-                            "h-5 w-auto object-contain transition-all duration-300",
-                            (location === item.href || activeMenu === item.id) && "drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
-                          )}
-                        />
-                      ) : (
-                        <>
-                          {item.icon}
-                          <span className="font-display font-medium text-sm">{item.title}</span>
-                        </>
-                      )}
-                    </div>
-                  </Link>
+              <img 
+                src={logoImg} 
+                alt="Axploration Logo" 
+                className={cn(
+                  "h-10 w-auto object-contain transition-all duration-300",
+                  isHovering && "drop-shadow-[0_0_8px_rgba(147,165,255,0.8)]"
+                )} 
+              />
+              <span className="text-white font-display font-bold text-lg tracking-widest mt-1 uppercase">
+                axcamps
+              </span>
+            </div>
+          </Link>
 
-                  {/* Vertical Submenu */}
-                  <AnimatePresence>
-                    {activeMenu === item.id && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full left-0 mt-3 w-64 bg-black/95 border border-white/10 rounded-2xl overflow-visible shadow-2xl p-2"
-                      >
-                        {item.subItems.map((sub) => (
-                          <div key={sub.title} className="relative group/sub">
-                            <Link href={sub.href}>
-                              <div className="flex items-center justify-between p-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group/item">
-                                <div className="flex items-center gap-3">
-                                  <div className="text-muted-foreground group-hover/item:text-primary transition-colors">
-                                    {sub.icon}
-                                  </div>
-                                  <span className="text-xs font-medium text-muted-foreground group-hover/item:text-white transition-colors">
-                                    {sub.title}
-                                  </span>
-                                </div>
-                                {sub.nested && (
-                                  <ArrowRight className="w-3 h-3 text-muted-foreground/50 group-hover/item:text-white" />
-                                )}
-                              </div>
-                            </Link>
+          {/* Navigation Options - Always visible or only on hover? User said "below that the three options should be seen" */}
+          <AnimatePresence>
+            {(isHovering || true) && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex gap-4 p-2 bg-black/40 backdrop-blur-md border border-white/5 rounded-full shadow-xl px-6"
+              >
+                {menuItems.map((item) => (
+                  <div 
+                    key={item.id}
+                    className="relative group"
+                    onMouseEnter={() => setActiveMenu(item.id)}
+                  >
+                    <Link href={item.href}>
+                      <div className={cn(
+                        "flex items-center gap-2 px-3 py-1.5 rounded-full cursor-pointer transition-all whitespace-nowrap",
+                        (location === item.href || activeMenu === item.id) ? "text-white" : "text-white/60 hover:text-white"
+                      )}>
+                        <span className="font-display font-semibold text-xs uppercase tracking-wider">{item.title}</span>
+                      </div>
+                    </Link>
 
-                            {/* Level 3 Submenu */}
-                            {sub.nested && (
-                              <div className="absolute left-full top-0 ml-2 hidden group-hover/sub:block w-48 bg-black/95 border border-white/10 rounded-xl p-2 shadow-2xl">
-                                {sub.nested.map((nest) => (
-                                  <Link key={nest.title} href={nest.href}>
-                                    <div className="p-2 rounded-lg hover:bg-white/10 transition-colors cursor-pointer text-[10px] text-muted-foreground hover:text-white font-medium">
-                                      {nest.title}
+                    {/* Vertical Submenu */}
+                    <AnimatePresence>
+                      {activeMenu === item.id && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-black/95 border border-white/10 rounded-xl overflow-visible shadow-2xl p-2"
+                        >
+                          {item.subItems.map((sub) => (
+                            <div key={sub.title} className="relative group/sub">
+                              <Link href={sub.href}>
+                                <div className="flex items-center justify-between p-2.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer group/item">
+                                  <div className="flex items-center gap-3">
+                                    <div className="text-muted-foreground group-hover/item:text-primary transition-colors">
+                                      {sub.icon}
                                     </div>
-                                  </Link>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+                                    <span className="text-[11px] font-medium text-muted-foreground group-hover/item:text-white transition-colors uppercase tracking-tight">
+                                      {sub.title}
+                                    </span>
+                                  </div>
+                                  {sub.nested && (
+                                    <ArrowRight className="w-3 h-3 text-muted-foreground/50 group-hover/item:text-white" />
+                                  )}
+                                </div>
+                              </Link>
+                            </div>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </nav>
   );
