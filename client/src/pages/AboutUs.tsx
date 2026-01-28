@@ -19,7 +19,7 @@ const teamMembers = [
   {
     name: "Sarthak Chougule",
     role: "Technical Lead & Astroguide",
-    image: "/team/ashish.jpg"
+    image: "/Team/Sarthak.jpeg"
   },
   {
     name: "Gauri Kshirsagar",
@@ -39,16 +39,16 @@ const teamMembers = [
   {
     name: "Vidhita Kirtani",
     role: "Project Lead, System Head & Astro Guide",
-    image: "/Team/Vidhita.jpg"
+    image: "/Team/Vidhita.jpeg"
   },
   {
     name: "Ashish Merukar",
     role: "Astro Guide",
-    image: "/team/shashi.jpg"
+    image: "/Team/Ashish_sir.jpeg"
   },{
     name: "Ashish Parmar",
     role: "Astro Guide",
-    image: "/team/shashi.jpg"
+    image: "/Team/ashish.jpeg"
   },{
     name: "Shashi Gawari",
     role: "Astro Guide",
@@ -56,17 +56,17 @@ const teamMembers = [
   },{
     name: "Vivek Mahadule",
     role: "Astro Guide",
-    image: "/team/shashi.jpg"
+    image: "/Team/vivekm.jpeg"
   },
   {
     name: "Ekansh Tardeja ",
-    role: "Astro Guide",
-    image: "Team/Ekansh.jpeg"
+    role: "Astro Guide & Astro Guide",
+    image: "/Team/ekansh.jpeg"
   },
   {
     name: "Neel Gaikwad",
     role: "Astro Guide",
-    image: "/team/shashi.jpg"
+    image: "/Team/neel.jpeg"
   },
   
 ];
@@ -148,18 +148,7 @@ export default function AboutUs() {
               <p className="text-white/60 text-lg leading-relaxed">
                 AXCamps (Axploration Camps) started with a simple vision: to make astronomy and aeronautics accessible to everyone. From high-altitude stargazing in Ladakh to wildlife-astro tours in Pench, we create experiences that blend science with adventure.
               </p>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 bg-white/5 rounded-3xl border border-white/10 group hover:border-blue-500/50 transition-colors">
-                  <Star className="w-8 h-8 text-yellow-400 mb-4" />
-                  <h4 className="text-white font-bold mb-2 uppercase">Our Mission</h4>
-                  <p className="text-white/40 text-sm">To inspire the next generation of space explorers through hands-on learning and immersive stargazing experiences.</p>
-                </div>
-                <div className="p-6 bg-white/5 rounded-3xl border border-white/10 group hover:border-purple-500/50 transition-colors">
-                  <Target className="w-8 h-8 text-purple-400 mb-4" />
-                  <h4 className="text-white font-bold mb-2 uppercase">Our Vision</h4>
-                  <p className="text-white/40 text-sm">To be India's leading platform for astro-tourism, aeromodelling, and experiential science education.</p>
-                </div>
-              </div>
+             
             </motion.div>
 
             <motion.div 
@@ -170,18 +159,22 @@ export default function AboutUs() {
             >
               <div className="space-y-4">
                 
-                <div className="bg-blue-600 rounded-[2rem] p-8 text-center flex flex-col items-center justify-center">
-                   <Sparkles className="w-10 h-10 text-white mb-4 animate-pulse" />
-                   <div className="text-white font-bold uppercase tracking-widest text-xs">Innovation in Education</div>
-                </div>
-              </div>
-              <div className="space-y-4 pt-12">
-                <div className="bg-purple-600/20 backdrop-blur-md border border-purple-500/30 rounded-[2rem] p-8 text-center">
-                   <div className="text-4xl font-display font-bold text-purple-400 mb-2">100%</div>
-                   <div className="text-white/60 text-[10px] uppercase tracking-widest">Hands-on Experience</div>
-                </div>
+                
+                  <div className="p-6 bg-white/5 rounded-3xl border border-white/10 group hover:border-purple-500/50 transition-colors">
+                    <Target className="w-8 h-8 text-purple-400 mb-4" />
+                    <h4 className="text-white font-bold mb-2 uppercase">Our Vision</h4>
+                    <p className="text-white/40 text-sm">To be India's leading platform for astro-tourism, aeromodelling, and experiential science education.</p>
+                  </div>
                 
               </div>
+              <div className="space-y-4 pt-12">
+                  <div className="p-6 bg-white/5 rounded-3xl border border-white/10 group hover:border-blue-500/50 transition-colors">
+                    <Star className="w-8 h-8 text-yellow-400 mb-4" />
+                    <h4 className="text-white font-bold mb-2 uppercase">Our Mission</h4>
+                    <p className="text-white/40 text-sm">To inspire the next generation of space explorers through hands-on learning and immersive stargazing experiences.</p>
+                  </div>
+
+                </div>
             </motion.div>
           </div>
         </div>

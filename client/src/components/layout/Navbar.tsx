@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind, ArrowRight, Calendar, Shield, FileText } from "lucide-react";
+import { Telescope, Plane, Star, Users, Building, School, Map, Compass, Tent, Rocket, Wrench, Wind, ArrowRight, Calendar, Shield, FileText, GraduationCap } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoImg from "@assets/A-camps_1767778433537.png";
+import logoImg from "@assets/axploration_logo.png";
 import starGazingLogo from "@assets/StarGazing_white_1767861107932.png";
 import astroToursLogo from "@assets/Astrotours_1767855727508.png";
 import astroEventsLogo from "@assets/astroevents_1767855802920.png";
@@ -24,14 +24,11 @@ export default function Navbar() {
           title: "Public Stargazing", 
           href: "/stargazing", 
           icon: <Users className="w-4 h-4" />,
-          nested: [
-            { title: "10th Jan 2026", href: "/stargazing" },
-            { title: "24th Jan 2026", href: "/stargazing" },
-            { title: "25th Jan 2026", href: "/stargazing" },
-          ]
         },
         { title: "Corporate Events", href: "/stargazing/corporate", icon: <Building className="w-4 h-4" /> },
         { title: "School Programs", href: "/stargazing/school", icon: <School className="w-4 h-4" /> },
+        { title: "Student Special", href: "/stargazing/studentspecial", icon: <GraduationCap className="w-4 h-4" />
+ },
       ]
     },
     {
@@ -48,17 +45,13 @@ export default function Navbar() {
     {
       id: "aeromodelling",
       title: "Aeromodelling",
-      href: "/aeromodelling",
+      href: "#",
       icon: <Plane className="w-5 h-5 text-purple-400" />,
       subItems: [
         { 
-          title: "Events", 
-          href: "/aeromodelling/events", 
-          icon: <Calendar className="w-4 h-4" />,
-          nested: [
-            { title: "14th Jan 2026", href: "/aeromodelling/events/jan-14" },
-            { title: "17th Jan 2026", href: "/aeromodelling/events/jan-17" },
-          ]
+          title: "Aeromodelling", 
+          href: "/aeromodelling", 
+          icon: <Plane className="w-4 h-4" />,
         },
         { title: "RC Workshops", href: "/aeromodelling/workshops", icon: <Wrench className="w-4 h-4" /> },
         { title: "Flight School", href: "/aeromodelling/school", icon: <Rocket className="w-4 h-4" /> },
@@ -90,7 +83,7 @@ export default function Navbar() {
               src={logoImg} 
               alt="Stargazer Logo" 
               className={cn(
-                "h-8 w-auto object-contain transition-all duration-300",
+                "h-10 w-auto object-contain transition-all duration-300",
                 isHovering && "drop-shadow-[0_0_8px_rgba(147,165,255,0.8)]"
               )} 
             />

@@ -307,9 +307,6 @@ export default function SchoolPrograms() {
         viewport={{ once: true }}
       >
         <ImageCarousel images={GALLERY_IMAGES} />
-        <p className="text-center text-xs text-white/30 mt-4 uppercase tracking-widest">
-          Swipe or click arrows to view more
-        </p>
       </motion.div>
 
       {/* Importance Section for Schools */}

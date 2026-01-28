@@ -759,7 +759,21 @@ export default function Stargazing() {
                     </span>
                   </div>
                 </div>
-                <button className="w-full py-4 bg-blue-500 hover:bg-blue-400 text-black font-bold rounded-2xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] transform hover:-translate-y-1 active:scale-[0.98]">
+                <button
+                  onClick={() => {
+                    const dateText = selectedDate
+                      ? format(selectedDate, "dd MMMM yyyy")
+                      : "not selected";
+
+                    const message = `Can I get more details about this event? Date entered: ${dateText}`;
+                    const whatsappUrl = `https://wa.me/917666519425?text=${encodeURIComponent(
+                      message,
+                    )}`;
+
+                    window.open(whatsappUrl, "_blank");
+                  }}
+                  className="w-full py-4 bg-blue-500 hover:bg-blue-400 text-black font-bold rounded-2xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] transform hover:-translate-y-1 active:scale-[0.98]"
+                >
                   Enquire Now!!
                 </button>
               </motion.div>
