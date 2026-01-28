@@ -29,6 +29,7 @@ import { DayPicker } from "react-day-picker";
 import { format, isSameDay, addDays } from "date-fns";
 import "react-day-picker/dist/style.css";
 import eventImg from "@assets/13th_event_1767776866680.jpeg";
+import eventImg2 from "@assets/Astroparty_groupphoto24th.png";
 import heroBgImage from "@assets/generated_images/people_stargazing_under_milky_way.png";
 import videoFeedback from "@assets/Sweet,_true_and_very_very_encouraging_feedback_our_participant_1768372460674.mp4";
 
@@ -487,7 +488,7 @@ export default function Stargazing() {
                 </div>
                 <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                   <img
-                    src={eventImg}
+                    src={eventImg2}
                     alt="Public Stargazing Session"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />

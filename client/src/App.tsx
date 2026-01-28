@@ -17,6 +17,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import RefundPolicy from "@/pages/RefundPolicy";
 import AboutUs from "@/pages/AboutUs";
 import StudentSpecial from "@/pages/StudentSpecial";
+import consentpdf from "@assets/attached_assets/consent.pdf";
 
 function Router() {
   return (
@@ -34,11 +35,12 @@ function Router() {
       <Route path="/terms" component={TermsConditions} />
       <Route path="/privacy" component={PrivacyPolicy} />
       <Route path="/refund" component={RefundPolicy} />
-      <Route path="/student-special" component={StudentSpecial} />
       <Route component={NotFound} />
     </Switch>
   );
 }
+
+import { ContextMenuSubContent } from "@radix-ui/react-context-menu";
 
 function App() {
   return (
