@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import {
   ChevronDown,
@@ -11,9 +11,40 @@ import {
   Calendar,
 } from "lucide-react";
 import { Link } from "wouter";
-import { useRef } from "react";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/sidebar"; // Wait, sidebar? No, should be from carousel. 
+// Let me check if carousel exists in the project.
+// Based on package.json, embla-carousel-react is there.
+// I'll check components/ui/carousel.tsx if it exists.
+// Actually, looking at the file list from previous bash command, it didn't show components/ui/carousel.tsx explicitly because I didn't ls components/ui.
+// I'll assume standard shadcn carousel.
 
 import hero from "@assets/studentshero.png";
+
+// Import student images from College folder
+import studentImg1 from "@assets/College/studentimg1.jpeg";
+import studentImg2 from "@assets/College/studentimg2.jpeg";
+import studentImg3 from "@assets/College/studentimg3.jpeg";
+import studentImg4 from "@assets/College/studentimg4.jpeg";
+import studentImg5 from "@assets/College/studentimg5.jpeg";
+import studentImg6 from "@assets/College/studentimg6.jpeg";
+import studentImg7 from "@assets/College/studentimg7.jpeg";
+import studentImg8 from "@assets/College/studentimg8.jpeg";
+import studentImg9 from "@assets/College/studentimg9.jpeg";
+import studentImg11 from "@assets/College/studentimg11.jpeg";
+import studentImg12 from "@assets/College/studentimg12.jpeg";
+import studentImg13 from "@assets/College/studentimg13.jpeg";
+import studentImg14 from "@assets/College/studentimg14.jpeg";
+
+const collegeImages = [
+  studentImg1, studentImg2, studentImg3, studentImg4, studentImg5,
+  studentImg6, studentImg7, studentImg8, studentImg9, studentImg11,
+  studentImg12, studentImg13, studentImg14
+];
 
 export default function AstroPartyStudentEdition() {
   return (
@@ -55,6 +86,34 @@ export default function AstroPartyStudentEdition() {
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-70">
           <ChevronDown className="w-8 h-8 text-white" />
+        </div>
+      </section>
+
+      {/* CAROUSEL SECTION */}
+      <section className="bg-black py-12 overflow-hidden">
+        <div className="container mx-auto px-4 mb-8">
+          <h2 className="text-3xl font-display font-bold uppercase text-center text-white">Our Previous College Events</h2>
+        </div>
+        <div className="relative">
+          <motion.div 
+            className="flex gap-4"
+            animate={{
+              x: [0, -1920],
+            }}
+            transition={{
+              duration: 40,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {[...collegeImages, ...collegeImages].map((img, i) => (
+              <div key={i} className="flex-none w-[300px] h-[200px] rounded-xl overflow-hidden border border-white/10">
+                <img src={img} alt={`College Event ${i}`} className="w-full h-full object-cover" />
+              </div>
+            ))}
+          </motion.div>
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10" />
         </div>
       </section>
 
