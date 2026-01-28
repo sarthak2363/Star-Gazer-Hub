@@ -12,17 +12,6 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/sidebar"; // Wait, sidebar? No, should be from carousel. 
-// Let me check if carousel exists in the project.
-// Based on package.json, embla-carousel-react is there.
-// I'll check components/ui/carousel.tsx if it exists.
-// Actually, looking at the file list from previous bash command, it didn't show components/ui/carousel.tsx explicitly because I didn't ls components/ui.
-// I'll assume standard shadcn carousel.
-
 import hero from "@assets/studentshero.png";
 
 // Import student images from College folder
