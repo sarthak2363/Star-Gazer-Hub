@@ -11,6 +11,14 @@ import {
   Calendar,
 } from "lucide-react";
 import { Link } from "wouter";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 import hero from "@assets/studentshero.png";
 
@@ -78,35 +86,78 @@ export default function AstroPartyStudentEdition() {
         </div>
       </section>
 
-      {/* CAROUSEL SECTION */}
-      <section className="bg-black py-12 overflow-hidden">
-        <div className="container mx-auto px-4 mb-8">
-          <h2 className="text-3xl font-display font-bold uppercase text-center text-white">Our Previous College Events</h2>
-        </div>
-        <div className="relative">
-          <motion.div 
-            className="flex gap-4"
-            animate={{
-              x: [0, -1920],
-            }}
-            transition={{
-              duration: 40,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            {[...collegeImages, ...collegeImages].map((img, i) => (
-              <div key={i} className="flex-none w-[300px] h-[200px] rounded-xl overflow-hidden border border-white/10">
-                <img src={img} alt={`College Event ${i}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </motion.div>
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10" />
+      {/* HIGHLIGHTS */}
+      <section className="snap-start min-h-screen bg-black px-6 py-24">
+        <h2 className="text-center text-4xl font-display font-bold uppercase mb-16">
+          What's Special About Student Edition?
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          {[
+            { icon: GraduationCap, text: "Affordable for Students" },
+            { icon: ShieldCheck, text: "Safe & Comfortable Environment" },
+            { icon: Bus, text: "Transport Service Provided" },
+            { icon: MoonStar, text: "Darkest Sky Near Pune" },
+            { icon: ShieldCheck, text: "Parents Consent Mandatory" },
+            { icon: GraduationCap, text: "Educational & Guided Astronomy" },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="border border-white/10 rounded-2xl p-8 bg-white/5 hover:bg-white/10 transition"
+            >
+              <item.icon className="w-10 h-10 text-blue-400 mb-4" />
+              <p className="text-lg">{item.text}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* HIGHLIGHTS */}
+      {/* CAROUSEL SECTION */}
+      <section className="bg-black py-24 border-t border-white/5">
+        <div className="container mx-auto px-4 mb-12">
+          <h2 className="text-4xl font-display font-bold uppercase text-center text-white tracking-tight">Our Previous College Events</h2>
+        </div>
+        <div className="max-w-6xl mx-auto px-12 relative group">
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 3000,
+              }),
+            ]}
+            className="w-full"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-4">
+              {collegeImages.map((img, i) => (
+                <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="rounded-2xl overflow-hidden aspect-[4/3] border border-white/10 group/item relative">
+                    <img 
+                      src={img} 
+                      alt={`College Event ${i + 1}`} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover/item:scale-110" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                      <p className="text-white font-medium">Student Experience {i + 1}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="hidden md:block">
+              <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full border-white/20 bg-white/5 text-white hover:bg-white hover:text-black opacity-0 group-hover:opacity-100 transition-opacity" />
+              <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full border-white/20 bg-white/5 text-white hover:bg-white hover:text-black opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+          </Carousel>
+        </div>
+      </section>
+
+      {/* EVENT DETAILS */}
       <section className="snap-start min-h-screen bg-black px-6 py-24">
         <h2 className="text-center text-4xl font-display font-bold uppercase mb-16">
           What's Special About Student Edition?
